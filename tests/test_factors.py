@@ -52,3 +52,41 @@ def test_missing_pca_recovers_dominant_shared_factor() -> None:
     assert result.explained_variance[0] > 0.90
     factor_one = result.model_scores["factor_1"]
     assert factor_one["m7"] > factor_one["m4"] > factor_one["m1"]
+
+
+def test_factor_filter_requires_distinct_benchmark_families() -> None:
+    families = ["suite", "suite", "suite", "family-3", "family-4", "family-5"]
+    benchmarks = [
+        BenchmarkDefinition(
+            id=f"bench-{index}",
+            name=f"Bench {index}",
+            family_id=family,
+            published_at=date(2026, 1, 1),
+            capability_loadings={Capability.FLUID_REASONING: 1.0},
+        )
+        for index, family in enumerate(families)
+    ]
+    observations: list[BenchmarkObservation] = []
+    for model_index in range(7):
+        for benchmark_index in range(6):
+            if model_index == 6 and benchmark_index == 5:
+                continue
+            observations.append(
+                BenchmarkObservation(
+                    model_id=f"m{model_index}",
+                    benchmark_id=f"bench-{benchmark_index}",
+                    score=20.0 + 8.0 * model_index + benchmark_index,
+                )
+            )
+
+    result = fit_missing_pca(
+        benchmarks,
+        observations,
+        rank=1,
+        minimum_models_per_benchmark=5,
+        minimum_benchmarks_per_model=5,
+        minimum_families_per_model=4,
+    )
+
+    assert "m6" not in result.models
+    assert len(result.models) == 6
