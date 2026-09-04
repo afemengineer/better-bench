@@ -87,7 +87,7 @@ Evidence tiers are:
 - **Supporting** — useful domain evidence with material limitations, including highly adopted public benchmarks whose integrity is too weak for Core.
 - **Diagnostic only** — retained for transparency/history but given little or no final-index influence.
 
-Core status now has an explicit integrity floor. A widely run benchmark can therefore have a high raw importance score while remaining Supporting if contamination/exposure risk is too high. This prevents adoption from becoming a proxy for quality.
+Core status has an explicit integrity floor. A widely run benchmark can therefore have a high raw importance score while remaining Supporting if contamination/exposure risk is too high. This prevents adoption from becoming a proxy for quality.
 
 Benchmark categories that share a `family_id` split one family evidence budget. This prevents suites such as LiveBench—or multiple OSWorld protocols—from receiving independent full votes merely because multiple category or protocol scores are published.
 
@@ -124,4 +124,4 @@ The current factor diagnostic retains **24 models × 28 benchmarks with 328 meas
 
 The benchmark-quality model now classifies **MCP Atlas, SWE Atlas Codebase QnA, DeepSWE, Terminal-Bench 4 and Terminal-Bench Science** among the current Core evidence. The official release-pinned OSWorld 2.0 protocol remains high-value emerging. Highly adopted but public/low-integrity evidence such as MultiNRC remains Supporting rather than being promoted solely by popularity.
 
-This is sufficient for useful structural diagnostics, but not yet a defensible final public scalar ranking across all 40 models. The next data milestone is to fill independent high-value cells for the sixteen models outside the current dense factor cohort, then fit a **general-factor + domain-residual model with explicit benchmark-quality, family, protocol and exposure effects**.
+This is sufficient for useful structural diagnostics, but not yet a defensible final public scalar ranking across all 40 models. The next data milestone is to fill independent high-value cells for the sixteen models outside the current dense factor cohort, with an intermediate target of **30+ models in the dense calibration cohort**, then fit a **general-factor + domain-residual model with explicit benchmark-quality, family, protocol and exposure effects**.
