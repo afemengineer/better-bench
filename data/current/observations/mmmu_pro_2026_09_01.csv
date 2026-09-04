@@ -1,0 +1,7 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gemini-3.7-flash,mmmu-pro-aa-2026-09-01,85.5,2026-09-01,D,Artificial Analysis,high,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
+gemini-3.6-flash,mmmu-pro-aa-2026-09-01,83.2,2026-09-01,D,Artificial Analysis,high,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
+gpt-5.6-sol,mmmu-pro-aa-2026-09-01,83.4,2026-09-01,D,Artificial Analysis,max,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
+gpt-5.6-terra,mmmu-pro-aa-2026-09-01,80.7,2026-09-01,D,Artificial Analysis,max,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
+kimi-k3,mmmu-pro-aa-2026-09-01,80.5,2026-09-01,D,Artificial Analysis,max,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
+qwen3.8-max,mmmu-pro-aa-2026-09-01,82.3,2026-09-01,D,Artificial Analysis,,,https://verdictpal.com/benchmarks,Secondary source-checked index attributes this row to Artificial Analysis MMMU-Pro 2026-09-01.
