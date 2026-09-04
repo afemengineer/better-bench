@@ -19,12 +19,13 @@ rows = rank_benchmarks(
 )
 
 print(
-    "tier\timportance\tadoption\tdiscrimination\tintegrity\tquality\t"
-    "independence\tmodels\tbenchmark"
+    "tier\timportance\tfamily_weight\tadoption\tdiscrimination\tintegrity\t"
+    "quality\tindependence\tmodels\tfamily\tbenchmark"
 )
 for row in rows:
     print(
-        f"{row.tier.value}\t{row.importance:.3f}\t{row.adoption:.3f}\t"
-        f"{row.discrimination:.3f}\t{row.integrity:.3f}\t{row.quality:.3f}\t"
-        f"{row.independence:.3f}\t{row.effective_leaderboard_models}\t{row.benchmark_id}"
+        f"{row.tier.value}\t{row.importance:.3f}\t{row.family_adjusted_weight:.3f}\t"
+        f"{row.adoption:.3f}\t{row.discrimination:.3f}\t{row.integrity:.3f}\t"
+        f"{row.quality:.3f}\t{row.independence:.3f}\t"
+        f"{row.effective_leaderboard_models}\t{row.family_id}\t{row.benchmark_id}"
     )
