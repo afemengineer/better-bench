@@ -1,0 +1,13 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+livebench-2026-06-25-reasoning,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-coding,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-agentic-coding,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-mathematics,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-data-analysis,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-language,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+livebench-2026-06-25-instruction-following,2026-09-04,22,9,https://livebench.ai/,Current 22-model Better Bench snapshot from official LiveBench leaderboard.
+arc-prize-agi3-standard-semiprivate,2026-09-04,18,7,https://arcprize.org/leaderboard,Official ARC Prize result pages expose approximately eighteen current model families/configuration groups.
+mcp-atlas-2026-04-full,2026-09-04,30,10,https://labs.scale.com/leaderboard/mcp_atlas,Official Scale leaderboard currently lists thirty model configurations across a broad provider set.
+hle-verified-2026,2026-09-04,6,3,https://deepmind.google/models/gemini/flash/,Current published frontier comparison contains six models; benchmark dataset itself is public and independently documented.
+osworld-2.0-google-2026-09-partial,2026-09-04,6,3,https://deepmind.google/models/gemini/flash/,Google comparison protocol currently provides six directly comparable frontier models.
+enigmaeval-2026-07,2026-09-04,5,3,https://labs.scale.com/leaderboard/enigma_eval,Current official Scale frontier leaderboard exposes five directly comparable models in the visible ranking.
