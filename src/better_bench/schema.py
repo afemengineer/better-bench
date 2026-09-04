@@ -4,7 +4,7 @@ from datetime import date
 from enum import StrEnum
 from typing import Annotated
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class Capability(StrEnum):
@@ -64,6 +64,14 @@ class BenchmarkDefinition(BaseModel):
     reliability: Annotated[float, Field(ge=0.0, le=1.0)] = 0.8
     capability_loadings: dict[Capability, float]
     notes: str | None = None
+
+    @field_validator("version", mode="before")
+    @classmethod
+    def normalize_yaml_date_version(cls, value: object) -> object:
+        """Preserve version identifiers when YAML parses an ISO-looking string as a date."""
+        if isinstance(value, date):
+            return value.isoformat()
+        return value
 
     @model_validator(mode="after")
     def validate_definition(self) -> BenchmarkDefinition:
