@@ -1,0 +1,116 @@
+- id: frontierswe-v2-2026-09
+  name: FrontierSWE
+  version: v2 September 2026
+  family_id: frontierswe
+  published_at: '2026-09-01'
+  public_since: '2026-09-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.98
+  reliability: 0.91
+  contamination_resistance: 0.90
+  capability_loadings:
+    software_engineering: 0.45
+    planning_agency: 0.20
+    scientific_reasoning: 0.15
+    terminal_agency: 0.10
+    long_context: 0.10
+  notes: >-
+    FrontierSWE v2 contains 34 ultra-long-horizon technical tasks, five trials per
+    task and a 20-hour budget using the Proximus harness. September 1 is a normalized
+    month-level release date. The benchmark is fresh and substantially harder than v1.
+
+- id: mls-bench-lite-2026-09
+  name: MLS-Bench Lite
+  version: September 2026 public leaderboard
+  family_id: mls-bench
+  published_at: '2026-05-09'
+  public_since: '2026-05-09'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.90
+  contamination_resistance: 0.70
+  capability_loadings:
+    scientific_reasoning: 0.35
+    software_engineering: 0.25
+    planning_agency: 0.15
+    quantitative_reasoning: 0.10
+    terminal_agency: 0.10
+    long_context: 0.05
+  notes: >-
+    Thirty-task Lite subset of MLS-Bench. Agents must invent ML methods whose gains
+    generalize across controlled settings rather than merely tune one instance. The
+    public benchmark contains broader harness heterogeneity, retained observation-level.
+
+- id: mcpmark-verified-2026-07
+  name: MCPMark Verified
+  version: 2026-07-20 stabilized pass@1
+  family_id: mcpmark
+  published_at: '2026-06-12'
+  public_since: '2026-06-12'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.98
+  reliability: 0.94
+  contamination_resistance: 0.82
+  capability_loadings:
+    structured_tool_use: 0.55
+    planning_agency: 0.20
+    software_engineering: 0.10
+    terminal_agency: 0.05
+    long_context: 0.05
+    language: 0.05
+  notes: >-
+    Version-pinned 127-task MCPMark Verified subset with programmatic verification.
+    The stored metric is single-run Pass@1; scores-only entries are retained but marked
+    through notes. This is distinct from MCP Atlas and probes richer CRUD workflows.
+
+- id: agents-last-exam-ale-v1-2026-09
+  name: Agents' Last Exam
+  version: ALE-V1 current pass-rate snapshot
+  family_id: agents-last-exam
+  published_at: '2026-06-14'
+  public_since: '2026-06-14'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.97
+  reliability: 0.91
+  contamination_resistance: 0.84
+  capability_loadings:
+    planning_agency: 0.25
+    structured_tool_use: 0.20
+    software_engineering: 0.15
+    terminal_agency: 0.10
+    knowledge: 0.10
+    language: 0.10
+    long_context: 0.10
+  notes: >-
+    Official ALE-V1 pass-rate leaderboard across 1,500+ expert-sourced professional
+    tasks. Harness identity is part of the measured agent system and is stored per row.
+
+- id: aa-briefcase-2026-09
+  name: AA-Briefcase
+  version: September 2026 Elo snapshot
+  family_id: aa-briefcase
+  published_at: '2026-06-18'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 1800
+  protocol_quality: 0.98
+  reliability: 0.93
+  contamination_resistance: 0.98
+  capability_loadings:
+    planning_agency: 0.25
+    structured_tool_use: 0.20
+    knowledge: 0.15
+    language: 0.15
+    long_context: 0.10
+    web_agency: 0.05
+    quantitative_reasoning: 0.05
+    social_pragmatic: 0.05
+  notes: >-
+    Artificial Analysis private long-horizon knowledge-work benchmark. Elo combines
+    rubric success, analytical quality and presentation quality. The 0-1800 fixed
+    normalization window is a Better Bench calibration choice rather than a natural
+    Elo bound; the benchmark itself supplies model-level Elo confidence intervals.
