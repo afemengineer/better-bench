@@ -16,3 +16,20 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q
+      - name: Factor smoke on current corpus
+        run: >-
+          better-bench factor
+          --benchmarks data/current
+          --observations data/current
+          --rank 3
+          --minimum-models 5
+          --minimum-benchmarks 5
+          --top 10
+      - name: Novelty smoke on current corpus
+        run: >-
+          better-bench novelty
+          --benchmarks data/current
+          --models data/current
+          --observations data/current
+          --minimum-overlap 5
+          --top 10
