@@ -2,7 +2,12 @@ from collections import defaultdict
 from datetime import date
 
 from better_bench.benchmark_quality import BenchmarkTier, rank_benchmarks
-from better_bench.io import load_adoption, load_benchmarks, load_models, load_observations
+from better_bench.io import (
+    load_adoption,
+    load_benchmarks,
+    load_models,
+    load_observations,
+)
 
 
 benchmarks = load_benchmarks("data/current")
@@ -27,9 +32,7 @@ for row in observations:
 priority_tiers = {BenchmarkTier.CORE, BenchmarkTier.EMERGING}
 priority_rows = [row for row in quality_rows if row.tier in priority_tiers]
 
-print(
-    "model\tbenchmarks\tfamilies\tcore_or_emerging\tpriority_missing"
-)
+print("model\tbenchmarks\tfamilies\tcore_or_emerging\tpriority_missing")
 for model in models:
     seen = observed_by_model.get(model.id, set())
     families = {
