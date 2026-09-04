@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 from pathlib import Path
 
 from better_bench.factors import fit_missing_pca
