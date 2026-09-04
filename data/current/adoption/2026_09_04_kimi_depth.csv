@@ -1,0 +1,6 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+frontierswe-v2-2026-09,2026-09-04,10,8,https://www.frontierswe.com/,Current v2 leaderboard snapshot; one additional Inkling row is outside the Better Bench model registry.
+mls-bench-lite-2026-09,2026-09-04,14,8,https://mls-bench.com/leaderboard,Current official leaderboard snapshot.
+mcpmark-verified-2026-07,2026-09-04,8,6,https://mcpmark.ai/leaderboard/verified,Version-pinned Verified leaderboard snapshot.
+agents-last-exam-ale-v1-2026-09,2026-09-04,11,6,https://agents-last-exam.org/leaderboard,Conservative count from current top directly comparable leaderboard rows.
+aa-briefcase-2026-09,2026-09-04,61,15,https://artificialanalysis.ai/evaluations/aa-briefcase,Current leaderboard contains roughly sixty model/configuration rows across a broad provider set; configurations count as adoption evidence rather than distinct weights.
