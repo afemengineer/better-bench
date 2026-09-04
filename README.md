@@ -56,7 +56,21 @@ better-bench score \
   --output-json scores.json
 ```
 
-The example dataset is synthetic on purpose; it demonstrates contradictory coding/terminal profiles and sparse coverage without baking unverified vendor numbers into the repository.
+The synthetic example remains useful for tests. A real public-data seed now lives in [`data/current/`](data/current/) with 28 models, 21 protocol-specific benchmarks and 136 provenance-tagged observations.
+
+To inspect empirical benchmark relationships:
+
+```bash
+better-bench diagnose \
+  --benchmarks data/current/benchmarks.yaml \
+  --observations data/current/observations.csv \
+  --minimum-overlap 4 \
+  --left deepswe-v1.1 \
+  --right terminal-bench-4.0 \
+  --output-csv pairwise.csv
+```
+
+See [`docs/first_data_diagnostic.md`](docs/first_data_diagnostic.md) for the first sanity check on the real matrix.
 
 ## Data model
 
@@ -89,4 +103,6 @@ Source grades are:
 
 ## Status
 
-V0 implements the schema, quality weighting, model-conditional contamination heuristic, redundancy penalty, sparse capability profiles, coverage and uncertainty. The next substantive milestone is **real public data ingestion and calibration**.
+V0 now includes the schema, quality weighting, contamination heuristic, redundancy penalty, sparse capability profiles, a real public-data seed, pairwise benchmark diagnostics and model-level residual analysis.
+
+The first data pass shows that DeepSWE v1.1 and Terminal-Bench 4.0 share meaningful signal but are far from interchangeable. It also shows that the current matrix is too sparse for a defensible public scalar ranking. The next milestone is a **denser cross-domain core matrix**, followed by a hierarchical general-factor + capability-factor model.

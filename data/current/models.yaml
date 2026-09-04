@@ -1,0 +1,100 @@
+- id: gpt-6-astra
+  name: GPT-6 Astra
+  organization: OpenAI
+  released_at: '2026-09-03'
+  training_cutoff: '2026-04-30'
+- id: gemini-3.8-flash
+  name: Gemini 3.8 Flash
+  organization: Google
+  released_at: '2026-09-03'
+- id: claude-fable-5.1
+  name: Claude Fable 5.1
+  organization: Anthropic
+  released_at: '2026-09-01'
+- id: claude-opus-5
+  name: Claude Opus 5
+  organization: Anthropic
+  released_at: '2026-07-24'
+- id: gpt-5.6-sol
+  name: GPT-5.6 Sol
+  organization: OpenAI
+  released_at: '2026-07-09'
+- id: claude-fable-5
+  name: Claude Fable 5
+  organization: Anthropic
+  released_at: '2026-06-09'
+- id: glm-5.3
+  name: GLM-5.3
+  organization: Z.ai
+  released_at: '2026-08-14'
+- id: kimi-k3
+  name: Kimi K3
+  organization: Moonshot AI
+  released_at: '2026-07-16'
+- id: grok-4.6
+  name: Grok 4.6
+  organization: xAI
+  released_at: '2026-08-12'
+  training_cutoff: '2026-02-01'
+- id: gpt-5.6-luna
+  name: GPT-5.6 Luna
+  organization: OpenAI
+  released_at: '2026-07-09'
+- id: gpt-5.5
+  name: GPT-5.5
+  organization: OpenAI
+- id: gemini-3.7-flash
+  name: Gemini 3.7 Flash
+  organization: Google
+- id: glm-5.3-flash
+  name: GLM-5.3 Flash
+  organization: Z.ai
+- id: deepseek-v4-pro
+  name: DeepSeek V4 Pro
+  organization: DeepSeek
+- id: claude-opus-4.8
+  name: Claude Opus 4.8
+  organization: Anthropic
+  released_at: '2026-05-28'
+- id: qwen3.8-max
+  name: Qwen 3.8 Max
+  organization: Alibaba
+- id: muse-spark-1.2
+  name: Muse Spark 1.2
+  organization: Muse
+- id: claude-sonnet-5
+  name: Claude Sonnet 5
+  organization: Anthropic
+  released_at: '2026-06-30'
+- id: deepseek-v4-flash
+  name: DeepSeek V4 Flash
+  organization: DeepSeek
+- id: gemini-3.6-flash
+  name: Gemini 3.6 Flash
+  organization: Google
+- id: glm-5.2
+  name: GLM-5.2
+  organization: Z.ai
+- id: gemini-3.5-flash
+  name: Gemini 3.5 Flash
+  organization: Google
+- id: gpt-5.6-terra
+  name: GPT-5.6 Terra
+  organization: OpenAI
+  released_at: '2026-07-09'
+- id: grok-4.5
+  name: Grok 4.5
+  organization: xAI
+  released_at: '2026-07-16'
+- id: gpt-5.4-mini
+  name: GPT-5.4 mini
+  organization: OpenAI
+- id: claude-opus-4.6
+  name: Claude Opus 4.6
+  organization: Anthropic
+- id: gpt-5.5-instant
+  name: GPT-5.5 Instant
+  organization: OpenAI
+- id: mai-thinking-1
+  name: MAI-Thinking-1
+  organization: Microsoft
