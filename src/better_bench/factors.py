@@ -22,48 +22,87 @@ class FactorModelResult:
 
 
 def _normalized_matrix(
-    benchmarks: list[BenchmarkDefinition],
-    observations: list[BenchmarkObservation],
+    benchmarks: list[BenchmarkDefinition], observations: list[BenchmarkObservation]
 ) -> pd.DataFrame:
-    benchmark_by_id = {row.id: row for row in benchmarks}
-    rows: list[tuple[str, str, float]] = []
+    definitions = {row.id: row for row in benchmarks}
+    rows = []
     for observation in observations:
-        benchmark = benchmark_by_id.get(observation.benchmark_id)
-        if benchmark is None:
-            continue
-        rows.append(
-            (
-                observation.model_id,
-                observation.benchmark_id,
-                normalize_score(observation.score, benchmark),
+        benchmark = definitions.get(observation.benchmark_id)
+        if benchmark is not None:
+            rows.append(
+                (
+                    observation.model_id,
+                    observation.benchmark_id,
+                    normalize_score(observation.score, benchmark),
+                )
             )
-        )
     if not rows:
         return pd.DataFrame(dtype=float)
     return pd.DataFrame(rows, columns=["model_id", "benchmark_id", "score"]).pivot_table(
-        index="model_id",
-        columns="benchmark_id",
-        values="score",
-        aggfunc="mean",
+        index="model_id", columns="benchmark_id", values="score", aggfunc="mean"
     )
 
 
 def _filter_matrix(
     frame: pd.DataFrame,
-    *,
     minimum_models_per_benchmark: int,
     minimum_benchmarks_per_model: int,
 ) -> pd.DataFrame:
     current = frame.copy()
     for _ in range(8):
-        before = current.shape
+        shape = current.shape
         current = current.loc[
             current.notna().sum(axis=1) >= minimum_benchmarks_per_model,
             current.notna().sum(axis=0) >= minimum_models_per_benchmark,
         ]
-        if current.shape == before:
+        if current.shape == shape:
             break
     return current
+
+
+def _als(
+    values: np.ndarray,
+    observed: np.ndarray,
+    rank: int,
+    ridge: float,
+    maximum_iterations: int,
+    tolerance: float,
+) -> tuple[np.ndarray, np.ndarray, float]:
+    """Regularized low-rank fit whose loss contains observed cells only."""
+    zero_filled = np.where(observed, values, 0.0)
+    left, singular, right_t = np.linalg.svd(zero_filled, full_matrices=False)
+    root = np.sqrt(np.maximum(singular[:rank], 1e-12))
+    model_factors = left[:, :rank] * root
+    benchmark_factors = right_t[:rank].T * root
+    identity = np.eye(rank)
+    previous = float("inf")
+
+    for _ in range(maximum_iterations):
+        for i in range(values.shape[0]):
+            selected = observed[i]
+            design = benchmark_factors[selected]
+            target = values[i, selected]
+            model_factors[i] = np.linalg.solve(
+                design.T @ design + ridge * identity, design.T @ target
+            )
+        for j in range(values.shape[1]):
+            selected = observed[:, j]
+            design = model_factors[selected]
+            target = values[selected, j]
+            benchmark_factors[j] = np.linalg.solve(
+                design.T @ design + ridge * identity, design.T @ target
+            )
+
+        prediction = model_factors @ benchmark_factors.T
+        error = values[observed] - prediction[observed]
+        sse = float(np.square(error).sum())
+        if previous < float("inf") and abs(previous - sse) / max(previous, 1e-12) < tolerance:
+            break
+        previous = sse
+
+    prediction = model_factors @ benchmark_factors.T
+    error = values[observed] - prediction[observed]
+    return model_factors, benchmark_factors, float(np.square(error).sum())
 
 
 def fit_missing_pca(
@@ -73,25 +112,20 @@ def fit_missing_pca(
     rank: int = 3,
     minimum_models_per_benchmark: int = 5,
     minimum_benchmarks_per_model: int = 5,
-    maximum_iterations: int = 100,
+    maximum_iterations: int = 200,
     tolerance: float = 1e-7,
+    ridge: float = 0.5,
 ) -> FactorModelResult:
-    """Fit a diagnostic low-rank factor model to a sparse benchmark matrix.
-
-    Scores are first normalized to each benchmark's fixed 0-100 scale and then
-    z-scored *within benchmark*. Missing cells are initialized at the benchmark
-    mean (zero after standardization) and iteratively imputed from a rank-k SVD.
-
-    This is deliberately a structural diagnostic, not the final Better Bench
-    estimator. Missingness is not random and source/harness effects remain.
-    """
+    """Diagnostic sparse factor model fitted only against observed measurements."""
     if rank < 1:
         raise ValueError("rank must be at least 1")
+    if ridge <= 0:
+        raise ValueError("ridge must be positive")
 
     frame = _filter_matrix(
         _normalized_matrix(benchmarks, observations),
-        minimum_models_per_benchmark=minimum_models_per_benchmark,
-        minimum_benchmarks_per_model=minimum_benchmarks_per_model,
+        minimum_models_per_benchmark,
+        minimum_benchmarks_per_model,
     )
     if frame.empty or min(frame.shape) < 2:
         raise ValueError("Insufficient overlapping data for factor analysis")
@@ -100,50 +134,38 @@ def fit_missing_pca(
     stds = frame.std(axis=0, skipna=True, ddof=0)
     keep = stds[stds > 1e-8].index
     frame = frame.loc[:, keep]
-    means = means.loc[keep]
-    stds = stds.loc[keep]
-    if frame.empty:
-        raise ValueError("All retained benchmarks have near-zero variance")
-
-    standardized = (frame - means) / stds
+    standardized = (frame - means.loc[keep]) / stds.loc[keep]
     observed = standardized.notna().to_numpy()
     values = standardized.to_numpy(dtype=float)
-    filled = np.where(observed, values, 0.0)
-
-    effective_rank = min(rank, min(filled.shape))
-    missing = ~observed
-    for _ in range(maximum_iterations):
-        u, singular, vt = np.linalg.svd(filled, full_matrices=False)
-        reconstruction = (u[:, :effective_rank] * singular[:effective_rank]) @ vt[:effective_rank]
-        if not missing.any():
-            filled = values.copy()
-            break
-        previous_missing = filled[missing].copy()
-        filled[missing] = reconstruction[missing]
-        filled[observed] = values[observed]
-        delta = float(np.max(np.abs(filled[missing] - previous_missing)))
-        if delta < tolerance:
-            break
-
-    u, singular, vt = np.linalg.svd(filled, full_matrices=False)
-    scores = u[:, :effective_rank] * singular[:effective_rank]
-    loadings = vt[:effective_rank].T
-
-    for index in range(effective_rank):
-        if float(loadings[:, index].sum()) < 0:
-            loadings[:, index] *= -1
-            scores[:, index] *= -1
-
+    effective_rank = min(rank, min(values.shape))
     total_ss = float(np.square(values[observed]).sum())
-    explained: list[float] = []
-    for current_rank in range(1, effective_rank + 1):
-        reconstruction = (u[:, :current_rank] * singular[:current_rank]) @ vt[:current_rank]
-        residual_ss = float(np.square(values[observed] - reconstruction[observed]).sum())
-        explained.append(1.0 - residual_ss / total_ss if total_ss > 0 else 0.0)
 
-    factor_names = [f"factor_{index + 1}" for index in range(effective_rank)]
-    model_scores = pd.DataFrame(scores, index=frame.index, columns=factor_names)
-    benchmark_loadings = pd.DataFrame(loadings, index=frame.columns, columns=factor_names)
+    explained = []
+    factor_one_models = None
+    factor_one_benchmarks = None
+    for current_rank in range(1, effective_rank + 1):
+        model_factors, benchmark_factors, sse = _als(
+            values,
+            observed,
+            current_rank,
+            ridge,
+            maximum_iterations,
+            tolerance,
+        )
+        explained.append(1.0 - sse / total_ss if total_ss else 0.0)
+        if current_rank == 1:
+            factor_one_models = model_factors[:, 0].copy()
+            factor_one_benchmarks = benchmark_factors[:, 0].copy()
+
+    assert factor_one_models is not None and factor_one_benchmarks is not None
+    if float(factor_one_benchmarks.sum()) < 0:
+        factor_one_models *= -1
+        factor_one_benchmarks *= -1
+    scale = float(factor_one_models.std(ddof=0))
+    if scale > 1e-12:
+        factor_one_models /= scale
+        factor_one_benchmarks *= scale
+    factor_one_models -= float(factor_one_models.mean())
 
     observed_cells = int(observed.sum())
     possible_cells = int(observed.size)
@@ -154,6 +176,8 @@ def fit_missing_pca(
         possible_cells=possible_cells,
         density=observed_cells / possible_cells,
         explained_variance=explained,
-        model_scores=model_scores,
-        benchmark_loadings=benchmark_loadings,
+        model_scores=pd.DataFrame({"factor_1": factor_one_models}, index=frame.index),
+        benchmark_loadings=pd.DataFrame(
+            {"factor_1": factor_one_benchmarks}, index=frame.columns
+        ),
     )
