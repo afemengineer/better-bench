@@ -17,3 +17,5 @@ jobs:
       - run: pip install -e ".[dev]"
       - name: Point estimator and taxonomy report
         run: python scripts/ranking_diagnostic.py
+      - name: Better Bench Index report
+        run: python scripts/index_report.py
