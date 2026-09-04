@@ -45,3 +45,4 @@ ignore = ["B008", "E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "src/better_bench/hierarchical.py" = ["I001", "B007"]
+"src/better_bench/indexing.py" = ["I001"]
