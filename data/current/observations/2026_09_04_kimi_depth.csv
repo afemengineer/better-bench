@@ -1,0 +1,55 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+claude-fable-5.1,frontierswe-v2-2026-09,56.29,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+gpt-5.6-sol,frontierswe-v2-2026-09,32.2,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+glm-5.3,frontierswe-v2-2026-09,30.2,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+kimi-k3,frontierswe-v2-2026-09,25.9,2026-09-04,A,Proximus,max,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+grok-4.6,frontierswe-v2-2026-09,25.3,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+gemini-3.7-flash,frontierswe-v2-2026-09,20.3,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+qwen3.8-max,frontierswe-v2-2026-09,15.8,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+deepseek-v4-flash,frontierswe-v2-2026-09,14.8,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official experimental vision-row result; retained as the registered Flash model with protocol note.
+muse-spark-1.2,frontierswe-v2-2026-09,12.0,2026-09-04,A,Proximus,,,https://www.frontierswe.com/,Official FrontierSWE v2 current leaderboard.
+qwen3.8-max,mls-bench-lite-2026-09,41.0,2026-09-04,A,Claude Code,,,https://mls-bench.com/leaderboard,Official current Qwen3.8 Max row; the separate 0902 revision is intentionally excluded.
+claude-fable-5,mls-bench-lite-2026-09,49.9,2026-09-04,A,Claude Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+claude-opus-5,mls-bench-lite-2026-09,49.8,2026-09-04,A,Claude Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+kimi-k3,mls-bench-lite-2026-09,48.3,2026-09-04,A,Kimi Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+gpt-5.6-sol,mls-bench-lite-2026-09,46.2,2026-09-04,A,Codex,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+claude-opus-4.8,mls-bench-lite-2026-09,42.8,2026-09-04,A,Claude Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+glm-5.2,mls-bench-lite-2026-09,40.4,2026-09-04,A,Claude Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+gpt-5.5,mls-bench-lite-2026-09,35.5,2026-09-04,A,Codex,xhigh,,https://mls-bench.com/leaderboard,Official current leaderboard.
+claude-sonnet-5,mls-bench-lite-2026-09,31.4,2026-09-04,A,Claude Code,max,,https://mls-bench.com/leaderboard,Official current leaderboard.
+deepseek-v4-pro,mls-bench-lite-2026-09,24.4,2026-09-04,B,Claude Code,,,https://mls-bench.com/leaderboard,Official leaderboard labels this as DeepSeek V4 Pro Preview; revision ambiguity down-grades provenance.
+kimi-k3,mcpmark-verified-2026-07,96.06,2026-07-20,A,MCPMark minimal agent,max,,https://mcpmark.ai/leaderboard/verified,Official version-pinned single-run Pass@1.
+gpt-5.5,mcpmark-verified-2026-07,92.91,2026-07-20,A,MCPMark minimal agent,xhigh,,https://mcpmark.ai/leaderboard/verified,Official version-pinned single-run Pass@1.
+gpt-5.6-sol,mcpmark-verified-2026-07,92.91,2026-07-20,A,MCPMark minimal agent,max,,https://mcpmark.ai/leaderboard/verified,Official version-pinned single-run Pass@1.
+claude-fable-5,mcpmark-verified-2026-07,86.61,2026-07-20,A,MCPMark minimal agent,max,,https://mcpmark.ai/leaderboard/verified,Official version-pinned single-run Pass@1.
+claude-opus-4.8,mcpmark-verified-2026-07,76.38,2026-07-20,A,MCPMark minimal agent,max,,https://mcpmark.ai/leaderboard/verified,Official scores-only entry; trajectories unavailable.
+deepseek-v4-pro,mcpmark-verified-2026-07,71.65,2026-07-20,A,MCPMark minimal agent,max,,https://mcpmark.ai/leaderboard/verified,Official version-pinned single-run Pass@1.
+gpt-5.6-sol,agents-last-exam-ale-v1-2026-09,30.6,2026-09-04,A,Codex,xhigh,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+gpt-5.6-luna,agents-last-exam-ale-v1-2026-09,29.6,2026-09-04,A,Codex,,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+kimi-k3,agents-last-exam-ale-v1-2026-09,28.3,2026-09-04,A,Kimi Code,max,,https://agents-last-exam.org/leaderboard,Official ALE-V1 primary Kimi row; lower Claude Code Kimi row not duplicated.
+gpt-5.6-terra,agents-last-exam-ale-v1-2026-09,28.0,2026-09-04,A,Codex,,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+qwen3.8-max,agents-last-exam-ale-v1-2026-09,27.0,2026-09-04,A,Claude Code,max,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+grok-4.5,agents-last-exam-ale-v1-2026-09,27.0,2026-09-04,A,Grok Build,high,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+claude-opus-4.8,agents-last-exam-ale-v1-2026-09,27.0,2026-09-04,A,Claude Code,max,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+gpt-5.5,agents-last-exam-ale-v1-2026-09,26.6,2026-09-04,A,Codex,,,https://agents-last-exam.org/leaderboard,Official ALE-V1 pass rate.
+claude-fable-5,agents-last-exam-ale-v1-2026-09,25.7,2026-09-04,A,Claude Code,xhigh,,https://agents-last-exam.org/leaderboard,Official leaderboard notes 40 percent of tasks were downgraded.
+claude-opus-5,aa-briefcase-2026-09,1714,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+grok-4.6,aa-briefcase-2026-09,1578,2026-09-04,A,Artificial Analysis Stirrup,high,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+claude-fable-5,aa-briefcase-2026-09,1574,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+kimi-k3,aa-briefcase-2026-09,1543,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gpt-5.6-sol,aa-briefcase-2026-09,1503,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+qwen3.8-max,aa-briefcase-2026-09,1421,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+claude-sonnet-5,aa-briefcase-2026-09,1384,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+muse-spark-1.2,aa-briefcase-2026-09,1358,2026-09-04,A,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+claude-opus-4.8,aa-briefcase-2026-09,1340,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+grok-4.5,aa-briefcase-2026-09,1313,2026-09-04,A,Artificial Analysis Stirrup,high,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+claude-opus-4.7,aa-briefcase-2026-09,1276,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+glm-5.2,aa-briefcase-2026-09,1252,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gpt-5.5,aa-briefcase-2026-09,1150,2026-09-04,A,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gemini-3.7-flash,aa-briefcase-2026-09,1131,2026-09-04,A,Artificial Analysis Stirrup,high,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+minimax-m3,aa-briefcase-2026-09,1107,2026-09-04,A,Artificial Analysis Stirrup,,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gemini-3.6-flash,aa-briefcase-2026-09,962,2026-09-04,A,Artificial Analysis Stirrup,high,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+deepseek-v4-pro,aa-briefcase-2026-09,930,2026-09-04,B,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current page identifies the April DeepSeek V4 Pro row; mutable revision ambiguity down-grades provenance.
+muse-spark-1.1,aa-briefcase-2026-09,869,2026-09-04,A,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gemini-3.1-pro,aa-briefcase-2026-09,458,2026-09-04,A,Artificial Analysis Stirrup,,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
+gemini-3.1-flash-lite,aa-briefcase-2026-09,231,2026-09-04,A,Artificial Analysis Stirrup,,,https://artificialanalysis.ai/evaluations/aa-briefcase,Current private benchmark Elo snapshot.
