@@ -24,6 +24,8 @@ jobs:
         run: python scripts/coverage_gap_report.py
       - name: Family-aware factor report
         run: python scripts/family_factor_report.py
+      - name: Hierarchical estimator report
+        run: python scripts/hierarchical_report.py
       - name: Factor smoke on current corpus
         run: >-
           better-bench factor
