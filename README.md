@@ -14,7 +14,7 @@ The project is deliberately built around **capability profiles first, leaderboar
 - **Fixed calibration.** Scores use benchmark-defined anchors, never “divide by today's best model.”
 - **Contamination is conditional.** Public exposure is evaluated against the model's training/release window.
 - **Novelty robustness is visible.** New/protected benchmark underperformance is measured as a residual, not hidden inside the headline score.
-- **Benchmark importance is explicit.** Popularity matters, but cannot rescue a saturated, unreliable or redundant benchmark.
+- **Benchmark importance is explicit.** Popularity matters, but cannot rescue a saturated, unreliable, low-integrity or redundant benchmark.
 - **Benchmark families share an evidence budget.** Subdividing one suite into many columns does not create many independent votes.
 - **Redundancy is penalized.** Highly correlated benchmarks should not receive ten votes for one skill.
 - **Provenance matters.** Independent evaluations weigh more than secondary or unclear reports.
@@ -44,9 +44,11 @@ better-bench score \
   --output-json scores.json
 ```
 
-The synthetic example remains useful for tests. The real public-data corpus in [`data/current/`](data/current/) now contains **28 models, 36 protocol-specific benchmarks and 352 provenance-tagged observations**.
+The synthetic example remains useful for tests. The real public-data corpus in [`data/current/`](data/current/) now contains **40 registered models, 41 protocol-specific benchmark definitions and 414 provenance-tagged observations**.
 
-`data/current/` is modular: historical root files coexist with immutable dated snapshots under `benchmarks/`, `observations/`, and `adoption/`. Passing the directory to the CLI loads the full corpus. Adoption is stored as dated evidence rather than permanent benchmark metadata.
+The full 40 × 41 registry is intentionally sparse (~25.2% raw cell density) because the latest expansion added twelve models only where credible public benchmark evidence exists. **Registry size is not the same thing as ranking eligibility.** The current structural factor diagnostic requires at least five benchmark observations per retained model, so only the denser subset enters that analysis until the new models accumulate enough independent evidence.
+
+`data/current/` is modular: historical root files coexist with immutable dated snapshots under `models/`, `benchmarks/`, `observations/`, and `adoption/`. Passing the directory to the CLI loads the full corpus. Adoption is stored as dated evidence rather than permanent benchmark metadata.
 
 Inspect empirical benchmark relationships:
 
@@ -72,7 +74,7 @@ better-bench novelty \
 
 The novelty command predicts each target result from empirically related, capability-similar benchmarks using **other models only**, then groups residuals by exposure evidence: guaranteed post-release, disclosed-cutoff unseen, sealed, rotating, short-lead likely unseen, possible exposure, or unknown.
 
-See [`docs/first_data_diagnostic.md`](docs/first_data_diagnostic.md) and [`docs/second_density_diagnostic.md`](docs/second_density_diagnostic.md) for the empirical sanity checks.
+See [`docs/first_data_diagnostic.md`](docs/first_data_diagnostic.md), [`docs/second_density_diagnostic.md`](docs/second_density_diagnostic.md), and [`docs/third_density_diagnostic.md`](docs/third_density_diagnostic.md) for empirical sanity checks.
 
 ## Benchmark evidence quality
 
@@ -80,12 +82,14 @@ Better Bench currently scores benchmark utility from measurement quality, adopti
 
 Evidence tiers are:
 
-- **Core** — mature and suitable to influence the eventual headline capability index.
+- **Core** — mature, discriminative and sufficiently high-integrity to influence the eventual headline capability index.
 - **High-value emerging** — strong measurement evidence but not broad enough yet to dominate a general ranking.
-- **Supporting** — useful domain evidence with material limitations.
+- **Supporting** — useful domain evidence with material limitations, including highly adopted public benchmarks whose integrity is too weak for Core.
 - **Diagnostic only** — retained for transparency/history but given little or no final-index influence.
 
-Benchmark categories that share a `family_id` split one family evidence budget. This prevents suites such as LiveBench from receiving seven independent votes merely because seven category scores are published.
+Core status now has an explicit integrity floor. A widely run benchmark can therefore have a high raw importance score while remaining Supporting if contamination/exposure risk is too high. This prevents adoption from becoming a proxy for quality.
+
+Benchmark categories that share a `family_id` split one family evidence budget. This prevents suites such as LiveBench—or multiple OSWorld protocols—from receiving independent full votes merely because multiple category or protocol scores are published.
 
 The benchmark-quality layer is currently kept **separate from the unweighted sparse-factor diagnostic**. This is deliberate: the factor model should be able to disagree with our quality priors. The eventual hierarchical leaderboard model will introduce benchmark-quality and family weights explicitly, with sensitivity analysis rather than silently baking them into the exploratory factor fit.
 
@@ -114,8 +118,10 @@ Source grades are A (independent/benchmark-owner standardized), B (official cont
 
 ## Status
 
-V0 now includes the schema, benchmark-importance model, family weighting, contamination heuristic, redundancy penalty, sparse capability profiles, a **352-observation real-data corpus**, pairwise diagnostics, model-level residual analysis, and an explicit novelty-robustness detector.
+V0 now includes the schema, benchmark-importance model, family weighting, contamination heuristic, redundancy penalty, sparse capability profiles, a **414-observation / 40-model real-data corpus**, pairwise diagnostics, model-level residual analysis, and an explicit novelty-robustness detector.
 
-The current factor diagnostic retains **24 models × 27 benchmarks with 313 measured cells**. Rank 1 explains about **40.1%** of observed standardized variance and three factors explain about **73.3%**. This is sufficient for useful structural diagnostics, but not yet a defensible final public scalar ranking.
+The current factor diagnostic retains **24 models × 28 benchmarks with 328 measured cells (48.8% density)**. Rank 1 explains about **40.6%** of observed standardized variance and three factors explain about **73.8%**. The expansion therefore increased the dense analytical core slightly even though the full-registry raw density fell mechanically when twelve sparsely measured models were added.
 
-The next modeling milestone is a **general-factor + domain-residual model with explicit benchmark-quality, family, protocol and exposure effects**, while continuing to add high-value evidence for under-covered frontier models.
+The benchmark-quality model now classifies **MCP Atlas, SWE Atlas Codebase QnA, DeepSWE, Terminal-Bench 4 and Terminal-Bench Science** among the current Core evidence. The official release-pinned OSWorld 2.0 protocol remains high-value emerging. Highly adopted but public/low-integrity evidence such as MultiNRC remains Supporting rather than being promoted solely by popularity.
+
+This is sufficient for useful structural diagnostics, but not yet a defensible final public scalar ranking across all 40 models. The next data milestone is to fill independent high-value cells for the sixteen models outside the current dense factor cohort, then fit a **general-factor + domain-residual model with explicit benchmark-quality, family, protocol and exposure effects**.
