@@ -18,6 +18,8 @@ jobs:
       - run: pytest -q
       - name: Benchmark evidence-quality report
         run: python scripts/benchmark_quality_report.py
+      - name: Model coverage-gap report
+        run: python scripts/coverage_gap_report.py
       - name: Factor smoke on current corpus
         run: >-
           better-bench factor
