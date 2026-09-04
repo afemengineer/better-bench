@@ -21,9 +21,9 @@
     Scale reports roughly 88% judge-human agreement. The public dataset makes this
     useful multimodal/tool-use evidence but not a strong contamination control.
 
-- id: multichallenge-2026-03
+- id: multichallenge-2026-02
   name: MultiChallenge
-  version: 2026-03 reliability refresh
+  version: 2026-02 reliability refresh
   family_id: multichallenge
   published_at: '2025-01-29'
   public_since: '2025-01-29'
@@ -40,9 +40,10 @@
     planning_agency: 0.10
   notes: >-
     Multi-turn benchmark covering instruction retention, inference memory, reliable
-    versioned editing and self-coherence. The 2026 refresh upgraded the judge and
-    refined ambiguous tasks. Public data and construction around failures of six older
-    frontier models limit contamination/fairness confidence, so it is supporting
+    versioned editing and self-coherence. The February 2026 refresh upgraded the judge
+    to Gemini 2.5 Pro and clarified 54 tasks. Scale reports 93% judge agreement with
+    experienced human raters. Public data and construction around failures of six older
+    frontier models limit contamination/fairness confidence, so this is supporting
     evidence rather than a protected benchmark.
 
 - id: osworld-2.0-v2026.06.24-binary
