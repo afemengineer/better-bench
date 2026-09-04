@@ -1,0 +1,8 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gpt-5.5,hil-bench-2026-04-pass3,29.10,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+claude-opus-4.7,hil-bench-2026-04-pass3,27.67,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+claude-opus-4.6,hil-bench-2026-04-pass3,24.33,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+claude-opus-4.8,hil-bench-2026-04-pass3,22.33,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+gemini-3.1-pro,hil-bench-2026-04-pass3,20.33,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+gemini-3.5-flash,hil-bench-2026-04-pass3,14.33,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
+gpt-5.4,hil-bench-2026-04-pass3,9.33,2026-09-04,A,Scale HiL-Bench SWE-Agent,,,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen official combined Pass@3 leaderboard result.
