@@ -32,6 +32,8 @@ jobs:
         run: python scripts/hierarchical_ablation_report.py
       - name: Validated fixed-scale estimator
         run: python scripts/estimator_report.py
+      - name: Taxonomy top-five report
+        run: python scripts/taxonomy_report.py
       - name: Factor smoke on current corpus
         run: >-
           better-bench factor
