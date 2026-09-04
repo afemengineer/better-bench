@@ -24,7 +24,7 @@ jobs:
           --rank 3
           --minimum-models 5
           --minimum-benchmarks 5
-          --top 10
+          --top 24
       - name: Novelty smoke on current corpus
         run: >-
           better-bench novelty
