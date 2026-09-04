@@ -1,0 +1,47 @@
+- id: multinrc-2025-07
+  name: MultiNRC
+  version: 2025-07 native multilingual reasoning release
+  family_id: multinrc
+  published_at: '2025-07-23'
+  public_since: '2025-07-23'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.91
+  reliability: 0.95
+  contamination_resistance: 0.45
+  capability_loadings:
+    language: 0.30
+    fluid_reasoning: 0.25
+    knowledge: 0.20
+    quantitative_reasoning: 0.15
+    social_pragmatic: 0.10
+  notes: >-
+    More than 1,000 reasoning questions authored natively in French, Spanish and
+    Chinese rather than translated from English. Questions span language-specific
+    reasoning, wordplay, cultural/tradition reasoning and culturally grounded math.
+    Scale reports greater than 95% judge-human agreement. The dataset is public and
+    over a year old, so adoption does not make it protected evidence.
+
+- id: swe-atlas-codebase-qna-2026-07
+  name: SWE Atlas - Codebase QnA
+  version: 2026-07 500-step refresh
+  family_id: swe-atlas
+  published_at: '2026-03-04'
+  public_since: '2026-03-04'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.93
+  reliability: 0.90
+  contamination_resistance: 0.80
+  capability_loadings:
+    software_engineering: 0.45
+    terminal_agency: 0.20
+    planning_agency: 0.15
+    long_context: 0.10
+    structured_tool_use: 0.10
+  notes: >-
+    124 expert-authored tasks across 11 production repositories requiring runtime
+    analysis, multi-file reasoning and evidence-grounded explanations rather than
+    patch generation. The July refresh increases mini-SWE-agent exploration budget to
+    500 steps for newer models. Native Claude Code and Codex results remain explicitly
+    tagged by harness because scaffold effects are material.
