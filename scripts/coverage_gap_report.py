@@ -1,4 +1,3 @@
-from collections import defaultdict
 from datetime import date
 
 from better_bench.benchmark_quality import BenchmarkTier, rank_benchmarks
@@ -25,9 +24,9 @@ quality_rows = rank_benchmarks(
 )
 quality_by_id = {row.benchmark_id: row for row in quality_rows}
 
-observed_by_model: dict[str, set[str]] = defaultdict(set)
+observed_by_model: dict[str, set[str]] = {}
 for row in observations:
-    observed_by_model[row.model_id].add(row.benchmark_id)
+    observed_by_model.setdefault(row.model_id, set()).add(row.benchmark_id)
 
 priority_tiers = {BenchmarkTier.CORE, BenchmarkTier.EMERGING}
 priority_rows = [row for row in quality_rows if row.tier in priority_tiers]
