@@ -63,6 +63,7 @@ class BenchmarkDefinition(BaseModel):
     score_ceiling: float = 100.0
     protocol_quality: Annotated[float, Field(ge=0.0, le=1.0)] = 0.8
     reliability: Annotated[float, Field(ge=0.0, le=1.0)] = 0.8
+    contamination_resistance: Annotated[float | None, Field(ge=0.0, le=1.0)] = None
     capability_loadings: dict[Capability, float]
     notes: str | None = None
 
@@ -101,6 +102,15 @@ class BenchmarkObservation(BaseModel):
     notes: str | None = None
     model_revision: str | None = None
     model_revision_at: date | None = None
+
+
+class BenchmarkAdoptionSnapshot(BaseModel):
+    benchmark_id: str
+    as_of: date
+    leaderboard_model_count: int | None = Field(default=None, ge=1)
+    leaderboard_org_count: int | None = Field(default=None, ge=1)
+    source_url: str | None = None
+    notes: str | None = None
 
 
 class CapabilityScore(BaseModel):
