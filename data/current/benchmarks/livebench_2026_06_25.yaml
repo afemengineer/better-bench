@@ -1,6 +1,7 @@
 - id: livebench-2026-06-25-reasoning
   name: LiveBench Reasoning
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -17,6 +18,7 @@
 - id: livebench-2026-06-25-coding
   name: LiveBench Coding
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -32,6 +34,7 @@
 - id: livebench-2026-06-25-agentic-coding
   name: LiveBench Agentic Coding
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -48,6 +51,7 @@
 - id: livebench-2026-06-25-mathematics
   name: LiveBench Mathematics
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -62,6 +66,7 @@
 - id: livebench-2026-06-25-data-analysis
   name: LiveBench Data Analysis
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -79,6 +84,7 @@
 - id: livebench-2026-06-25-language
   name: LiveBench Language
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
@@ -94,6 +100,7 @@
 - id: livebench-2026-06-25-instruction-following
   name: LiveBench Instruction Following
   version: 2026-06-25
+  family_id: livebench-2026-06-25
   published_at: '2026-06-25'
   public_since: '2026-06-25'
   score_floor: 0
