@@ -1,0 +1,14 @@
+- id: model-a
+  name: Model A
+  organization: Example Lab
+  released_at: 2026-08-15
+
+- id: model-b
+  name: Model B
+  organization: Example Lab
+  released_at: 2026-08-20
+
+- id: model-c
+  name: Model C
+  organization: Example Lab
+  released_at: 2026-08-25

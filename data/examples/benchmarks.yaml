@@ -1,0 +1,41 @@
+- id: repo-engineering
+  name: Synthetic Repo Engineering
+  version: v1
+  published_at: 2026-06-01
+  public_since: 2026-06-01
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.90
+  reliability: 0.85
+  capability_loadings:
+    software_engineering: 0.75
+    planning_agency: 0.15
+    terminal_agency: 0.10
+
+- id: terminal-agent
+  name: Synthetic Terminal Agent
+  version: v1
+  published_at: 2026-07-01
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.95
+  reliability: 0.90
+  capability_loadings:
+    terminal_agency: 0.40
+    software_engineering: 0.25
+    planning_agency: 0.25
+    quantitative_reasoning: 0.10
+
+- id: visual-spatial
+  name: Synthetic Visual Spatial
+  version: v1
+  published_at: 2026-08-01
+  rotating: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.85
+  reliability: 0.85
+  capability_loadings:
+    visual_intelligence: 0.55
+    spatial_intelligence: 0.45

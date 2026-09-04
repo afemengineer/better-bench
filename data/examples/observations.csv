@@ -1,0 +1,8 @@
+model_id,benchmark_id,score,source_grade,harness
+model-a,repo-engineering,76,A,standard
+model-a,terminal-agent,61,A,standard
+model-a,visual-spatial,88,B,standard
+model-b,repo-engineering,80,A,standard
+model-b,terminal-agent,34,A,standard
+model-c,terminal-agent,67,A,standard
+model-c,visual-spatial,72,B,standard
