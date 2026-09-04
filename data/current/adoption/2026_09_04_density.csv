@@ -1,0 +1,5 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+terminal-bench-science-0.1,2026-09-04,12,6,https://snorkel.ai/leaderboard/terminal-bench-science/,Current board contains twelve distinct model backbones across six model providers; multiple GPT-6 effort rows are not counted as separate models.
+visualtoolbench-2025-10-apr,2026-09-04,16,6,https://labs.scale.com/leaderboard/vtb,Benchmark documentation describes sixteen diverse evaluated MLLMs; the visible leaderboard also contains additional configuration rows from later updates.
+multichallenge-2026-02,2026-09-04,29,9,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard spans roughly twenty-nine model/configuration rows across a broad provider set.
+osworld-2.0-v2026.06.24-binary,2026-09-04,7,6,https://osworld-v2.xlang.ai/,Official v2026.06.24 leaderboard contains seven distinct model backbones across Anthropic OpenAI MiniMax Moonshot and Alibaba plus configuration families.
