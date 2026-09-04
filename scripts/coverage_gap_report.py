@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 from datetime import date
 
 from better_bench.benchmark_quality import BenchmarkTier, rank_benchmarks
