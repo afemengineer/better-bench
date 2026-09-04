@@ -16,6 +16,8 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q
+      - name: Corpus statistics
+        run: python scripts/corpus_stats.py
       - name: Benchmark evidence-quality report
         run: python scripts/benchmark_quality_report.py
       - name: Model coverage-gap report
