@@ -8,11 +8,11 @@ from datetime import date
 from .benchmark_quality import BenchmarkTier, rank_benchmarks
 from .estimator import EstimatorResult
 from .schema import (
-    SOURCE_GRADE_WEIGHT,
     BenchmarkAdoptionSnapshot,
     BenchmarkDefinition,
     BenchmarkObservation,
     ModelDefinition,
+    SOURCE_GRADE_WEIGHT,
 )
 from .scoring import normalize_score
 
