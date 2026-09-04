@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from collections import defaultdict
+from dataclasses import dataclass, replace
 from datetime import date
 from enum import StrEnum
 
@@ -26,8 +27,10 @@ class BenchmarkTier(StrEnum):
 @dataclass(frozen=True)
 class BenchmarkQualityRow:
     benchmark_id: str
+    family_id: str
     tier: BenchmarkTier
     importance: float
+    family_adjusted_weight: float
     quality: float
     adoption: float
     discrimination: float
@@ -132,6 +135,28 @@ def _tier(
     return BenchmarkTier.DIAGNOSTIC
 
 
+def _apply_family_budget(rows: list[BenchmarkQualityRow]) -> list[BenchmarkQualityRow]:
+    """Give a benchmark family one evidence budget instead of one vote per subdivision.
+
+    A family's total adjusted weight equals the strongest member's raw importance.
+    Members split that budget in proportion to their raw importance. A singleton is
+    unchanged. This prevents suites such as LiveBench from gaining seven times the
+    overall influence simply because they publish seven category scores.
+    """
+    by_family: dict[str, list[BenchmarkQualityRow]] = defaultdict(list)
+    for row in rows:
+        by_family[row.family_id].append(row)
+
+    adjusted: list[BenchmarkQualityRow] = []
+    for family_rows in by_family.values():
+        total = sum(row.importance for row in family_rows)
+        budget = max(row.importance for row in family_rows)
+        for row in family_rows:
+            weight = budget * row.importance / total if total > 0 else 0.0
+            adjusted.append(replace(row, family_adjusted_weight=round(weight, 4)))
+    return adjusted
+
+
 def rank_benchmarks(
     benchmarks: list[BenchmarkDefinition],
     models: list[ModelDefinition],
@@ -140,11 +165,7 @@ def rank_benchmarks(
     *,
     as_of: date | None = None,
 ) -> list[BenchmarkQualityRow]:
-    """Rank benchmark evidence utility without letting popularity dominate quality.
-
-    Importance is a weighted geometric mean, so one excellent dimension cannot fully
-    compensate for a benchmark that is saturated, unreliable, or poorly adopted.
-    """
+    """Rank benchmark evidence utility without letting popularity dominate quality."""
     as_of = as_of or date.today()
     adoption_by_id = _latest_adoption(adoption or [])
     model_by_id = {model.id: model for model in models}
@@ -190,6 +211,7 @@ def rank_benchmarks(
         results.append(
             BenchmarkQualityRow(
                 benchmark_id=benchmark.id,
+                family_id=benchmark.family_id or benchmark.id,
                 tier=_tier(
                     importance=importance,
                     quality=quality,
@@ -199,6 +221,7 @@ def rank_benchmarks(
                     model_count=model_count,
                 ),
                 importance=round(importance, 4),
+                family_adjusted_weight=round(importance, 4),
                 quality=round(quality, 4),
                 adoption=round(adoption_score, 4),
                 discrimination=round(discrimination, 4),
@@ -209,6 +232,7 @@ def rank_benchmarks(
                 observed_organizations=org_count,
             )
         )
+    results = _apply_family_budget(results)
     tier_order = {
         BenchmarkTier.CORE: 0,
         BenchmarkTier.EMERGING: 1,
