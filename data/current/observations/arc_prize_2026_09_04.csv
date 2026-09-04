@@ -32,3 +32,6 @@ grok-4.6,arc-prize-agi3-standard-semiprivate,2.11,2026-09-04,A,ARC Prize Standar
 grok-4.5,arc-prize-agi1-semiprivate,87.2,2026-09-04,A,ARC Prize verified,medium,,https://arcprize.org/,Using medium consistently across available ARC results.
 grok-4.5,arc-prize-agi2-semiprivate,52.6,2026-09-04,A,ARC Prize verified,medium,,https://arcprize.org/,Using medium consistently across available ARC results.
 grok-4.5,arc-prize-agi3-standard-semiprivate,0.32,2026-09-04,A,ARC Prize Standard,medium,,https://arcprize.org/,Standard harness; medium effort.
+glm-5.2,arc-prize-agi1-semiprivate,77.0,2026-09-04,A,ARC Prize verified,,,https://arcprize.org/leaderboard,Official ARC Prize verified score.
+glm-5.2,arc-prize-agi2-semiprivate,22.8,2026-09-04,A,ARC Prize verified,,,https://arcprize.org/leaderboard,Official ARC Prize verified score.
+claude-opus-4.7,arc-prize-agi3-standard-semiprivate,0.2,2026-09-04,A,ARC Prize Standard,high,,https://arcprize.org/leaderboard,Official standard-harness high-effort result.
