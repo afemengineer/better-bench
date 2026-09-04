@@ -1,0 +1,34 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gpt-6-astra,arc-prize-agi1-semiprivate,97.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-6-astra,arc-prize-agi2-semiprivate,95.0,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-6-astra,arc-prize-agi3-standard-semiprivate,62.71,2026-09-04,A,ARC Prize Standard,max,,https://arcprize.org/,Standard harness only; provider-adapter score intentionally excluded.
+claude-fable-5.1,arc-prize-agi1-semiprivate,97.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-fable-5.1,arc-prize-agi2-semiprivate,90.0,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-fable-5,arc-prize-agi1-semiprivate,98.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-fable-5,arc-prize-agi2-semiprivate,89.2,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-opus-5,arc-prize-agi1-semiprivate,97.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-opus-5,arc-prize-agi2-semiprivate,90.4,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+claude-opus-5,arc-prize-agi3-standard-semiprivate,30.16,2026-09-04,A,ARC Prize Standard,high,,https://arcprize.org/,Standard-harness score available at high effort; retained with effort metadata.
+gpt-5.6-sol,arc-prize-agi1-semiprivate,96.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-sol,arc-prize-agi2-semiprivate,92.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-sol,arc-prize-agi3-standard-semiprivate,7.78,2026-09-04,A,ARC Prize Standard,max,,https://arcprize.org/,Standard harness only.
+gpt-5.6-terra,arc-prize-agi1-semiprivate,96.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-terra,arc-prize-agi2-semiprivate,83.9,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-terra,arc-prize-agi3-standard-semiprivate,0.80,2026-09-04,A,ARC Prize Standard,max,,https://arcprize.org/,Standard harness only.
+gpt-5.6-luna,arc-prize-agi1-semiprivate,88.0,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-luna,arc-prize-agi2-semiprivate,59.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gpt-5.6-luna,arc-prize-agi3-standard-semiprivate,0.18,2026-09-04,A,ARC Prize Standard,max,,https://arcprize.org/,Standard harness only.
+kimi-k3,arc-prize-agi1-semiprivate,94.5,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+kimi-k3,arc-prize-agi2-semiprivate,60.4,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+gemini-3.7-flash,arc-prize-agi1-semiprivate,95.5,2026-09-04,A,ARC Prize verified,high,,https://arcprize.org/,ARC Prize verified high-effort score.
+gemini-3.7-flash,arc-prize-agi2-semiprivate,84.6,2026-09-04,A,ARC Prize verified,high,,https://arcprize.org/,ARC Prize verified high-effort score.
+gemini-3.6-flash,arc-prize-agi1-semiprivate,91.2,2026-09-04,A,ARC Prize verified,high,,https://arcprize.org/,ARC Prize verified high-effort score.
+gemini-3.6-flash,arc-prize-agi2-semiprivate,60.4,2026-09-04,A,ARC Prize verified,high,,https://arcprize.org/,ARC Prize verified high-effort score.
+deepseek-v4-pro,arc-prize-agi1-semiprivate,90.0,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+deepseek-v4-pro,arc-prize-agi2-semiprivate,61.3,2026-09-04,A,ARC Prize verified,max,,https://arcprize.org/,ARC Prize verified maximum reported score.
+grok-4.6,arc-prize-agi1-semiprivate,87.0,2026-09-04,A,ARC Prize verified,xhigh,,https://arcprize.org/,Using xhigh consistently across ARC-AGI-1/2/3 for within-model comparability.
+grok-4.6,arc-prize-agi2-semiprivate,67.1,2026-09-04,A,ARC Prize verified,xhigh,,https://arcprize.org/,Using xhigh consistently across ARC-AGI-1/2/3 for within-model comparability.
+grok-4.6,arc-prize-agi3-standard-semiprivate,2.11,2026-09-04,A,ARC Prize Standard,xhigh,,https://arcprize.org/,Standard harness; xhigh effort.
+grok-4.5,arc-prize-agi1-semiprivate,87.2,2026-09-04,A,ARC Prize verified,medium,,https://arcprize.org/,Using medium consistently across available ARC results.
+grok-4.5,arc-prize-agi2-semiprivate,52.6,2026-09-04,A,ARC Prize verified,medium,,https://arcprize.org/,Using medium consistently across available ARC results.
+grok-4.5,arc-prize-agi3-standard-semiprivate,0.32,2026-09-04,A,ARC Prize Standard,medium,,https://arcprize.org/,Standard harness; medium effort.
