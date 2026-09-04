@@ -1,0 +1,24 @@
+- id: hil-bench-2026-04-pass3
+  name: HiL-Bench
+  version: 2026-04 combined Pass@3 protocol
+  family_id: hil-bench
+  published_at: '2026-04-13'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.92
+  contamination_resistance: 0.88
+  capability_loadings:
+    planning_agency: 0.30
+    social_pragmatic: 0.25
+    software_engineering: 0.15
+    structured_tool_use: 0.10
+    long_context: 0.10
+    language: 0.10
+  notes: >-
+    Human-in-the-loop benchmark for selective escalation. It contains 300 tasks split
+    evenly between SWE and text-to-SQL, with 1,131 human-validated blockers and a
+    200-public/100-private split. Agents must discover missing, ambiguous or conflicting
+    information during execution and use ask_human() selectively. This protocol stores
+    the frozen combined Pass@3 result table from the benchmark PDF; ASK-F1 is a distinct
+    metric and must not be averaged into the same benchmark id.
