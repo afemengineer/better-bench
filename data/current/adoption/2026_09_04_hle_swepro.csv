@@ -1,0 +1,3 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+hle-public-2025-04-final,2026-09-04,45,10,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official leaderboard exposes about forty-five model/configuration rows across a broad provider set.
+swe-bench-pro-private-2025-09,2026-09-04,13,4,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current private commercial-subset leaderboard exposes thirteen model/configuration rows across Anthropic OpenAI Google and Muse/Meta model families.
