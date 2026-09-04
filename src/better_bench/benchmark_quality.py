@@ -121,6 +121,7 @@ def _tier(
         and model_count >= 10
         and quality >= 0.75
         and discrimination >= 0.30
+        and integrity >= 0.60
     ):
         return BenchmarkTier.CORE
     if (
