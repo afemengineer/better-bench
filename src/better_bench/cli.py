@@ -11,7 +11,11 @@ from rich.table import Table
 
 from .diagnostics import benchmark_pair_residuals, pairwise_benchmark_diagnostics, taxonomy_fit
 from .io import load_benchmarks, load_models, load_observations
-from .novelty import comparable_benchmark_residuals, summarize_global_novelty, summarize_model_novelty
+from .novelty import (
+    comparable_benchmark_residuals,
+    summarize_global_novelty,
+    summarize_model_novelty,
+)
 from .scoring import score_models
 
 app = typer.Typer(no_args_is_help=True, help="Capability-oriented AI benchmark analysis.")

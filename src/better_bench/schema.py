@@ -66,7 +66,7 @@ class BenchmarkDefinition(BaseModel):
     notes: str | None = None
 
     @model_validator(mode="after")
-    def validate_definition(self) -> "BenchmarkDefinition":
+    def validate_definition(self) -> BenchmarkDefinition:
         if self.score_ceiling <= self.score_floor:
             raise ValueError("score_ceiling must be greater than score_floor")
         if not self.capability_loadings:
