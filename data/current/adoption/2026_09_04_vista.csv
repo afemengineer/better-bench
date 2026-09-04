@@ -1,0 +1,2 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+vista-private-2024-12,2026-09-04,63,11,https://labs.scale.com/leaderboard/visual_language_understanding,Current official leaderboard spans roughly sixty-three model/configuration rows across a broad provider set; configuration rows are counted conservatively as adoption evidence rather than unique weights.
