@@ -22,6 +22,8 @@ jobs:
         run: python scripts/benchmark_quality_report.py
       - name: Model coverage-gap report
         run: python scripts/coverage_gap_report.py
+      - name: Whole-registry model audit
+        run: python scripts/model_audit_report.py
       - name: Family-aware factor report
         run: python scripts/family_factor_report.py
       - name: Hierarchical estimator report
