@@ -1,0 +1,38 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gemini-3.8-flash,terminal-bench-science-0.1,12.4,2026-09-04,A,mini-SWE-agent,high,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+gpt-5.6-terra,terminal-bench-science-0.1,8.6,2026-09-04,A,Codex,max,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+glm-5.3,terminal-bench-science-0.1,8.1,2026-09-04,A,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+kimi-k3,terminal-bench-science-0.1,7.1,2026-09-04,A,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+grok-4.6,terminal-bench-science-0.1,7.1,2026-09-04,A,Grok Build,xhigh,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+gemini-3.7-flash,terminal-bench-science-0.1,5.7,2026-09-04,A,mini-SWE-agent,high,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+gpt-5.6-luna,terminal-bench-science-0.1,3.3,2026-09-04,A,Codex,max,,https://snorkel.ai/leaderboard/terminal-bench-science/,Current benchmark-owner leaderboard overall resolution rate.
+muse-spark-1.1,mcp-atlas-2026-04-full,88.10,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+claude-opus-4.7,mcp-atlas-2026-04-full,79.10,2026-09-04,A,Scale MCP Atlas updated protocol,max,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gemini-3.1-pro,mcp-atlas-2026-04-full,78.20,2026-09-04,A,Scale MCP Atlas updated protocol,high,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gpt-5.4,mcp-atlas-2026-04-full,70.60,2026-09-04,A,Scale MCP Atlas updated protocol,xhigh,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gemini-3-pro,mcp-atlas-2026-04-full,70.30,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+claude-sonnet-4.6,mcp-atlas-2026-04-full,69.50,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gpt-5.2,mcp-atlas-2026-04-full,67.60,2026-09-04,A,Scale MCP Atlas updated protocol,xhigh,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+kimi-k2.5,mcp-atlas-2026-04-full,64.40,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+claude-sonnet-4.5,mcp-atlas-2026-04-full,59.50,2026-09-04,A,Scale MCP Atlas updated protocol,thinking,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gemini-3.1-flash-lite,mcp-atlas-2026-04-full,57.10,2026-09-04,A,Scale MCP Atlas updated protocol,high,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gpt-5.1,mcp-atlas-2026-04-full,50.10,2026-09-04,A,Scale MCP Atlas updated protocol,high,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate under the April standardized protocol.
+gemini-3.1-pro,enigmaeval-2026-07,36.78,2026-09-04,A,Scale EnigmaEval,high,,https://labs.scale.com/leaderboard/enigma_eval,Current official leaderboard snapshot.
+muse-spark-1.1,visualtoolbench-2025-10-apr,44.77,2026-09-04,A,Scale VisualToolBench,,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+gpt-5.4,visualtoolbench-2025-10-apr,29.17,2026-09-04,A,Scale VisualToolBench,high,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+gemini-3.1-pro,visualtoolbench-2025-10-apr,28.97,2026-09-04,A,Scale VisualToolBench,,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+claude-opus-4.6,visualtoolbench-2025-10-apr,27.52,2026-09-04,A,Scale VisualToolBench,thinking,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+gemini-3-pro,visualtoolbench-2025-10-apr,26.85,2026-09-04,A,Scale VisualToolBench,,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+claude-sonnet-4.5,visualtoolbench-2025-10-apr,6.20,2026-09-04,A,Scale VisualToolBench,thinking,,https://labs.scale.com/leaderboard/vtb,Average Pass Rate primary metric.
+muse-spark-1.1,multichallenge-2026-02,75.30,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+gemini-3.1-pro,multichallenge-2026-02,71.37,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+gemini-3-pro,multichallenge-2026-02,65.67,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+gpt-5.1,multichallenge-2026-02,63.41,2026-09-04,A,Scale MultiChallenge,thinking,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+kimi-k2.5,multichallenge-2026-02,61.39,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+gemini-3.1-flash-lite,multichallenge-2026-02,60.61,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+claude-opus-4.6,multichallenge-2026-02,56.02,2026-09-04,A,Scale MultiChallenge,default,,https://labs.scale.com/leaderboard/multichallenge,Non-thinking row on the current refreshed leaderboard.
+claude-sonnet-4.5,multichallenge-2026-02,55.32,2026-09-04,A,Scale MultiChallenge,thinking,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
+claude-opus-4.8,osworld-2.0-v2026.06.24-binary,20.60,2026-09-03,A,OSWorld 2.0 batched tool,max,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
+claude-opus-4.7,osworld-2.0-v2026.06.24-binary,18.20,2026-09-03,A,OSWorld 2.0 batched tool,max,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
+gpt-5.5,osworld-2.0-v2026.06.24-binary,13.00,2026-09-03,A,OSWorld 2.0 batch tool,xhigh,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
+minimax-m3,osworld-2.0-v2026.06.24-binary,4.60,2026-09-03,A,OSWorld 2.0 standard,enabled,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
