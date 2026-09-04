@@ -7,7 +7,12 @@ from typing import TypeVar
 import yaml
 from pydantic import BaseModel, TypeAdapter
 
-from .schema import BenchmarkDefinition, BenchmarkObservation, ModelDefinition
+from .schema import (
+    BenchmarkAdoptionSnapshot,
+    BenchmarkDefinition,
+    BenchmarkObservation,
+    ModelDefinition,
+)
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -27,12 +32,7 @@ def _dataset_files(
     family: str,
     suffixes: set[str],
 ) -> list[Path]:
-    """Resolve either one data file or a modular dataset directory.
-
-    A directory may contain the historical root file, e.g. ``benchmarks.yaml``,
-    plus dated snapshots under ``benchmarks/``. This lets us append immutable
-    provenance snapshots instead of rewriting one large source file.
-    """
+    """Resolve either one data file or a modular dataset directory."""
     resolved = Path(path)
     if resolved.is_file():
         return [resolved]
@@ -76,11 +76,7 @@ def _ensure_unique(items: list[T], *, label: str) -> list[T]:
 
 
 def load_benchmarks(path: str | Path) -> list[BenchmarkDefinition]:
-    files = _dataset_files(
-        path,
-        family="benchmarks",
-        suffixes={".yaml", ".yml"},
-    )
+    files = _dataset_files(path, family="benchmarks", suffixes={".yaml", ".yml"})
     rows: list[BenchmarkDefinition] = []
     for file in files:
         rows.extend(_load_yaml_list(file, BenchmarkDefinition))
@@ -88,28 +84,28 @@ def load_benchmarks(path: str | Path) -> list[BenchmarkDefinition]:
 
 
 def load_models(path: str | Path) -> list[ModelDefinition]:
-    files = _dataset_files(
-        path,
-        family="models",
-        suffixes={".yaml", ".yml"},
-    )
+    files = _dataset_files(path, family="models", suffixes={".yaml", ".yml"})
     rows: list[ModelDefinition] = []
     for file in files:
         rows.extend(_load_yaml_list(file, ModelDefinition))
     return _ensure_unique(rows, label="model")
 
 
+def _load_csv_model(path: Path, model_type: type[T]) -> list[T]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    cleaned = [
+        {key: value for key, value in row.items() if value not in (None, "")}
+        for row in rows
+    ]
+    return TypeAdapter(list[model_type]).validate_python(cleaned)
+
+
 def _load_observation_file(path: Path) -> list[BenchmarkObservation]:
     if path.suffix.lower() in {".yaml", ".yml"}:
         return _load_yaml_list(path, BenchmarkObservation)
     if path.suffix.lower() == ".csv":
-        with path.open(newline="", encoding="utf-8") as handle:
-            rows = list(csv.DictReader(handle))
-        cleaned = [
-            {key: value for key, value in row.items() if value not in (None, "")}
-            for row in rows
-        ]
-        return TypeAdapter(list[BenchmarkObservation]).validate_python(cleaned)
+        return _load_csv_model(path, BenchmarkObservation)
     raise ValueError(f"Unsupported observation format: {path.suffix}")
 
 
@@ -122,4 +118,19 @@ def load_observations(path: str | Path) -> list[BenchmarkObservation]:
     rows: list[BenchmarkObservation] = []
     for file in files:
         rows.extend(_load_observation_file(file))
+    return rows
+
+
+def load_adoption(path: str | Path) -> list[BenchmarkAdoptionSnapshot]:
+    files = _dataset_files(
+        path,
+        family="adoption",
+        suffixes={".csv", ".yaml", ".yml"},
+    )
+    rows: list[BenchmarkAdoptionSnapshot] = []
+    for file in files:
+        if file.suffix.lower() in {".yaml", ".yml"}:
+            rows.extend(_load_yaml_list(file, BenchmarkAdoptionSnapshot))
+        else:
+            rows.extend(_load_csv_model(file, BenchmarkAdoptionSnapshot))
     return rows
