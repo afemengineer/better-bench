@@ -55,6 +55,7 @@ class BenchmarkDefinition(BaseModel):
     id: str
     name: str
     version: str | None = None
+    family_id: str | None = None
     published_at: date
     public_since: date | None = None
     rotating: bool = False
@@ -71,7 +72,6 @@ class BenchmarkDefinition(BaseModel):
     @field_validator("version", mode="before")
     @classmethod
     def normalize_yaml_date_version(cls, value: object) -> object:
-        """Preserve version identifiers when YAML parses an ISO-looking string as a date."""
         if isinstance(value, date):
             return value.isoformat()
         return value
