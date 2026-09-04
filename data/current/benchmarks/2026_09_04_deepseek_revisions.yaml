@@ -1,0 +1,43 @@
+- id: terminal-bench-2.1-deepseek-release-2026
+  name: Terminal-Bench
+  version: 2.1 DeepSeek V4 release comparison
+  family_id: terminal-bench
+  published_at: '2026-05-06'
+  public_since: '2026-05-06'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.86
+  reliability: 0.84
+  contamination_resistance: 0.70
+  capability_loadings:
+    terminal_agency: 0.35
+    software_engineering: 0.25
+    planning_agency: 0.25
+    structured_tool_use: 0.10
+    long_context: 0.05
+  notes: >-
+    DeepSeek's release-table evaluation of Terminal-Bench 2.1 using its documented
+    minimal agent harness. Kept separate from the Artificial Analysis / Terminus and
+    official-leaderboard protocol ids because agent scaffold and inference settings are
+    part of the measured system.
+
+- id: deepswe-v1.1-deepseek-release-2026
+  name: DeepSWE
+  version: v1.1 DeepSeek V4 release comparison
+  family_id: deepswe-v1.1
+  published_at: '2026-07-01'
+  public_since: '2026-07-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.86
+  reliability: 0.84
+  contamination_resistance: 0.72
+  capability_loadings:
+    software_engineering: 0.70
+    planning_agency: 0.15
+    terminal_agency: 0.10
+    long_context: 0.05
+  notes: >-
+    DeepSeek's V4 release-table DeepSWE evaluation under its own minimal agent harness.
+    It shares the DeepSWE v1.1 family budget but is isolated from the continuously
+    refreshed public mini-SWE-agent leaderboard and Meta's Muse launch protocol.
