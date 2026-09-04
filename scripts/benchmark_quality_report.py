@@ -2,7 +2,12 @@ from datetime import date
 from pathlib import Path
 
 from better_bench.benchmark_quality import rank_benchmarks
-from better_bench.io import load_adoption, load_benchmarks, load_models, load_observations
+from better_bench.io import (
+    load_adoption,
+    load_benchmarks,
+    load_models,
+    load_observations,
+)
 
 
 DATA = Path("data/current")
@@ -14,7 +19,10 @@ rows = rank_benchmarks(
     as_of=date(2026, 9, 4),
 )
 
-print("tier\timportance\tadoption\tdiscrimination\tintegrity\tquality\tindependence\tmodels\tbenchmark")
+print(
+    "tier\timportance\tadoption\tdiscrimination\tintegrity\tquality\t"
+    "independence\tmodels\tbenchmark"
+)
 for row in rows:
     print(
         f"{row.tier.value}\t{row.importance:.3f}\t{row.adoption:.3f}\t"
