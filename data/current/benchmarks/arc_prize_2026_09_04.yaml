@@ -1,0 +1,43 @@
+- id: arc-prize-agi1-semiprivate
+  name: ARC-AGI-1 Semi-Private
+  version: ARC Prize verified snapshot 2026-09-04
+  published_at: '2019-12-01'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.98
+  reliability: 0.92
+  capability_loadings:
+    fluid_reasoning: 0.80
+    spatial_intelligence: 0.20
+  notes: ARC Prize verified semi-private evaluation. Stored separately from vendor and CAISI ARC protocols.
+
+- id: arc-prize-agi2-semiprivate
+  name: ARC-AGI-2 Semi-Private
+  version: ARC Prize verified snapshot 2026-09-04
+  published_at: '2025-03-24'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.99
+  reliability: 0.92
+  capability_loadings:
+    fluid_reasoning: 0.80
+    spatial_intelligence: 0.20
+  notes: ARC Prize verified semi-private evaluation. Kept protocol-specific because aggregation differs from CAISI and vendor launch tables.
+
+- id: arc-prize-agi3-standard-semiprivate
+  name: ARC-AGI-3 Standard
+  version: ARC Prize verified snapshot 2026-09-04
+  published_at: '2026-03-25'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.99
+  reliability: 0.90
+  capability_loadings:
+    fluid_reasoning: 0.45
+    spatial_intelligence: 0.20
+    planning_agency: 0.25
+    long_context: 0.10
+  notes: ARC-AGI-3 Standard harness only. Interactive novel environments; provider-adapter results are intentionally excluded because they are not protocol-comparable.
