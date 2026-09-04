@@ -14,6 +14,7 @@ class Capability(StrEnum):
     KNOWLEDGE = "knowledge"
     LANGUAGE = "language"
     SOFTWARE_ENGINEERING = "software_engineering"
+    STRUCTURED_TOOL_USE = "structured_tool_use"
     TERMINAL_AGENCY = "terminal_agency"
     WEB_AGENCY = "web_agency"
     GUI_COMPUTER_USE = "gui_computer_use"
