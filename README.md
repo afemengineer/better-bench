@@ -42,14 +42,16 @@ better-bench score \
   --output-json scores.json
 ```
 
-The synthetic example remains useful for tests. A real public-data seed now lives in [`data/current/`](data/current/) with 28 models, 21 protocol-specific benchmarks and 136 provenance-tagged observations.
+The synthetic example remains useful for tests. The real public-data corpus in [`data/current/`](data/current/) now contains **28 models, 32 protocol-specific benchmarks and 329 provenance-tagged observations**. Its model × benchmark density is approximately **36.7%**, up from 23.1% in the first seed.
+
+`data/current/` is modular: historical root files coexist with immutable dated snapshots under `benchmarks/` and `observations/`. Passing the directory to the CLI loads the full corpus.
 
 Inspect empirical benchmark relationships:
 
 ```bash
 better-bench diagnose \
-  --benchmarks data/current/benchmarks.yaml \
-  --observations data/current/observations.csv \
+  --benchmarks data/current \
+  --observations data/current \
   --minimum-overlap 4 \
   --left deepswe-v1.1 \
   --right terminal-bench-4.0
@@ -59,16 +61,16 @@ Test the benchmaxxing / novelty-robustness hypothesis:
 
 ```bash
 better-bench novelty \
-  --benchmarks data/current/benchmarks.yaml \
-  --models data/current/models.yaml \
-  --observations data/current/observations.csv \
+  --benchmarks data/current \
+  --models data/current \
+  --observations data/current \
   --minimum-overlap 5 \
   --output-json novelty.json
 ```
 
 The novelty command predicts each target result from empirically related, capability-similar benchmarks using **other models only**, then groups residuals by exposure evidence: guaranteed post-release, disclosed-cutoff unseen, sealed, rotating, short-lead likely unseen, possible exposure, or unknown.
 
-See [`docs/first_data_diagnostic.md`](docs/first_data_diagnostic.md) for the first real-matrix sanity check.
+See [`docs/first_data_diagnostic.md`](docs/first_data_diagnostic.md) and [`docs/second_density_diagnostic.md`](docs/second_density_diagnostic.md) for the empirical sanity checks.
 
 ## Data model
 
@@ -94,6 +96,6 @@ Source grades are A (independent/benchmark-owner standardized), B (official cont
 
 ## Status
 
-V0 now includes the schema, quality weighting, contamination heuristic, redundancy penalty, sparse capability profiles, a real public-data seed, pairwise diagnostics, model-level residual analysis, and a first explicit novelty-robustness detector.
+V0 now includes the schema, quality weighting, contamination heuristic, redundancy penalty, sparse capability profiles, a 329-observation real-data corpus, pairwise diagnostics, model-level residual analysis, and an explicit novelty-robustness detector.
 
-The current matrix is still too sparse for a defensible public scalar ranking. The next data milestone is a **denser cross-domain core matrix** with enough old vs protected/new overlap to estimate a hierarchical model-specific exposure effect rather than relying on descriptive residuals.
+The denser matrix is sufficient for useful structural diagnostics, but still not enough for a defensible public scalar ranking. The next modeling milestone is a **general-factor + domain-residual model with explicit protocol and exposure effects**, fitted only after checking that source-family blocks do not dominate the latent structure.
