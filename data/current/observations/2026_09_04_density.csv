@@ -32,7 +32,7 @@ kimi-k2.5,multichallenge-2026-02,61.39,2026-09-04,A,Scale MultiChallenge,,,https
 gemini-3.1-flash-lite,multichallenge-2026-02,60.61,2026-09-04,A,Scale MultiChallenge,,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
 claude-opus-4.6,multichallenge-2026-02,56.02,2026-09-04,A,Scale MultiChallenge,default,,https://labs.scale.com/leaderboard/multichallenge,Non-thinking row on the current refreshed leaderboard.
 claude-sonnet-4.5,multichallenge-2026-02,55.32,2026-09-04,A,Scale MultiChallenge,thinking,,https://labs.scale.com/leaderboard/multichallenge,Current refreshed leaderboard score.
-claude-opus-4.8,osworld-2.0-v2026.06.24-binary,20.60,2026-09-03,A,OSWorld 2.0 batched tool,max,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
-claude-opus-4.7,osworld-2.0-v2026.06.24-binary,18.20,2026-09-03,A,OSWorld 2.0 batched tool,max,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
-gpt-5.5,osworld-2.0-v2026.06.24-binary,13.00,2026-09-03,A,OSWorld 2.0 batch tool,xhigh,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
-minimax-m3,osworld-2.0-v2026.06.24-binary,4.60,2026-09-03,A,OSWorld 2.0 standard,enabled,500,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score.
+claude-opus-4.8,osworld-2.0-v2026.06.24-binary,20.60,2026-09-03,A,OSWorld 2.0 batched tool,max,,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score at a 500-step budget.
+claude-opus-4.7,osworld-2.0-v2026.06.24-binary,18.20,2026-09-03,A,OSWorld 2.0 batched tool,max,,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score at a 500-step budget.
+gpt-5.5,osworld-2.0-v2026.06.24-binary,13.00,2026-09-03,A,OSWorld 2.0 batch tool,xhigh,,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score at a 500-step budget.
+minimax-m3,osworld-2.0-v2026.06.24-binary,4.60,2026-09-03,A,OSWorld 2.0 standard,enabled,,https://osworld-v2.xlang.ai/,Official v2026.06.24 binary completion score at a 500-step budget.
