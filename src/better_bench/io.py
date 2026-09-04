@@ -7,6 +7,7 @@ from typing import TypeVar
 import yaml
 from pydantic import BaseModel, TypeAdapter
 
+from .revisions import scoring_observations
 from .schema import (
     BenchmarkAdoptionSnapshot,
     BenchmarkDefinition,
@@ -109,7 +110,17 @@ def _load_observation_file(path: Path) -> list[BenchmarkObservation]:
     raise ValueError(f"Unsupported observation format: {path.suffix}")
 
 
-def load_observations(path: str | Path) -> list[BenchmarkObservation]:
+def load_observations(
+    path: str | Path,
+    *,
+    include_unresolved_revisions: bool = False,
+) -> list[BenchmarkObservation]:
+    """Load observations, excluding ambiguous mutable-alias rows by default.
+
+    Raw audit/validation workflows can request ``include_unresolved_revisions=True``.
+    Statistical workflows use the default so a product alias that changed weights does
+    not silently become one mixed statistical entity.
+    """
     files = _dataset_files(
         path,
         family="observations",
@@ -118,7 +129,9 @@ def load_observations(path: str | Path) -> list[BenchmarkObservation]:
     rows: list[BenchmarkObservation] = []
     for file in files:
         rows.extend(_load_observation_file(file))
-    return rows
+    if include_unresolved_revisions:
+        return rows
+    return scoring_observations(rows)
 
 
 def load_adoption(path: str | Path) -> list[BenchmarkAdoptionSnapshot]:
