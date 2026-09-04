@@ -1,0 +1,12 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+muse-spark-1.1,prbench-legal-2025-11-full,57.05,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+claude-fable-5,prbench-legal-2025-11-full,52.56,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+claude-opus-4.6,prbench-legal-2025-11-full,52.27,2026-09-04,A,Scale PRBench,non-thinking,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+claude-fable-5.1,prbench-legal-2025-11-full,51.60,2026-09-04,A,Scale PRBench,xhigh,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+gpt-5.6-sol,prbench-legal-2025-11-full,50.50,2026-09-04,A,Scale PRBench,max,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+gpt-5.1,prbench-legal-2025-11-full,49.33,2026-09-04,A,Scale PRBench,thinking,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+gpt-5.4,prbench-legal-2025-11-full,44.35,2026-09-04,A,Scale PRBench,high,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+gemini-3.1-pro,prbench-legal-2025-11-full,44.02,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+kimi-k2.5,prbench-legal-2025-11-full,43.83,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+claude-sonnet-4.5,prbench-legal-2025-11-full,40.84,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
+gemini-3-pro,prbench-legal-2025-11-full,40.60,2026-09-04,A,Scale PRBench,,,https://labs.scale.com/leaderboard/prbench-legal,Current official full-set legal score.
