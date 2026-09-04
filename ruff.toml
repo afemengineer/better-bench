@@ -1,0 +1,4 @@
+extend = "pyproject.toml"
+
+[lint.per-file-ignores]
+"src/better_bench/estimator.py" = ["I001", "B007"]
