@@ -47,6 +47,7 @@ class ModelDefinition(BaseModel):
     organization: str | None = None
     released_at: date | None = None
     training_cutoff: date | None = None
+    knowledge_cutoff: str | None = None
 
 
 class BenchmarkDefinition(BaseModel):
@@ -98,6 +99,8 @@ class BenchmarkObservation(BaseModel):
     token_budget: int | None = None
     source_url: str | None = None
     notes: str | None = None
+    model_revision: str | None = None
+    model_revision_at: date | None = None
 
 
 class CapabilityScore(BaseModel):
