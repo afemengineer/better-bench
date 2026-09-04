@@ -1,0 +1,50 @@
+- id: swe-bench-pro-public-google-2026-07
+  name: SWE-Bench Pro Public
+  version: Google Gemini 3.6 Flash comparison snapshot 2026-07
+  family_id: swe-bench-pro
+  published_at: '2025-09-19'
+  public_since: '2025-09-19'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.86
+  reliability: 0.84
+  contamination_resistance: 0.55
+  capability_loadings:
+    software_engineering: 0.55
+    planning_agency: 0.15
+    terminal_agency: 0.10
+    long_context: 0.10
+    structured_tool_use: 0.10
+  notes: >-
+    Protocol-specific cross-model snapshot from the Gemini 3.6 Flash model card on the
+    public SWE-Bench Pro set. The underlying benchmark contains realistic long-horizon
+    software-engineering tasks; this public subset is kept in the same swe-bench-pro
+    family as the sealed commercial subset so the two protocols cannot receive two
+    independent evidence budgets. Vendor-comparison provenance and unspecified scaffold
+    details keep protocol quality below the benchmark-owner private protocol.
+
+- id: mle-bench-google-2026-07
+  name: MLE-Bench
+  version: Google Gemini 3.6 Flash comparison snapshot 2026-07
+  family_id: mle-bench
+  published_at: '2024-10-10'
+  public_since: '2024-10-10'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.84
+  reliability: 0.82
+  contamination_resistance: 0.50
+  capability_loadings:
+    software_engineering: 0.35
+    scientific_reasoning: 0.25
+    quantitative_reasoning: 0.15
+    planning_agency: 0.15
+    terminal_agency: 0.05
+    structured_tool_use: 0.05
+  notes: >-
+    MLE-Bench evaluates end-to-end machine-learning engineering across 75 adapted Kaggle
+    competitions, including dataset preparation, model training and experimentation.
+    This id stores Google's July 2026 six-model comparison snapshot rather than mixing it
+    with the benchmark-owner agent leaderboard, whose scaffolds and resource budgets vary.
+    The benchmark is public and older, so it is useful capability evidence rather than a
+    strong novelty-control benchmark.
