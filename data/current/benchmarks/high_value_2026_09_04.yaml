@@ -23,6 +23,7 @@
 - id: osworld-2.0-google-2026-09-partial
   name: OSWorld 2.0
   version: Google 2026-09 partial-score comparison
+  family_id: osworld-2.0
   published_at: '2026-06-26'
   public_since: '2026-06-26'
   score_floor: 0
