@@ -10,13 +10,13 @@ import numpy as np
 
 from .hierarchical import (
     HierarchicalConfig,
-    _FitState,
-    _PreparedObservation,
     _active_ecosystem_keys,
     _active_harness_keys,
     _centered_capability_loadings,
+    _FitState,
     _prediction,
     _prepare,
+    _PreparedObservation,
     _update_ecosystem,
     _update_global_novelty,
     _update_harness,
@@ -56,7 +56,7 @@ class CrossValidationResult:
 
 def _fold_index(model_id: str, family_id: str, folds: int) -> int:
     digest = hashlib.blake2b(
-        f"{model_id}|{family_id}".encode("utf-8"), digest_size=8
+        f"{model_id}|{family_id}".encode(), digest_size=8
     ).digest()
     return int.from_bytes(digest, "big") % folds
 
