@@ -55,6 +55,7 @@
 - id: healthbench-prof-independent-2026-08
   name: HealthBench Professional independent rerun
   version: 2026-08-16 snapshot
+  family_id: healthbench-prof
   published_at: '2026-04-30'
   public_since: '2026-04-30'
   score_floor: 0
@@ -72,6 +73,7 @@
 - id: automationbench-public-1.0.6
   name: AutomationBench public set
   version: 1.0.6
+  family_id: automationbench
   published_at: '2026-04-20'
   public_since: '2026-04-20'
   score_floor: 0
@@ -105,6 +107,7 @@
 - id: nist-swe-bench-verified
   name: SWE-Bench Verified (CAISI protocol)
   version: CAISI 2026-05
+  family_id: swe-bench
   published_at: '2023-10-10'
   public_since: '2023-10-10'
   score_floor: 0
@@ -164,6 +167,7 @@
 - id: nist-arc-agi-2-semiprivate
   name: ARC-AGI-2 Semi-Private (CAISI protocol)
   version: CAISI 2026-05
+  family_id: arc-agi
   published_at: '2025-03-24'
   sealed_test: true
   score_floor: 0
@@ -215,6 +219,7 @@
 - id: frontiercode-1.1-main
   name: FrontierCode
   version: 1.1 Main
+  family_id: frontiercode-1.1
   published_at: '2026-07-07'
   public_since: '2026-07-07'
   score_floor: 0
@@ -231,6 +236,7 @@
 - id: frontiercode-1.1-extended
   name: FrontierCode
   version: 1.1 Extended
+  family_id: frontiercode-1.1
   published_at: '2026-07-07'
   public_since: '2026-07-07'
   score_floor: 0
@@ -247,6 +253,7 @@
 - id: arc-agi-2-openai-launch
   name: ARC-AGI-2 (OpenAI launch comparison protocol)
   version: 2026-09-03 comparison
+  family_id: arc-agi
   published_at: '2025-03-24'
   public_since: '2025-03-24'
   score_floor: 0
@@ -261,6 +268,7 @@
 - id: arc-agi-1-openai-launch
   name: ARC-AGI-1 (OpenAI launch comparison protocol)
   version: 2026-09-03 comparison
+  family_id: arc-agi
   published_at: '2019-12-01'
   public_since: '2019-12-01'
   score_floor: 0
@@ -275,6 +283,7 @@
 - id: healthbench-prof-openai-launch
   name: HealthBench Professional (OpenAI launch protocol)
   version: 2026-09-03 length-adjusted
+  family_id: healthbench-prof
   published_at: '2026-04-30'
   public_since: '2026-04-30'
   score_floor: 0
@@ -291,6 +300,7 @@
 - id: automationbench-openai-launch
   name: AutomationBench (OpenAI launch comparison)
   version: 2026-09-03
+  family_id: automationbench
   published_at: '2026-04-20'
   sealed_test: true
   score_floor: 0
