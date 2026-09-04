@@ -1,6 +1,7 @@
 - id: arc-prize-agi1-semiprivate
   name: ARC-AGI-1 Semi-Private
   version: ARC Prize verified snapshot 2026-09-04
+  family_id: arc-agi
   published_at: '2019-12-01'
   sealed_test: true
   score_floor: 0
@@ -15,6 +16,7 @@
 - id: arc-prize-agi2-semiprivate
   name: ARC-AGI-2 Semi-Private
   version: ARC Prize verified snapshot 2026-09-04
+  family_id: arc-agi
   published_at: '2025-03-24'
   sealed_test: true
   score_floor: 0
@@ -29,6 +31,7 @@
 - id: arc-prize-agi3-standard-semiprivate
   name: ARC-AGI-3 Standard
   version: ARC Prize verified snapshot 2026-09-04
+  family_id: arc-agi
   published_at: '2026-03-25'
   sealed_test: true
   score_floor: 0
