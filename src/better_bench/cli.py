@@ -10,6 +10,7 @@ from rich.console import Console
 from rich.table import Table
 
 from .diagnostics import benchmark_pair_residuals, pairwise_benchmark_diagnostics, taxonomy_fit
+from .factors import fit_missing_pca
 from .io import load_benchmarks, load_models, load_observations
 from .novelty import (
     comparable_benchmark_residuals,
@@ -84,6 +85,7 @@ def diagnose(
     console.print(table)
     if output_csv:
         import pandas as pd
+
         pd.DataFrame([row.__dict__ for row in rows]).to_csv(output_csv, index=False)
         console.print(f"Wrote {output_csv}")
     if (left is None) != (right is None):
@@ -100,6 +102,48 @@ def diagnose(
         for row in residuals:
             residual_table.add_row(row.model_id, f"{row.left_score:.2f}", f"{row.right_score:.2f}", f"{row.predicted_right:.2f}", f"{row.residual:+.2f}", f"{row.standardized_residual:+.2f}")
         console.print(residual_table)
+
+
+@app.command()
+def factor(
+    benchmarks: Path = typer.Option(..., exists=True, readable=True),
+    observations: Path = typer.Option(..., exists=True, readable=True),
+    rank: int = typer.Option(3, min=1, help="Number of latent factors to fit."),
+    minimum_models: int = typer.Option(5, min=3, help="Models required per retained benchmark."),
+    minimum_benchmarks: int = typer.Option(5, min=2, help="Benchmarks required per retained model."),
+    top: int = typer.Option(20, min=1, help="Number of factor-1 models/loadings to print."),
+) -> None:
+    """Fit a sparse, standardized low-rank factor diagnostic."""
+    result = fit_missing_pca(
+        load_benchmarks(benchmarks),
+        load_observations(observations),
+        rank=rank,
+        minimum_models_per_benchmark=minimum_models,
+        minimum_benchmarks_per_model=minimum_benchmarks,
+    )
+    console.print(
+        f"Retained matrix: [bold]{len(result.models)} models × {len(result.benchmarks)} benchmarks[/bold] | "
+        f"{result.observed_cells}/{result.possible_cells} observed ({100 * result.density:.1f}%)."
+    )
+    for index, value in enumerate(result.explained_variance, start=1):
+        console.print(f"Cumulative observed variance explained by rank {index}: [bold]{100 * value:.1f}%[/bold]")
+
+    model_table = Table(title="Factor 1 — model scores")
+    model_table.add_column("Model")
+    model_table.add_column("Score", justify="right")
+    factor_one = result.model_scores["factor_1"].sort_values(ascending=False)
+    for model_id, value in factor_one.head(top).items():
+        model_table.add_row(str(model_id), f"{float(value):+.3f}")
+    console.print(model_table)
+
+    loading_table = Table(title="Factor 1 — benchmark loadings")
+    loading_table.add_column("Benchmark")
+    loading_table.add_column("Loading", justify="right")
+    loading_one = result.benchmark_loadings["factor_1"]
+    order = loading_one.abs().sort_values(ascending=False).head(top).index
+    for benchmark_id in order:
+        loading_table.add_row(str(benchmark_id), f"{float(loading_one.loc[benchmark_id]):+.3f}")
+    console.print(loading_table)
 
 
 @app.command()
