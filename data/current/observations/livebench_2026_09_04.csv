@@ -1,0 +1,155 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+claude-fable-5.1,livebench-2026-06-25-reasoning,91.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-coding,86.4,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-agentic-coding,66.1,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-mathematics,97.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-data-analysis,80.3,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-language,89.5,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5.1,livebench-2026-06-25-instruction-following,73.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5.1 Max Effort.
+claude-fable-5,livebench-2026-06-25-reasoning,89.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-coding,86.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-agentic-coding,62.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-mathematics,96.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-data-analysis,80.5,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-language,90.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+claude-fable-5,livebench-2026-06-25-instruction-following,75.8,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Fable 5 Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-reasoning,91.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-coding,83.9,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-agentic-coding,56.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-mathematics,96.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-data-analysis,79.8,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-language,87.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.6-sol,livebench-2026-06-25-instruction-following,71.8,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Sol Max Effort.
+gpt-5.5,livebench-2026-06-25-reasoning,89.7,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-coding,82.1,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-agentic-coding,54.0,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-mathematics,95.9,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-data-analysis,81.6,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-language,87.4,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+gpt-5.5,livebench-2026-06-25-instruction-following,70.7,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.5 Thinking xHigh Effort.
+claude-opus-5,livebench-2026-06-25-reasoning,91.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-coding,81.4,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-agentic-coding,65.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-mathematics,95.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-data-analysis,74.6,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-language,88.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+claude-opus-5,livebench-2026-06-25-instruction-following,63.8,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 5 Opus Thinking Max Effort.
+kimi-k3,livebench-2026-06-25-reasoning,90.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-coding,81.4,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-agentic-coding,62.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-mathematics,84.4,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-data-analysis,78.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-language,85.5,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+kimi-k3,livebench-2026-06-25-instruction-following,71.4,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Kimi K3 open.
+gemini-3.7-flash,livebench-2026-06-25-reasoning,87.8,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-coding,78.9,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-agentic-coding,58.3,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-mathematics,93.5,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-data-analysis,68.0,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-language,85.5,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+gemini-3.7-flash,livebench-2026-06-25-instruction-following,79.9,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.7 Flash High.
+qwen3.8-max,livebench-2026-06-25-reasoning,88.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-coding,72.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-agentic-coding,64.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-mathematics,91.3,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-data-analysis,78.4,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-language,79.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+qwen3.8-max,livebench-2026-06-25-instruction-following,74.1,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Qwen 3.8 Max open.
+grok-4.6,livebench-2026-06-25-reasoning,90.5,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-coding,76.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-agentic-coding,57.0,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-mathematics,92.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-data-analysis,73.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-language,83.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+grok-4.6,livebench-2026-06-25-instruction-following,71.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.6.
+muse-spark-1.2,livebench-2026-06-25-reasoning,90.0,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-coding,77.5,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-agentic-coding,57.6,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-mathematics,91.2,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-data-analysis,76.5,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-language,78.6,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+muse-spark-1.2,livebench-2026-06-25-instruction-following,74.3,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Muse Spark 1.2 xHigh Effort.
+gpt-5.6-terra,livebench-2026-06-25-reasoning,90.6,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-coding,78.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-agentic-coding,54.9,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-mathematics,94.9,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-data-analysis,79.3,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-language,82.9,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+gpt-5.6-terra,livebench-2026-06-25-instruction-following,64.6,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Terra Max Effort.
+deepseek-v4-pro,livebench-2026-06-25-reasoning,85.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-coding,77.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-agentic-coding,54.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-mathematics,95.1,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-data-analysis,79.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-language,82.1,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+deepseek-v4-pro,livebench-2026-06-25-instruction-following,67.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Pro 0813 open.
+claude-opus-4.8,livebench-2026-06-25-reasoning,89.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-coding,81.8,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-agentic-coding,50.5,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-mathematics,94.3,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-data-analysis,66.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-language,79.7,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+claude-opus-4.8,livebench-2026-06-25-instruction-following,72.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude 4.8 Opus Thinking Max Effort.
+glm-5.3,livebench-2026-06-25-reasoning,85.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-coding,79.0,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-agentic-coding,60.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-mathematics,87.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-data-analysis,70.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-language,79.9,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+glm-5.3,livebench-2026-06-25-instruction-following,69.3,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 open.
+claude-sonnet-5,livebench-2026-06-25-reasoning,88.7,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-coding,80.7,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-agentic-coding,59.4,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-mathematics,92.9,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-data-analysis,71.7,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-language,75.0,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+claude-sonnet-5,livebench-2026-06-25-instruction-following,63.9,2026-09-04,A,LiveBench official,xhigh,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Claude Sonnet 5 xHigh Effort.
+grok-4.5,livebench-2026-06-25-reasoning,87.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-coding,68.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-agentic-coding,56.5,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-mathematics,90.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-data-analysis,73.0,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-language,82.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+grok-4.5,livebench-2026-06-25-instruction-following,71.5,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Grok 4.5.
+gemini-3.5-flash,livebench-2026-06-25-reasoning,82.0,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-coding,78.2,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-agentic-coding,49.0,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-mathematics,88.2,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-data-analysis,64.9,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-language,84.6,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+gemini-3.5-flash,livebench-2026-06-25-instruction-following,75.6,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.5 Flash High.
+deepseek-v4-flash,livebench-2026-06-25-reasoning,86.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-coding,75.0,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-agentic-coding,46.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-mathematics,86.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-data-analysis,79.3,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-language,79.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+deepseek-v4-flash,livebench-2026-06-25-instruction-following,65.5,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: DeepSeek V4 Flash 0731 open.
+gemini-3.6-flash,livebench-2026-06-25-reasoning,85.1,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-coding,77.9,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-agentic-coding,43.4,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-mathematics,86.4,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-data-analysis,63.0,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-language,83.9,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gemini-3.6-flash,livebench-2026-06-25-instruction-following,75.4,2026-09-04,A,LiveBench official,high,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: Gemini 3.6 Flash High.
+gpt-5.6-luna,livebench-2026-06-25-reasoning,85.6,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-coding,82.9,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-agentic-coding,48.4,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-mathematics,87.2,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-data-analysis,78.0,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-language,72.6,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+gpt-5.6-luna,livebench-2026-06-25-instruction-following,60.1,2026-09-04,A,LiveBench official,max,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GPT-5.6 Luna Max Effort.
+glm-5.2,livebench-2026-06-25-reasoning,78.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-coding,79.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-agentic-coding,51.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-mathematics,89.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-data-analysis,73.7,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-language,76.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.2,livebench-2026-06-25-instruction-following,62.3,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.2 open.
+glm-5.3-flash,livebench-2026-06-25-reasoning,77.6,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-coding,79.0,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-agentic-coding,56.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-mathematics,81.2,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-data-analysis,76.4,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-language,77.3,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
+glm-5.3-flash,livebench-2026-06-25-instruction-following,52.8,2026-09-04,A,LiveBench official,,,https://livebench.ai/,LiveBench 2026-06-25 current snapshot; leaderboard label: GLM-5.3 Flash open.
