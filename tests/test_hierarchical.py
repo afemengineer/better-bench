@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date
 
 from better_bench.hierarchical import HierarchicalConfig, fit_hierarchical
+from better_bench.hierarchical_validation import cross_validate_hierarchical
 from better_bench.schema import (
     BenchmarkDefinition,
     BenchmarkObservation,
@@ -141,3 +142,28 @@ def test_hierarchical_estimator_separates_harness_and_ecosystem_effects() -> Non
     }
     assert ecosystem[("m6", "evaluator-a.com")] > 0
     assert ecosystem[("m6", "evaluator-b.com")] < 0
+
+
+def test_model_family_cross_validation_rewards_real_domain_structure() -> None:
+    models, benchmarks, observations = _synthetic_problem()
+    result = cross_validate_hierarchical(
+        models,
+        benchmarks,
+        observations,
+        config=HierarchicalConfig(
+            minimum_models_per_benchmark=5,
+            minimum_benchmarks_per_model=5,
+            minimum_families_per_model=5,
+            ridge_domain=1.0,
+            ridge_harness=2.0,
+            ridge_ecosystem=3.0,
+        ),
+        folds=4,
+        as_of=date(2026, 9, 4),
+    )
+
+    assert result.heldout_observations > 0
+    assert result.full_rmse < result.general_only_rmse
+    assert result.full_r2 > result.general_only_r2
+    by_model = {row.model_id: row for row in result.model_diagnostics}
+    assert by_model["m7"].full_rmse < by_model["m7"].general_only_rmse
