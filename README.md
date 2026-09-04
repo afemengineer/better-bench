@@ -87,6 +87,8 @@ Evidence tiers are:
 
 Benchmark categories that share a `family_id` split one family evidence budget. This prevents suites such as LiveBench from receiving seven independent votes merely because seven category scores are published.
 
+The benchmark-quality layer is currently kept **separate from the unweighted sparse-factor diagnostic**. This is deliberate: the factor model should be able to disagree with our quality priors. The eventual hierarchical leaderboard model will introduce benchmark-quality and family weights explicitly, with sensitivity analysis rather than silently baking them into the exploratory factor fit.
+
 ## Data model
 
 A benchmark definition specifies its fixed score scale, publication/exposure metadata, protocol quality, reliability, contamination-resistance metadata, family identity and capability loadings. A result row identifies the exact model plus provenance and optional system configuration:
