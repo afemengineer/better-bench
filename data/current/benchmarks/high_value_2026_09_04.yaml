@@ -1,6 +1,7 @@
 - id: hle-verified-2026
   name: HLE-Verified
   version: 1811 certified items
+  family_id: hle
   published_at: '2026-02-15'
   public_since: '2026-02-15'
   score_floor: 0
