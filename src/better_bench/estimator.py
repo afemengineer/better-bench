@@ -280,6 +280,9 @@ def _fit_state(
         values = np.asarray(
             [row.score_points / config.score_unit_points for row in group], dtype=float
         )
+        if float(weights.sum()) <= 1e-12:
+            intercept[benchmark_id] = 50.0 / config.score_unit_points
+            continue
         intercept[benchmark_id] = float(np.average(values, weights=weights))
 
     state = _State(
@@ -329,13 +332,17 @@ def _fit_state(
                 )
                 residual_sum += weight * residual
                 weight_sum += weight
-            state.intercept[benchmark_id] = residual_sum / max(weight_sum, 1e-12)
+            if weight_sum <= 1e-12:
+                continue
+            state.intercept[benchmark_id] = residual_sum / weight_sum
 
         for benchmark_id in benchmark_ids:
             numerator = config.ridge_loading
             denominator = config.ridge_loading
+            active_weight = 0.0
             for row in by_benchmark.get(benchmark_id, []):
                 weight = row.weight * multipliers.get(row.family_id, 1.0)
+                active_weight += weight
                 general = state.general[row.model_id]
                 target = (
                     row.score_points / config.score_unit_points
@@ -343,6 +350,8 @@ def _fit_state(
                 )
                 numerator += weight * general * target
                 denominator += weight * general * general
+            if active_weight <= 1e-12:
+                continue
             state.loading[benchmark_id] = float(
                 np.clip(
                     numerator / max(denominator, 1e-12),
