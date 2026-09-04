@@ -1,0 +1,87 @@
+- id: hle-verified-2026
+  name: HLE-Verified
+  version: 1811 certified items
+  published_at: '2026-02-15'
+  public_since: '2026-02-15'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.93
+  reliability: 0.94
+  contamination_resistance: 0.55
+  capability_loadings:
+    knowledge: 0.30
+    scientific_reasoning: 0.25
+    quantitative_reasoning: 0.20
+    fluid_reasoning: 0.15
+    visual_intelligence: 0.10
+  notes: >-
+    Reliability-focused HLE revision with 668 verified original items and 1,143
+    repaired-and-reverified items; the 689 uncertain items are excluded from the main
+    scored set. Public questions make this useful as capability evidence but not a
+    strong novelty/contamination control.
+
+- id: osworld-2.0-google-2026-09-partial
+  name: OSWorld 2.0
+  version: Google 2026-09 partial-score comparison
+  published_at: '2026-06-26'
+  public_since: '2026-06-26'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.84
+  reliability: 0.86
+  contamination_resistance: 0.82
+  capability_loadings:
+    gui_computer_use: 0.45
+    planning_agency: 0.25
+    visual_intelligence: 0.10
+    long_context: 0.10
+    structured_tool_use: 0.10
+  notes: >-
+    Long-horizon real-world desktop workflows. This id is intentionally isolated from
+    other OSWorld 2.0 leaderboards because Google reports partial-credit comparison
+    scores and harness details can materially change results. Official V2 releases pin
+    task, asset, website and code versions; task implementations/assets are gated to
+    reduce benchmark leakage.
+
+- id: mcp-atlas-2026-04-full
+  name: MCP Atlas
+  version: April 2026 updated 1000-task protocol
+  published_at: '2026-04-08'
+  public_since: '2026-04-08'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.91
+  contamination_resistance: 0.86
+  capability_loadings:
+    structured_tool_use: 0.55
+    planning_agency: 0.20
+    knowledge: 0.10
+    language: 0.10
+    web_agency: 0.05
+  notes: >-
+    1,000 real MCP workflow tasks across 36 servers and 220 tools: 500 public and
+    500 private. The April update standardized a 100-tool-call budget and rescored the
+    leaderboard. Pass rate on all 1,000 tasks is used here.
+
+- id: enigmaeval-2026-07
+  name: EnigmaEval
+  version: 2026-07 open-source release
+  published_at: '2026-07-23'
+  public_since: '2026-07-23'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.90
+  reliability: 0.88
+  contamination_resistance: 0.55
+  capability_loadings:
+    fluid_reasoning: 0.45
+    visual_intelligence: 0.20
+    language: 0.15
+    knowledge: 0.10
+    quantitative_reasoning: 0.10
+  notes: >-
+    1,161 multi-step puzzle-hunt problems with multimodal content and exact solutions.
+    Challenging and discriminative, but many puzzle sources predate the benchmark, so
+    contamination resistance is intentionally not rated highly despite the recent
+    open-source release.
