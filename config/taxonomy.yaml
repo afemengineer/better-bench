@@ -7,6 +7,7 @@ capabilities:
   knowledge: {weight: 1.0, group: cognition}
   language: {weight: 1.0, group: cognition}
   software_engineering: {weight: 1.0, group: coding}
+  structured_tool_use: {weight: 1.0, group: agency}
   terminal_agency: {weight: 1.0, group: agency}
   web_agency: {weight: 1.0, group: agency}
   gui_computer_use: {weight: 1.0, group: agency}
