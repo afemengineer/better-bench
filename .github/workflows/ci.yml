@@ -16,6 +16,8 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q
+      - name: Benchmark evidence-quality report
+        run: python scripts/benchmark_quality_report.py
       - name: Factor smoke on current corpus
         run: >-
           better-bench factor
