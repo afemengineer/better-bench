@@ -54,11 +54,32 @@ class CrossValidationResult:
     model_diagnostics: list[CrossValidationModelDiagnostic]
 
 
-def _fold_index(model_id: str, family_id: str, folds: int) -> int:
-    digest = hashlib.blake2b(
-        f"{model_id}|{family_id}".encode(), digest_size=8
-    ).digest()
+def _model_fold_offset(model_id: str, folds: int) -> int:
+    digest = hashlib.blake2b(model_id.encode(), digest_size=8).digest()
     return int.from_bytes(digest, "big") % folds
+
+
+def _balanced_fold_assignment(
+    rows: list[_PreparedObservation], folds: int
+) -> dict[tuple[str, str], int]:
+    """Spread each model's independent benchmark families evenly across folds.
+
+    A naive hash of model×family can place several related evidence groups for one
+    model in the same fold. That can accidentally remove an entire capability from
+    the model's training data. We instead sort each model's families and distribute
+    them round-robin, using a deterministic model-specific offset only to avoid every
+    model hiding the same family in the same global fold.
+    """
+    families_by_model: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        families_by_model[row.model_id].add(row.family_id)
+
+    assignments: dict[tuple[str, str], int] = {}
+    for model_id, family_ids in families_by_model.items():
+        offset = _model_fold_offset(model_id, folds)
+        for index, family_id in enumerate(sorted(family_ids)):
+            assignments[(model_id, family_id)] = (offset + index) % folds
+    return assignments
 
 
 def _fit_state(
@@ -204,9 +225,10 @@ def cross_validate_hierarchical(
 
     Each model-family group is assigned wholly to one deterministic fold, preventing
     protocol variants from the same benchmark family from leaking into training for that
-    model. Benchmark centering/scaling is recomputed from training models only in every
-    fold. Benchmark-quality weights remain frozen from the full metadata snapshot because
-    they are measurement priors, not target values.
+    model. Families are distributed evenly across folds for every model. Benchmark
+    centering/scaling is recomputed from training models only in every fold. Benchmark-
+    quality weights remain frozen from the full metadata snapshot because they are
+    measurement priors, not target values.
     """
     if folds < 2:
         raise ValueError("folds must be at least 2")
@@ -236,10 +258,7 @@ def cross_validate_hierarchical(
         retained_pairs,
     )
 
-    fold_by_group = {
-        (row.model_id, row.family_id): _fold_index(row.model_id, row.family_id, folds)
-        for row in prepared
-    }
+    fold_by_group = _balanced_fold_assignment(prepared, folds)
 
     all_observed: list[float] = []
     all_full: list[float] = []
@@ -321,9 +340,7 @@ def cross_validate_hierarchical(
             general_model,
             weight_model,
         )
-        bias = float(
-            np.average(observed_model - full_model, weights=weight_model)
-        )
+        bias = float(np.average(observed_model - full_model, weights=weight_model))
         model_diagnostics.append(
             CrossValidationModelDiagnostic(
                 model_id=model_id,
