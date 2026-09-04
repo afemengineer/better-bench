@@ -12,7 +12,10 @@ CUTOVERS = {
     "deepseek-v4-pro": (date(2026, 8, 13), "DeepSeek-V4-Pro-0813"),
 }
 
-observations = load_observations("data/current")
+observations = load_observations(
+    "data/current",
+    include_unresolved_revisions=True,
+)
 
 print("model\tbenchmark\tevaluated_at\trevision\trevision_at\tstatus")
 for row in observations:
