@@ -66,11 +66,11 @@ def _synthetic_problem() -> tuple[
                 if harness == "harness-b":
                     score += 3.5
             source_url = (
-                "https://eval-a.example.com/result"
+                "https://evaluator-a.com/result"
                 if benchmark_index % 2 == 0
-                else "https://eval-b.example.com/result"
+                else "https://evaluator-b.com/result"
             )
-            if model.id == "m6" and "eval-a" in source_url:
+            if model.id == "m6" and "evaluator-a" in source_url:
                 score += 2.5
             if model.id == "m9" and sealed:
                 score -= 5.0
@@ -139,4 +139,5 @@ def test_hierarchical_estimator_separates_harness_and_ecosystem_effects() -> Non
     ecosystem = {
         (row.model_id, row.ecosystem): row.effect_z for row in result.ecosystem_effects
     }
-    assert ecosystem[("m6", "example.com")] == 0.0
+    assert ecosystem[("m6", "evaluator-a.com")] > 0
+    assert ecosystem[("m6", "evaluator-b.com")] < 0
