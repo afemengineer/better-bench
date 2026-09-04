@@ -155,9 +155,8 @@ def project_provisional_models(
         elif family_count < minimum_families:
             status = "provisional"
             missing = minimum_families - family_count
-            reason = f"needs {missing} more independent benchmark family"
-            if missing != 1:
-                reason += "ies"
+            noun = "family" if missing == 1 else "families"
+            reason = f"needs {missing} more independent benchmark {noun}"
         else:
             status = "provisional"
             reason = (
