@@ -7,6 +7,7 @@
   name: Gemini 3.8 Flash
   organization: Google
   released_at: '2026-09-03'
+  knowledge_cutoff: '2026-03'
 - id: claude-fable-5.1
   name: Claude Fable 5.1
   organization: Anthropic
@@ -46,6 +47,7 @@
 - id: gemini-3.7-flash
   name: Gemini 3.7 Flash
   organization: Google
+  released_at: '2026-08-13'
 - id: glm-5.3-flash
   name: GLM-5.3 Flash
   organization: Z.ai
@@ -72,12 +74,14 @@
 - id: gemini-3.6-flash
   name: Gemini 3.6 Flash
   organization: Google
+  released_at: '2026-07-21'
 - id: glm-5.2
   name: GLM-5.2
   organization: Z.ai
 - id: gemini-3.5-flash
   name: Gemini 3.5 Flash
   organization: Google
+  released_at: '2026-05-19'
 - id: gpt-5.6-terra
   name: GPT-5.6 Terra
   organization: OpenAI
