@@ -28,6 +28,8 @@ jobs:
         run: python scripts/hierarchical_report.py
       - name: Hierarchical model-family cross-validation
         run: python scripts/hierarchical_cv_report.py
+      - name: Hierarchical cross-validation ablations
+        run: python scripts/hierarchical_ablation_report.py
       - name: Factor smoke on current corpus
         run: >-
           better-bench factor
