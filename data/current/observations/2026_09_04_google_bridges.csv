@@ -1,0 +1,13 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gemini-3.6-flash,swe-bench-pro-public-google-2026-07,58.7,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison on SWE-Bench Pro Public.
+gemini-3.5-flash,swe-bench-pro-public-google-2026-07,55.1,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison on SWE-Bench Pro Public.
+gemini-3.1-pro,swe-bench-pro-public-google-2026-07,54.2,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison on SWE-Bench Pro Public.
+gpt-5.6-luna,swe-bench-pro-public-google-2026-07,62.7,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison on SWE-Bench Pro Public.
+grok-4.5,swe-bench-pro-public-google-2026-07,64.7,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison; xAI independently reports the same 64.7 result.
+claude-sonnet-5,swe-bench-pro-public-google-2026-07,63.2,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Gemini 3.6 Flash model-card comparison on SWE-Bench Pro Public.
+gemini-3.6-flash,mle-bench-google-2026-07,63.9,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
+gemini-3.5-flash,mle-bench-google-2026-07,49.7,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
+gemini-3.1-pro,mle-bench-google-2026-07,42.6,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
+gpt-5.6-luna,mle-bench-google-2026-07,47.6,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
+grok-4.5,mle-bench-google-2026-07,43.2,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
+claude-sonnet-5,mle-bench-google-2026-07,66.9,2026-07-21,C,Google comparison,,,https://deepmind.google/models/model-cards/gemini-3-6-flash/,Google model-card MLE-Bench comparison snapshot.
