@@ -81,6 +81,39 @@ def test_saturated_popular_benchmark_does_not_become_core() -> None:
     assert row.tier == BenchmarkTier.DIAGNOSTIC
 
 
+def test_popularity_cannot_override_low_integrity() -> None:
+    benchmark = _benchmark(
+        "popular-public",
+        published=date(2025, 1, 1),
+        protocol=0.96,
+        reliability=0.96,
+        resistance=0.45,
+    )
+    models = [
+        ModelDefinition(id=f"m{i}", name=f"m{i}", organization=f"org{i % 8}")
+        for i in range(16)
+    ]
+    observations = [
+        BenchmarkObservation(
+            model_id=f"m{i}", benchmark_id="popular-public", score=10 + 5 * i
+        )
+        for i in range(16)
+    ]
+    adoption = [
+        BenchmarkAdoptionSnapshot(
+            benchmark_id="popular-public",
+            as_of=date(2026, 9, 4),
+            leaderboard_model_count=100,
+            leaderboard_org_count=12,
+        )
+    ]
+    row = rank_benchmarks(
+        [benchmark], models, observations, adoption, as_of=date(2026, 9, 4)
+    )[0]
+    assert row.importance >= 0.68
+    assert row.tier == BenchmarkTier.SUPPORTING
+
+
 def test_small_fresh_high_quality_benchmark_is_emerging_not_core() -> None:
     benchmark = _benchmark(
         "new",
