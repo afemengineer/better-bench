@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 from collections import defaultdict
 from dataclasses import asdict, dataclass
+from datetime import date
 from enum import StrEnum
 
 import numpy as np
@@ -87,14 +88,17 @@ def classify_exposure(
     model: ModelDefinition,
     benchmark: BenchmarkDefinition,
     *,
+    revision_at: date | None = None,
     likely_unseen_days: int = 45,
 ) -> ExposureAssessment:
-    """Classify how plausible benchmark-task exposure was before model release."""
+    """Classify benchmark exposure using the exact revision date when available."""
     exposure_date = benchmark.public_since or benchmark.published_at
-    if model.released_at is not None and exposure_date > model.released_at:
+    release_reference = revision_at or model.released_at
+    if release_reference is not None and exposure_date > release_reference:
+        label = "model revision" if revision_at is not None else "model release"
         return ExposureAssessment(
             ExposureTier.GUARANTEED_UNSEEN_POST_RELEASE,
-            f"benchmark became public {exposure_date} after model release {model.released_at}",
+            f"benchmark became public {exposure_date} after {label} {release_reference}",
         )
     if model.training_cutoff is not None and exposure_date > model.training_cutoff:
         return ExposureAssessment(
@@ -111,17 +115,17 @@ def classify_exposure(
             ExposureTier.ROTATING_LOW_EXPOSURE,
             "benchmark is rotating; exact evaluation tasks have reduced exposure opportunity",
         )
-    if model.released_at is not None:
-        lead_days = (model.released_at - exposure_date).days
+    if release_reference is not None:
+        lead_days = (release_reference - exposure_date).days
         if 0 <= lead_days <= likely_unseen_days:
             return ExposureAssessment(
                 ExposureTier.LIKELY_UNSEEN_SHORT_LEAD,
-                f"benchmark preceded release by only {lead_days} days; cutoff is not known to prove non-exposure",
+                f"benchmark preceded release/revision by only {lead_days} days; cutoff is not known to prove non-exposure",
             )
         if lead_days >= 0:
             return ExposureAssessment(
                 ExposureTier.EXPOSURE_POSSIBLE,
-                f"benchmark was public {lead_days} days before model release",
+                f"benchmark was public {lead_days} days before release/revision",
             )
     if model.training_cutoff is not None and exposure_date <= model.training_cutoff:
         return ExposureAssessment(
@@ -150,6 +154,26 @@ def _loading_similarity(left: BenchmarkDefinition, right: BenchmarkDefinition) -
     if denom <= 0:
         return 0.0
     return float(np.dot(a, b) / denom)
+
+
+def _revision_metadata(
+    observations: list[BenchmarkObservation],
+) -> dict[tuple[str, str], tuple[str | None, date | None]]:
+    """Require one immutable model revision per aggregated model×benchmark cell."""
+    grouped: dict[tuple[str, str], set[tuple[str | None, date | None]]] = defaultdict(set)
+    for observation in observations:
+        grouped[(observation.model_id, observation.benchmark_id)].add(
+            (observation.model_revision, observation.model_revision_at)
+        )
+    result: dict[tuple[str, str], tuple[str | None, date | None]] = {}
+    for key, revisions in grouped.items():
+        if len(revisions) > 1:
+            raise ValueError(
+                "Cannot aggregate multiple model revisions into one model×benchmark cell: "
+                f"{key[0]} × {key[1]} has {sorted(str(value) for value in revisions)}"
+            )
+        result[key] = next(iter(revisions))
+    return result
 
 
 def _aggregate_scores(
@@ -184,6 +208,7 @@ def comparable_benchmark_residuals(
     """
     model_by_id = {model.id: model for model in models}
     benchmark_by_id = {benchmark.id: benchmark for benchmark in benchmarks}
+    revision_metadata = _revision_metadata(observations)
     scores = _aggregate_scores(benchmark_by_id, observations)
     by_benchmark: dict[str, dict[str, float]] = defaultdict(dict)
     for (model_id, benchmark_id), score in scores.items():
@@ -230,7 +255,13 @@ def comparable_benchmark_residuals(
                 weights=np.asarray([weight for _, weight in predictions]),
             )
         )
-        assessment = classify_exposure(model, target, likely_unseen_days=likely_unseen_days)
+        _, revision_at = revision_metadata[(model_id, target_id)]
+        assessment = classify_exposure(
+            model,
+            target,
+            revision_at=revision_at,
+            likely_unseen_days=likely_unseen_days,
+        )
         results.append(
             NoveltyResidual(
                 model_id=model_id,
