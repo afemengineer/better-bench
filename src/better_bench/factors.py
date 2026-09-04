@@ -43,17 +43,44 @@ def _normalized_matrix(
     )
 
 
+def _family_count_by_model(
+    frame: pd.DataFrame,
+    benchmark_families: dict[str, str],
+) -> pd.Series:
+    counts: dict[str, int] = {}
+    for model_id, row in frame.iterrows():
+        observed_benchmarks = row.index[row.notna()]
+        counts[str(model_id)] = len(
+            {
+                benchmark_families.get(str(benchmark_id), str(benchmark_id))
+                for benchmark_id in observed_benchmarks
+            }
+        )
+    return pd.Series(counts, dtype=int).reindex(frame.index)
+
+
 def _filter_matrix(
     frame: pd.DataFrame,
     minimum_models_per_benchmark: int,
     minimum_benchmarks_per_model: int,
+    benchmark_families: dict[str, str],
+    minimum_families_per_model: int,
 ) -> pd.DataFrame:
     current = frame.copy()
-    for _ in range(8):
+    for _ in range(12):
         shape = current.shape
         current = current.loc[
-            current.notna().sum(axis=1) >= minimum_benchmarks_per_model,
+            :,
             current.notna().sum(axis=0) >= minimum_models_per_benchmark,
+        ]
+        if current.empty:
+            return current
+        benchmark_counts = current.notna().sum(axis=1)
+        family_counts = _family_count_by_model(current, benchmark_families)
+        current = current.loc[
+            (benchmark_counts >= minimum_benchmarks_per_model)
+            & (family_counts >= minimum_families_per_model),
+            :,
         ]
         if current.shape == shape:
             break
@@ -112,6 +139,7 @@ def fit_missing_pca(
     rank: int = 3,
     minimum_models_per_benchmark: int = 5,
     minimum_benchmarks_per_model: int = 5,
+    minimum_families_per_model: int = 1,
     maximum_iterations: int = 200,
     tolerance: float = 1e-7,
     ridge: float = 0.5,
@@ -121,11 +149,18 @@ def fit_missing_pca(
         raise ValueError("rank must be at least 1")
     if ridge <= 0:
         raise ValueError("ridge must be positive")
+    if minimum_families_per_model < 1:
+        raise ValueError("minimum_families_per_model must be at least 1")
 
+    benchmark_families = {
+        benchmark.id: benchmark.family_id or benchmark.id for benchmark in benchmarks
+    }
     frame = _filter_matrix(
         _normalized_matrix(benchmarks, observations),
         minimum_models_per_benchmark,
         minimum_benchmarks_per_model,
+        benchmark_families,
+        minimum_families_per_model,
     )
     if frame.empty or min(frame.shape) < 2:
         raise ValueError("Insufficient overlapping data for factor analysis")
