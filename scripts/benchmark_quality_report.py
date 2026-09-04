@@ -1,14 +1,13 @@
 from datetime import date
 from pathlib import Path
 
+from better_bench.benchmark_quality import rank_benchmarks
 from better_bench.io import (
     load_adoption,
     load_benchmarks,
     load_models,
     load_observations,
 )
-from better_bench.benchmark_quality import rank_benchmarks
-
 
 DATA = Path("data/current")
 rows = rank_benchmarks(
