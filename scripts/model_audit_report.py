@@ -22,6 +22,10 @@ KNOWN_CUTOVERS = {
 
 models = load_models("data/current")
 benchmarks = load_benchmarks("data/current")
+raw_observations = load_observations(
+    "data/current",
+    include_unresolved_revisions=True,
+)
 observations = load_observations("data/current")
 adoption = load_adoption("data/current")
 
@@ -88,7 +92,7 @@ def root_domain(url: str | None) -> str | None:
     return host if len(parts) <= 2 else ".".join(parts[-2:])
 
 
-for row in observations:
+for row in raw_observations:
     raw_benchmarks[row.model_id].add(row.benchmark_id)
     benchmark = benchmark_by_id.get(row.benchmark_id)
     if benchmark is not None:
