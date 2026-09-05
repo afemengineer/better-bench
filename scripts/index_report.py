@@ -38,14 +38,19 @@ index = build_better_bench_index(
 )
 
 print(
-    f"BBI calibration=BBI-2026-09-04 models={len(index)} "
+    f"BBI calibration=BBI-2026-09-05 models={len(index)} "
+    f"ranking_method={index[0].ranking_method if index else '-'} "
     f"cv_rmse={cv.model_rmse_points:.3f} baseline={cv.benchmark_only_rmse_points:.3f} "
     f"gain={100 * cv.relative_rmse_improvement:+.2f}%"
 )
-print("rank\tmodel\tBBI\t95%CI\tvariance\tfamilies\tcoverage\tconfidence")
-for rank, row in enumerate(index, start=1):
+print(
+    "rank\tmodel\trank_band\tcalibration_BBI\t95%calibration_CI\tvariance\t"
+    "families\tcoverage\tconfidence"
+)
+for row in index:
     print(
-        f"{rank}\t{row.model_id}\t{row.index:.1f}\t"
-        f"[{row.ci_low:.1f},{row.ci_high:.1f}]\t{row.index_variance:.2f}\t"
-        f"{row.family_count}\t{100 * row.coverage:.1f}%\t{row.confidence}"
+        f"{row.rank}\t{row.model_id}\t[{row.rank_low},{row.rank_high}]\t"
+        f"{row.index:.1f}\t[{row.ci_low:.1f},{row.ci_high:.1f}]\t"
+        f"{row.index_variance:.2f}\t{row.family_count}\t"
+        f"{100 * row.coverage:.1f}%\t{row.confidence}"
     )
