@@ -15,17 +15,17 @@ class ConsensusRankingConfig:
     """Kemeny-style ranking over incomplete benchmark comparison panels.
 
     ``margin_temperature_points`` controls how quickly benchmark score margins saturate.
-    A 30-point win should count as stronger evidence than a 1-point win, but should not
-    be allowed to outweigh dozens of independent smaller wins merely because the raw
-    metric has a large numerical spread.
-
     ``minimum_shared_families`` controls which direct model-pair preferences enter the
-    consensus objective. Missing comparisons contribute no evidence in either direction.
+    consensus objective. ``use_learned_discrimination`` is intentionally optional: the
+    broad ranking panel can rely only on exogenous benchmark/provenance weights, while
+    experiments on the calibrated panel may additionally use the fixed estimator's
+    learned general-factor loading.
     """
 
     margin_temperature_points: float = 5.0
     minimum_shared_families: int = 1
     information_scale_points: float = 10.0
+    use_learned_discrimination: bool = True
     time_limit_seconds: float = 30.0
 
 
@@ -76,10 +76,35 @@ def _aggregate_model_benchmark_rows(
     return cells
 
 
+def _benchmark_discrimination(
+    state: Any | None,
+    model_ids: list[str],
+    score_unit_points: float,
+    information_scale_points: float,
+) -> dict[str, float]:
+    if state is None:
+        return {}
+    general_values = np.asarray(
+        [float(state.general[model_id]) for model_id in model_ids], dtype=float
+    )
+    general_scale = float(general_values.std(ddof=0))
+    if general_scale <= 1e-12:
+        general_scale = 1.0
+    result: dict[str, float] = {}
+    for benchmark_id, loading in state.loading.items():
+        loading_points_per_z = float(score_unit_points * loading * general_scale)
+        if loading_points_per_z <= 1e-8:
+            continue
+        result[str(benchmark_id)] = (
+            loading_points_per_z / information_scale_points
+        ) ** 2
+    return result
+
+
 def build_pair_preferences(
     rows: Iterable[Any],
     model_ids: list[str],
-    state: Any,
+    state: Any | None,
     *,
     score_unit_points: float,
     config: ConsensusRankingConfig,
@@ -87,9 +112,11 @@ def build_pair_preferences(
     """Aggregate benchmark-local partial rankings into model-pair preferences.
 
     Benchmark difficulty cancels because only within-benchmark score differences enter.
-    The comparison information uses the exact profiled weighted-least-squares factor
-    ``w_i*w_k/W_j`` and the fixed estimator's learned general-factor discrimination.
-    Family-adjusted benchmark weights are already embedded in the prepared row weights.
+    Pair information uses ``w_i*w_k/W_j`` so adding more evaluated models does not give
+    a benchmark quadratic influence. On the broad ranking panel, learned discrimination
+    can be disabled; this prevents the old score regression from leaking into the new
+    ordinal consensus and allows high-quality emerging benchmarks with only 2–4 models
+    to contribute direct evidence.
     """
 
     if config.margin_temperature_points <= 0:
@@ -98,28 +125,25 @@ def build_pair_preferences(
         raise ValueError("minimum_shared_families must be at least 1")
     if config.information_scale_points <= 0:
         raise ValueError("information_scale_points must be positive")
-
-    general_values = np.asarray(
-        [float(state.general[model_id]) for model_id in model_ids], dtype=float
-    )
-    general_scale = float(general_values.std(ddof=0))
-    if general_scale <= 1e-12:
-        general_scale = 1.0
-
-    calibration: dict[str, float] = {}
-    for benchmark_id, loading in state.loading.items():
-        loading_points_per_z = float(score_unit_points * loading * general_scale)
-        if loading_points_per_z <= 1e-8:
-            continue
-        calibration[str(benchmark_id)] = (
-            loading_points_per_z / config.information_scale_points
-        ) ** 2
+    if config.use_learned_discrimination and state is None:
+        raise ValueError("state is required when use_learned_discrimination is enabled")
 
     cells = _aggregate_model_benchmark_rows(rows)
+    learned = (
+        _benchmark_discrimination(
+            state,
+            model_ids,
+            score_unit_points,
+            config.information_scale_points,
+        )
+        if config.use_learned_discrimination
+        else {}
+    )
+
     benchmark_total_weight: dict[str, float] = defaultdict(float)
     benchmarks_by_model: dict[str, set[str]] = defaultdict(set)
     for (model_id, benchmark_id), (_, weight, _) in cells.items():
-        if benchmark_id not in calibration:
+        if config.use_learned_discrimination and benchmark_id not in learned:
             continue
         benchmark_total_weight[benchmark_id] += weight
         benchmarks_by_model[model_id].add(benchmark_id)
@@ -141,11 +165,12 @@ def build_pair_preferences(
                 total_weight = benchmark_total_weight[benchmark_id]
                 if total_weight <= 1e-12:
                     continue
+                discrimination = learned.get(benchmark_id, 1.0)
                 information = (
                     left_weight
                     * right_weight
                     / total_weight
-                    * calibration[benchmark_id]
+                    * discrimination
                 )
                 if information <= 1e-12:
                     continue
@@ -194,17 +219,12 @@ def build_pair_preferences(
 def fit_consensus_ranking(
     rows: Iterable[Any],
     model_ids: list[str],
-    state: Any,
+    state: Any | None,
     *,
     score_unit_points: float,
     config: ConsensusRankingConfig | None = None,
 ) -> ConsensusRankingResult:
-    """Solve the weighted Kemeny consensus ranking exactly as a binary MILP.
-
-    One binary variable is used per unordered model pair. Triangle constraints forbid
-    cyclic triples, yielding a global total order that minimizes weighted disagreement
-    with the incomplete benchmark-derived pair preferences.
-    """
+    """Solve the weighted Kemeny consensus ranking exactly as a binary MILP."""
 
     config = config or ConsensusRankingConfig()
     if not model_ids:
@@ -226,7 +246,6 @@ def fit_consensus_ranking(
             pairs.append((left, right))
 
     objective = np.zeros(len(pairs), dtype=float)
-    preference_by_pair: dict[tuple[int, int], PairPreference] = {}
     for preference in preferences:
         left = index[preference.left_model]
         right = index[preference.right_model]
@@ -235,9 +254,7 @@ def fit_consensus_ranking(
             net = -preference.net_preference
         else:
             net = preference.net_preference
-        var = pair_to_var[(left, right)]
-        objective[var] = -net
-        preference_by_pair[(left, right)] = preference
+        objective[pair_to_var[(left, right)]] = -net
 
     constraint_rows: list[int] = []
     constraint_cols: list[int] = []
@@ -309,8 +326,6 @@ def fit_consensus_ranking(
         if predicted_left == observed_left:
             weighted_agreement += magnitude
 
-    # Monotonic score used only as a convenient numeric ordering surface. The ordinal
-    # ranking is the statistical object produced by Kemeny aggregation.
     if n == 1:
         scores = {ranking[0]: 0.0}
     else:
