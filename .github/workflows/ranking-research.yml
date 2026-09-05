@@ -9,8 +9,10 @@ on:
       - "scripts/pairwise_graph_validation.py"
       - "scripts/pairwise_prior_validation.py"
       - "scripts/ranking_cv_comparison.py"
+      - "scripts/consensus_ranking_cv.py"
       - "src/better_bench/estimator.py"
       - "src/better_bench/pairwise_ranking.py"
+      - "src/better_bench/consensus_ranking.py"
       - "tests/test_pairwise_ranking.py"
       - ".github/workflows/ranking-research.yml"
 
@@ -30,9 +32,12 @@ jobs:
           scripts/pairwise_graph_validation.py
           scripts/pairwise_prior_validation.py
           scripts/ranking_cv_comparison.py
+          scripts/consensus_ranking_cv.py
           src/better_bench
           tests/test_pairwise_ranking.py
       - run: pytest -q tests/test_pairwise_ranking.py tests/test_estimator.py
+      - name: Kemeny consensus family-CV
+        run: python scripts/consensus_ranking_cv.py
       - name: Fixed vs hierarchical ranking baseline
         run: python scripts/ranking_cv_comparison.py
       - name: Coverage-neutral pairwise graph
