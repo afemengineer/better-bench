@@ -10,6 +10,7 @@ import numpy as np
 
 from .benchmark_quality import BenchmarkTier, rank_benchmarks
 from .estimator import EstimatorResult
+from .general_ranking import build_general_intelligence_ranking
 from .schema import (
     SOURCE_GRADE_WEIGHT,
     BenchmarkAdoptionSnapshot,
@@ -31,6 +32,10 @@ _TIER_WEIGHT = {
 @dataclass(frozen=True)
 class BetterBenchIndexEstimate:
     model_id: str
+    rank: int
+    rank_low: int
+    rank_high: int
+    ranking_method: str
     index: float
     ci_low: float
     ci_high: float
@@ -126,17 +131,23 @@ def build_better_bench_index(
     adoption: list[BenchmarkAdoptionSnapshot] | None = None,
     *,
     as_of: date | None = None,
-    calibration_id: str = "BBI-2026-09-04",
+    calibration_id: str = "BBI-2026-09-05",
     center: float = 100.0,
     points_per_z: float = 10.0,
     ridge: float = 0.35,
+    include_rank_bands: bool = True,
 ) -> list[BetterBenchIndexEstimate]:
-    """Convert the validated latent score to a versioned, uncertainty-aware index.
+    """Build the official Better Bench classification and auxiliary calibration score.
 
-    BBI is a presentation transform, not a new estimator: 100 is the retained frontier
-    cohort mean in the named calibration and ten index points equal one latent standard
-    deviation. Variance combines the estimator's conditional uncertainty with fixed-
-    calibration leave-one-benchmark-family-out sensitivity.
+    Final **ordering** comes from the validated broad-evidence Kemeny consensus ranker,
+    not from the selectively observed one-factor score. The numerical ``index`` and its
+    interval remain the calibrated one-factor magnitude diagnostic: 100 is the retained
+    calibration-cohort mean and ten points equal one calibration standard deviation.
+
+    Keeping these objects separate is intentional. Kemeny determines who ranks above
+    whom under sparse/non-random benchmark coverage; the fixed score preserves useful
+    cardinal information for calibration, taxonomy and uncertainty diagnostics without
+    being allowed to reward a model simply because difficult benchmark cells are absent.
     """
     if points_per_z <= 0:
         raise ValueError("points_per_z must be positive")
@@ -145,6 +156,17 @@ def build_better_bench_index(
 
     adoption = adoption or []
     as_of = as_of or date.today()
+    official_ranking = build_general_intelligence_ranking(
+        models,
+        benchmarks,
+        observations,
+        estimator,
+        adoption,
+        as_of=as_of,
+        include_rank_bands=include_rank_bands,
+    )
+    ranking_by_model = official_ranking.by_model
+
     retained_models = set(estimator.retained_models)
     retained_benchmarks = set(estimator.retained_benchmarks)
     benchmark_by_id = {benchmark.id: benchmark for benchmark in benchmarks}
@@ -191,9 +213,14 @@ def build_better_bench_index(
         index_value = center + points_per_z * model.general_z
         index_se = points_per_z * total_se_z
         half_width = 1.96 * index_se
+        rank_row = ranking_by_model[model.model_id]
         estimates.append(
             BetterBenchIndexEstimate(
                 model_id=model.model_id,
+                rank=rank_row.rank,
+                rank_low=rank_row.rank_low,
+                rank_high=rank_row.rank_high,
+                ranking_method=official_ranking.method,
                 index=round(index_value, 1),
                 ci_low=round(index_value - half_width, 1),
                 ci_high=round(index_value + half_width, 1),
@@ -209,5 +236,5 @@ def build_better_bench_index(
                 calibration_id=calibration_id,
             )
         )
-    estimates.sort(key=lambda row: row.index, reverse=True)
+    estimates.sort(key=lambda row: row.rank)
     return estimates
