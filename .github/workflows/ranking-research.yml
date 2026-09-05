@@ -7,6 +7,7 @@ on:
     paths:
       - "scripts/pairwise_graph_cv.py"
       - "scripts/pairwise_graph_validation.py"
+      - "scripts/pairwise_prior_validation.py"
       - "scripts/ranking_cv_comparison.py"
       - "src/better_bench/estimator.py"
       - "src/better_bench/pairwise_ranking.py"
@@ -27,6 +28,7 @@ jobs:
           ruff check
           scripts/pairwise_graph_cv.py
           scripts/pairwise_graph_validation.py
+          scripts/pairwise_prior_validation.py
           scripts/ranking_cv_comparison.py
           src/better_bench
           tests/test_pairwise_ranking.py
@@ -37,3 +39,5 @@ jobs:
         run: python scripts/pairwise_graph_cv.py
       - name: Nested and frontier graph validation
         run: python scripts/pairwise_graph_validation.py
+      - name: Neutral-prior nested graph validation
+        run: python scripts/pairwise_prior_validation.py
