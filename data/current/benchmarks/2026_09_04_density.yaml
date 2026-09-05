@@ -1,0 +1,70 @@
+- id: visualtoolbench-2025-10-apr
+  name: VisualToolBench
+  version: Scale APR leaderboard / 2025 release
+  family_id: visualtoolbench
+  published_at: '2025-10-14'
+  public_since: '2025-10-14'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.91
+  reliability: 0.88
+  contamination_resistance: 0.55
+  capability_loadings:
+    visual_intelligence: 0.45
+    structured_tool_use: 0.25
+    fluid_reasoning: 0.15
+    planning_agency: 0.10
+    spatial_intelligence: 0.05
+  notes: >-
+    1,204 expert-curated open-ended visual tasks with standardized tool access.
+    Average Pass Rate is the strict primary metric: all critical rubrics must pass.
+    Scale reports roughly 88% judge-human agreement. The public dataset makes this
+    useful multimodal/tool-use evidence but not a strong contamination control.
+
+- id: multichallenge-2026-02
+  name: MultiChallenge
+  version: 2026-02 reliability refresh
+  family_id: multichallenge
+  published_at: '2025-01-29'
+  public_since: '2025-01-29'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.88
+  reliability: 0.90
+  contamination_resistance: 0.45
+  capability_loadings:
+    long_context: 0.35
+    language: 0.25
+    fluid_reasoning: 0.15
+    social_pragmatic: 0.15
+    planning_agency: 0.10
+  notes: >-
+    Multi-turn benchmark covering instruction retention, inference memory, reliable
+    versioned editing and self-coherence. The February 2026 refresh upgraded the judge
+    to Gemini 2.5 Pro and clarified 54 tasks. Scale reports 93% judge agreement with
+    experienced human raters. Public data and construction around failures of six older
+    frontier models limit contamination/fairness confidence, so this is supporting
+    evidence rather than a protected benchmark.
+
+- id: osworld-2.0-v2026.06.24-binary
+  name: OSWorld 2.0
+  version: v2026.06.24 binary completion / 500 steps
+  family_id: osworld-2.0
+  published_at: '2026-06-26'
+  public_since: '2026-06-26'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.88
+  contamination_resistance: 0.88
+  capability_loadings:
+    gui_computer_use: 0.45
+    planning_agency: 0.25
+    visual_intelligence: 0.10
+    long_context: 0.10
+    structured_tool_use: 0.10
+  notes: >-
+    Official release-pinned OSWorld 2.0 protocol. Binary completion is the primary
+    metric at a 500-step budget. Release manifests pin code, task, asset, website and
+    provider-image versions. Harness/action mode is retained per observation because
+    batched-tool and standard configurations can materially alter performance.

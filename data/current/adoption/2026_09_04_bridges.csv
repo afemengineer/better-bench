@@ -1,0 +1,3 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+multinrc-2025-07,2026-09-04,44,10,https://labs.scale.com/leaderboard/multinrc,Current official leaderboard is broad enough to saturate the adoption component; configuration rows are retained only as an adoption snapshot and do not create extra evidence votes.
+swe-atlas-codebase-qna-2026-07,2026-09-04,20,8,https://labs.scale.com/leaderboard/sweatlas-qna,Current Codebase QnA leaderboard spans roughly twenty distinct model backbones across eight providers with some duplicate native-versus-common harness rows.

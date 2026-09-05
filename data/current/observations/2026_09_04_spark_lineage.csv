@@ -1,0 +1,36 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+muse-spark-1.1,deepswe-v1.1-meta-2026-08,53.0,2026-08-05,C,Muse Code,xhigh,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta launch comparison for the predecessor under the Spark 1.2 evaluation setup.
+muse-spark-1.2,deepswe-v1.1-meta-2026-08,59.3,2026-08-05,C,Muse Code,xhigh,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta launch comparison under the documented isolated Muse Code evaluation setup.
+claude-opus-5,deepswe-v1.1-meta-2026-08,65.0,2026-08-05,C,Claude Code,max,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta launch comparison row.
+gpt-5.6-terra,deepswe-v1.1-meta-2026-08,64.8,2026-08-05,C,Codex,max,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta launch comparison row.
+grok-4.5,deepswe-v1.1-meta-2026-08,56.6,2026-08-05,C,agent comparison,high,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta launch comparison row.
+muse-spark-1.3-max-preview,deepswe-v1.1,75.4,2026-09-04,B,Muse Code,max,,https://anotherwrapper.com/tools/llm-pricing/evals/deepswe-1-1,Current published DeepSWE leaderboard mirror; max is a limited-preview reasoning configuration and is intentionally separated from the generally available xhigh model.
+muse-spark-1.2,mcp-atlas-2026-04-full,90.3,2026-08-05,C,Scale MCP Atlas,enabled,,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Meta reports the Scale-produced MCP Atlas result from the benchmark harness.
+muse-spark-1.2,swe-atlas-codebase-qna-2026-07,46.2,2026-09-02,B,Scale SWE Atlas,xhigh,,https://benchmarklist.com/models/meta-muse-spark-1.2/,Current published Codebase QnA result; secondary index preserves source attribution.
+muse-spark-1.3-max-preview,swe-atlas-codebase-qna-2026-07,59.4,2026-09-03,B,Scale SWE Atlas,max,,https://www.modelbeats.com/benchmarks/swe-atlas-codebase-qna,Published max-preview Codebase QnA result; split from the generally available xhigh model.
+muse-spark-1.1,terminal-bench-2.1-meta-aa-2026,78.0,2026-08-05,B,Artificial Analysis Terminus 2,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-2,Artificial Analysis Spark lineage comparison under its v4.1 agent protocol.
+muse-spark-1.2,terminal-bench-2.1-meta-aa-2026,80.0,2026-08-05,B,Artificial Analysis Terminus 2,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-2,Artificial Analysis Spark lineage comparison.
+muse-spark-1.3,terminal-bench-2.1-meta-aa-2026,85.0,2026-09-02,B,Artificial Analysis Terminus 2,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,Generally available xhigh result; max preview scores 86 and is intentionally not mixed into this row.
+claude-fable-5,terminal-bench-2.1-meta-aa-2026,83.8,2026-06-07,A,Claude Code,xhigh,,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Official Terminal-Bench 2.1 leaderboard result.
+gpt-5.5,terminal-bench-2.1-meta-aa-2026,83.1,2026-05-01,A,Codex,xhigh,,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Official Terminal-Bench 2.1 leaderboard result.
+gpt-5.6-terra,terminal-bench-2.1-meta-aa-2026,78.4,2026-07-11,A,Codex,max,,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Official Terminal-Bench 2.1 leaderboard result.
+claude-opus-4.8,terminal-bench-2.1-meta-aa-2026,78.9,2026-07-09,A,Claude Code,high,,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Official Terminal-Bench 2.1 leaderboard result.
+grok-4.5,terminal-bench-2.1-meta-aa-2026,79.3,2026-07-09,A,Cursor CLI,high,,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Official Terminal-Bench 2.1 leaderboard result.
+muse-spark-1.1,gdpval-aa-v2-2026-09,1371,2026-08-05,B,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-2,Launch-era predecessor score retained for longitudinal comparison.
+muse-spark-1.2,gdpval-aa-v2-2026-09,1615,2026-09-02,B,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,September comparison baseline used by Artificial Analysis for the 1.3 generational delta.
+muse-spark-1.3,gdpval-aa-v2-2026-09,1709,2026-09-02,A,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,Generally available xhigh result; limited-preview max result 1754 is kept out of the canonical model row.
+claude-opus-5,gdpval-aa-v2-2026-09,1797,2026-09-04,A,Artificial Analysis Stirrup,xhigh,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+glm-5.3,gdpval-aa-v2-2026-09,1758,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+grok-4.6,gdpval-aa-v2-2026-09,1730,2026-09-04,A,Artificial Analysis Stirrup,high,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+qwen3.8-max,gdpval-aa-v2-2026-09,1721,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+claude-fable-5,gdpval-aa-v2-2026-09,1723,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+claude-opus-4.8,gdpval-aa-v2-2026-09,1578,2026-09-04,A,Artificial Analysis Stirrup,max,,https://artificialanalysis.ai/evaluations/gdpval-aa,Current independent leaderboard.
+muse-spark-1.2,tau3-banking-aa-2026-09,35.0,2026-09-02,B,Artificial Analysis tau3,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,September predecessor baseline in the Spark 1.3 comparison.
+muse-spark-1.3,tau3-banking-aa-2026-09,47.0,2026-09-02,A,Artificial Analysis tau3,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,Generally available xhigh result; max preview scores 52 and is intentionally excluded.
+claude-fable-5.1,tau3-banking-aa-2026-09,47.0,2026-09-02,A,Artificial Analysis tau3,max,,https://artificialanalysis.ai/articles/muse-spark-1-3,Current comparison row.
+qwen3.8-max,tau3-banking-aa-2026-09,51.0,2026-09-02,A,Artificial Analysis tau3,max,,https://artificialanalysis.ai/articles/muse-spark-1-3,Current comparison row.
+grok-4.6,tau3-banking-aa-2026-09,51.0,2026-09-02,A,Artificial Analysis tau3,high,,https://artificialanalysis.ai/articles/muse-spark-1-3,Current comparison row.
+glm-5.3,tau3-banking-aa-2026-09,50.0,2026-09-02,A,Artificial Analysis tau3,max,,https://artificialanalysis.ai/articles/muse-spark-1-3,Current comparison row.
+glm-5.3-flash,tau3-banking-aa-2026-09,47.0,2026-09-02,A,Artificial Analysis tau3,,,https://artificialanalysis.ai/articles/muse-spark-1-3,Current comparison row.
+muse-spark-1.3,hle-public-2025-04-final,47.0,2026-09-02,A,Artificial Analysis,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,Independent Artificial Analysis measurement for the generally available xhigh configuration.
+muse-spark-1.3,gpqa-diamond,94.0,2026-09-02,A,Artificial Analysis,xhigh,,https://artificialanalysis.ai/articles/muse-spark-1-3,Independent Artificial Analysis measurement for the generally available xhigh configuration.

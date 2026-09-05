@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: pytest -q
+      - name: Official broad-consensus nested validation
+        run: python scripts/broad_consensus_validation.py
+      - name: Corpus statistics
+        run: python scripts/corpus_stats.py
+      - name: Benchmark evidence-quality report
+        run: python scripts/benchmark_quality_report.py
+      - name: Model coverage-gap report
+        run: python scripts/coverage_gap_report.py
+      - name: Whole-registry model audit
+        run: python scripts/model_audit_report.py
+      - name: Mutable-alias revision audit
+        run: python scripts/revision_audit_report.py
+      - name: Family-aware factor report
+        run: python scripts/family_factor_report.py
+      - name: Hierarchical estimator report
+        run: python scripts/hierarchical_report.py
+      - name: Hierarchical model-family cross-validation
+        run: python scripts/hierarchical_cv_report.py
+      - name: Hierarchical cross-validation ablations
+        run: python scripts/hierarchical_ablation_report.py
+      - name: Calibration estimator report
+        run: python scripts/estimator_report.py
+      - name: Official Better Bench classification report
+        run: python scripts/index_report.py
+      - name: GLM matched-evidence audit
+        run: python scripts/pairwise_overlap_report.py glm-5.3 glm-5.3-flash
+      - name: Calibration-order inversion diagnostic
+        run: python scripts/pairwise_inversion_report.py
+      - name: Taxonomy top-five report
+        run: python scripts/taxonomy_report.py
+      - name: Factor smoke on current corpus
+        run: >-
+          better-bench factor
+          --benchmarks data/current
+          --observations data/current
+          --rank 3
+          --minimum-models 5
+          --minimum-benchmarks 5
+          --top 24
+      - name: Novelty smoke on current corpus
+        run: >-
+          better-bench novelty
+          --benchmarks data/current
+          --models data/current
+          --observations data/current
+          --minimum-overlap 5
+          --top 10

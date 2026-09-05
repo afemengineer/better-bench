@@ -1,0 +1,9 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gemini-3-pro,vista-private-2024-12,51.49,2026-09-04,A,Scale VISTA,,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean across repeated evaluation runs.
+gpt-5.4,vista-private-2024-12,50.89,2026-09-04,A,Scale VISTA,xhigh thinking,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean; GPT-5.4 Pro is a separate model and is not merged here.
+claude-sonnet-4.5,vista-private-2024-12,48.75,2026-09-04,A,Scale VISTA,thinking,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean using the thinking row.
+gemini-3.1-flash-lite,vista-private-2024-12,46.93,2026-09-04,A,Scale VISTA,,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean.
+gpt-5.2,vista-private-2024-12,46.62,2026-09-04,A,Scale VISTA,,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean.
+claude-opus-4.6,vista-private-2024-12,46.07,2026-09-04,A,Scale VISTA,thinking max,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean using the thinking-max row.
+gpt-5.1,vista-private-2024-12,43.82,2026-09-04,A,Scale VISTA,thinking,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean.
+kimi-k2.5,vista-private-2024-12,41.86,2026-09-04,A,Scale VISTA,,,https://labs.scale.com/leaderboard/visual_language_understanding,Current official VISTA free-form accuracy mean.

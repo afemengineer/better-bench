@@ -1,0 +1,71 @@
+- id: terminal-bench-2.1-meta-aa-2026
+  name: Terminal-Bench
+  version: 2.1 Meta/AA comparable agent snapshot
+  family_id: terminal-bench
+  published_at: '2026-05-06'
+  public_since: '2026-05-06'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.90
+  reliability: 0.88
+  contamination_resistance: 0.70
+  capability_loadings:
+    terminal_agency: 0.35
+    software_engineering: 0.25
+    planning_agency: 0.25
+    structured_tool_use: 0.10
+    long_context: 0.05
+  notes: >-
+    Terminal-Bench 2.1 contains 89 containerized terminal tasks and was released on
+    2026-05-06 after repairing 28 tasks from 2.0. This protocol id stores a comparable
+    Spark-era agent snapshot rather than mixing later Terminal-Bench 4.0 results. Agent
+    harness remains part of the measured system and is stored observation-level.
+
+- id: gdpval-aa-v2-2026-09
+  name: GDPval-AA
+  version: v2 2026-09 snapshot
+  family_id: gdpval-aa
+  published_at: '2026-06-01'
+  public_since: '2026-06-01'
+  score_floor: 1000
+  score_ceiling: 2000
+  protocol_quality: 0.94
+  reliability: 0.90
+  contamination_resistance: 0.82
+  capability_loadings:
+    planning_agency: 0.25
+    structured_tool_use: 0.20
+    language: 0.15
+    knowledge: 0.15
+    web_agency: 0.10
+    social_pragmatic: 0.10
+    quantitative_reasoning: 0.05
+  notes: >-
+    Artificial Analysis' v2 evaluation of 220 professional GDPval tasks spanning 44
+    occupations and nine industries. Models operate through the Stirrup agent harness
+    with shell and web access and are scored by blind pairwise comparisons as Elo. The
+    1000-2000 normalization window is an explicit V1 calibration choice, not a claim
+    that Elo has a natural hard ceiling.
+
+- id: tau3-banking-aa-2026-09
+  name: Tau3-Bench Banking
+  version: Artificial Analysis 2026-09 snapshot
+  family_id: tau3-banking
+  published_at: '2025-06-01'
+  public_since: '2025-06-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.91
+  reliability: 0.88
+  contamination_resistance: 0.62
+  capability_loadings:
+    structured_tool_use: 0.35
+    planning_agency: 0.25
+    social_pragmatic: 0.20
+    language: 0.10
+    knowledge: 0.10
+  notes: >-
+    Banking-domain Tau3 tool-use evaluation as run by Artificial Analysis. It probes
+    multi-turn policy following, tool selection and customer interaction. Public task
+    exposure limits its use as contamination evidence, but the benchmark is highly
+    useful for differentiating agentic/tool-use capability.

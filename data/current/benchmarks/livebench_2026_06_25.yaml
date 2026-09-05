@@ -1,0 +1,115 @@
+- id: livebench-2026-06-25-reasoning
+  name: LiveBench Reasoning
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.90
+  capability_loadings:
+    fluid_reasoning: 0.60
+    knowledge: 0.20
+    quantitative_reasoning: 0.10
+    language: 0.10
+  notes: LiveBench category average from the 2026-06-25 contamination-resistant refresh.
+
+- id: livebench-2026-06-25-coding
+  name: LiveBench Coding
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.90
+  capability_loadings:
+    software_engineering: 0.70
+    fluid_reasoning: 0.15
+    planning_agency: 0.15
+  notes: LiveBench coding category average from the 2026-06-25 refresh.
+
+- id: livebench-2026-06-25-agentic-coding
+  name: LiveBench Agentic Coding
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.88
+  capability_loadings:
+    software_engineering: 0.45
+    terminal_agency: 0.25
+    planning_agency: 0.25
+    long_context: 0.05
+  notes: LiveBench agentic-coding category average; kept separate from ordinary coding.
+
+- id: livebench-2026-06-25-mathematics
+  name: LiveBench Mathematics
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.92
+  capability_loadings:
+    quantitative_reasoning: 0.85
+    fluid_reasoning: 0.15
+  notes: LiveBench mathematics category average from the 2026-06-25 refresh.
+
+- id: livebench-2026-06-25-data-analysis
+  name: LiveBench Data Analysis
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.88
+  capability_loadings:
+    quantitative_reasoning: 0.40
+    scientific_reasoning: 0.20
+    planning_agency: 0.15
+    language: 0.15
+    knowledge: 0.10
+  notes: LiveBench data-analysis category average from the 2026-06-25 refresh.
+
+- id: livebench-2026-06-25-language
+  name: LiveBench Language
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.88
+  capability_loadings:
+    language: 0.75
+    knowledge: 0.15
+    social_pragmatic: 0.10
+  notes: LiveBench language category average from the 2026-06-25 refresh.
+
+- id: livebench-2026-06-25-instruction-following
+  name: LiveBench Instruction Following
+  version: 2026-06-25
+  family_id: livebench-2026-06-25
+  published_at: '2026-06-25'
+  public_since: '2026-06-25'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.88
+  capability_loadings:
+    language: 0.40
+    planning_agency: 0.25
+    social_pragmatic: 0.20
+    long_context: 0.15
+  notes: LiveBench instruction-following category average from the 2026-06-25 refresh.

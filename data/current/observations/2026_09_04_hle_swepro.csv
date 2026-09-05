@@ -1,0 +1,18 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+claude-fable-5.1,hle-public-2025-04-final,46.50,2026-09-04,A,Scale HLE,xhigh,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+gemini-3.1-pro,hle-public-2025-04-final,46.44,2026-09-04,A,Scale HLE,thinking high,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+gemini-3-pro,hle-public-2025-04-final,37.52,2026-09-04,A,Scale HLE,,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+gpt-5.4,hle-public-2025-04-final,36.24,2026-09-04,A,Scale HLE,xhigh thinking,,https://labs.scale.com/leaderboard/humanitys_last_exam,Uses GPT-5.4 2026-03-05 xhigh-thinking row rather than the separate GPT-5.4 Pro model.
+claude-opus-4.7,hle-public-2025-04-final,36.20,2026-09-04,A,Scale HLE,,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+claude-opus-4.6,hle-public-2025-04-final,34.44,2026-09-04,A,Scale HLE,thinking max,,https://labs.scale.com/leaderboard/humanitys_last_exam,Best listed Opus 4.6 reasoning configuration; non-thinking row is lower and not duplicated.
+gpt-5.2,hle-public-2025-04-final,27.80,2026-09-04,A,Scale HLE,,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy for GPT-5.2 2025-12-11.
+kimi-k2.5,hle-public-2025-04-final,24.37,2026-09-04,A,Scale HLE,,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+gpt-5.1,hle-public-2025-04-final,23.68,2026-09-04,A,Scale HLE,thinking,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+claude-sonnet-4.5,hle-public-2025-04-final,13.72,2026-09-04,A,Scale HLE,thinking,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+gemini-3.1-flash-lite,hle-public-2025-04-final,8.64,2026-09-04,A,Scale HLE,,,https://labs.scale.com/leaderboard/humanitys_last_exam,Current official public-set accuracy.
+muse-spark-1.1,swe-bench-pro-private-2025-09,51.50,2026-09-04,A,mini-SWE-agent,,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.
+claude-opus-4.6,swe-bench-pro-private-2025-09,47.10,2026-09-04,A,mini-SWE-agent,thinking,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.
+gpt-5.4,swe-bench-pro-private-2025-09,43.40,2026-09-04,A,mini-SWE-agent,xhigh,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.
+gemini-3.1-pro,swe-bench-pro-private-2025-09,32.20,2026-09-04,A,mini-SWE-agent,thinking,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.
+gpt-5.2,swe-bench-pro-private-2025-09,23.81,2026-09-04,A,Scale SWE-Bench Pro private,,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.
+gemini-3-pro,swe-bench-pro-private-2025-09,17.95,2026-09-04,A,Scale SWE-Bench Pro private,,,https://labs.scale.com/leaderboard/swe_bench_pro_private,Current official private commercial-subset resolve rate.

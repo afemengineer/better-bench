@@ -1,0 +1,15 @@
+- id: mmmu-pro-aa-2026-09-01
+  name: MMMU-Pro
+  version: Artificial Analysis snapshot 2026-09-01
+  published_at: '2024-09-04'
+  public_since: '2024-09-05'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.88
+  reliability: 0.86
+  capability_loadings:
+    visual_intelligence: 0.55
+    spatial_intelligence: 0.15
+    scientific_reasoning: 0.15
+    knowledge: 0.15
+  notes: Artificial Analysis visual-reasoning evaluation snapshot. Values in this seed are sourced through a secondary source-checked index and therefore receive grade D provenance until directly exported from AA.

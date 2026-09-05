@@ -1,0 +1,24 @@
+- id: prbench-legal-2025-11-full
+  name: Professional Reasoning Benchmark - Legal
+  version: 2025-11 full 500-task legal set
+  family_id: prbench
+  published_at: '2025-11-13'
+  public_since: '2025-11-13'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.93
+  reliability: 0.90
+  contamination_resistance: 0.50
+  capability_loadings:
+    knowledge: 0.25
+    language: 0.20
+    fluid_reasoning: 0.20
+    social_pragmatic: 0.15
+    planning_agency: 0.10
+    long_context: 0.10
+  notes: >-
+    500 expert-authored legal tasks from PRBench, with 10-30 weighted expert rubric
+    criteria per task. Rubric validation reports 93.9% expert agreement and the o4-mini
+    judge reports 80.2% agreement with human experts, comparable to 79.6% inter-human
+    agreement. The dataset is public, so this is broad professional-reasoning evidence
+    rather than a strong novelty/contamination control.

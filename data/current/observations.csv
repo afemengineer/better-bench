@@ -1,0 +1,137 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+gpt-6-astra,deepswe-v1.1,74.0,2026-09-03,A,mini-swe-agent,xhigh,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gemini-3.8-flash,deepswe-v1.1,74.0,2026-09-03,A,mini-swe-agent,high,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+claude-opus-5,deepswe-v1.1,74.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gpt-5.6-sol,deepswe-v1.1,73.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+claude-fable-5,deepswe-v1.1,70.0,2026-09-03,A,mini-swe-agent,xhigh,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+glm-5.3,deepswe-v1.1,69.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+kimi-k3,deepswe-v1.1,69.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+grok-4.6,deepswe-v1.1,67.0,2026-09-03,A,mini-swe-agent,medium,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gpt-5.6-luna,deepswe-v1.1,67.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gpt-5.5,deepswe-v1.1,67.0,2026-09-03,A,mini-swe-agent,xhigh,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gemini-3.7-flash,deepswe-v1.1,65.0,2026-09-03,A,mini-swe-agent,medium,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+glm-5.3-flash,deepswe-v1.1,63.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+deepseek-v4-pro,deepswe-v1.1,63.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+claude-opus-4.8,deepswe-v1.1,59.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+qwen3.8-max,deepswe-v1.1,57.0,2026-09-03,A,mini-swe-agent,xhigh,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+muse-spark-1.2,deepswe-v1.1,55.0,2026-09-03,A,mini-swe-agent,xhigh,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+claude-sonnet-5,deepswe-v1.1,54.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+deepseek-v4-flash,deepswe-v1.1,53.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gemini-3.6-flash,deepswe-v1.1,47.0,2026-09-03,A,mini-swe-agent,high,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+glm-5.2,deepswe-v1.1,44.0,2026-09-03,A,mini-swe-agent,max,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+gemini-3.5-flash,deepswe-v1.1,36.0,2026-09-03,A,mini-swe-agent,high,,https://deepswe.datacurve.ai/,Current DeepSWE v1.1 best configuration; leaderboard reports 113 tasks.
+claude-fable-5.1,deepswe-v1.1,67.4,2026-09-03,C,vendor evaluation,max,,https://openai.com/index/gpt-6-astra/,OpenAI launch comparison; retained only because current public board did not expose Fable 5.1.
+claude-opus-5,terminal-bench-4.0,51.8,2026-08-28,B,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+claude-fable-5,terminal-bench-4.0,44.5,2026-08-28,B,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+glm-5.3,terminal-bench-4.0,41.8,2026-08-28,B,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+gpt-5.6-sol,terminal-bench-4.0,37.3,2026-08-28,B,Codex,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+claude-opus-4.8,terminal-bench-4.0,23.6,2026-08-28,B,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+gpt-5.6-terra,terminal-bench-4.0,21.5,2026-08-28,B,Codex,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+grok-4.6,terminal-bench-4.0,20.3,2026-08-28,B,Grok Build,high,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+gpt-5.6-luna,terminal-bench-4.0,17.3,2026-08-28,B,Codex,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+grok-4.5,terminal-bench-4.0,12.4,2026-08-28,B,Grok Build,high,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+claude-sonnet-5,terminal-bench-4.0,12.4,2026-08-28,B,Claude Code,max,,https://snorkel.ai/leaderboard/terminal-bench-4-0/,Official Harbor/Terminal-Bench 4.0 result mirrored by Snorkel AI.
+gpt-6-astra,terminal-bench-4.0,57.9,2026-09-03,C,vendor agent setup,xhigh,,https://openai.com/index/gpt-6-astra/,OpenAI launch comparison; same TB 4.0 version but vendor research environment.
+claude-fable-5.1,terminal-bench-4.0,55.8,2026-09-03,C,vendor agent setup,max,,https://openai.com/index/gpt-6-astra/,OpenAI launch comparison; same TB 4.0 version but vendor research environment.
+gemini-3.8-flash,terminal-bench-4.0,19.1,2026-09-03,C,vendor agent setup,high,,https://openai.com/index/gpt-6-astra/,OpenAI launch comparison; same TB 4.0 version but vendor research environment.
+claude-opus-5,terminal-bench-science-0.1,30.0,2026-08-27,A,Claude Code,max,,https://www.terminal-bench-science.ai/,Original public leaderboard; three trials per task.
+gpt-5.6-sol,terminal-bench-science-0.1,22.4,2026-08-27,A,Codex,max,,https://www.terminal-bench-science.ai/,Original public leaderboard; three trials per task.
+claude-fable-5,terminal-bench-science-0.1,21.4,2026-08-27,A,Claude Code,max,,https://www.terminal-bench-science.ai/,Original public leaderboard; three trials per task.
+claude-opus-4.8,terminal-bench-science-0.1,10.5,2026-08-27,A,Claude Code,max,,https://www.terminal-bench-science.ai/,Original public leaderboard; three trials per task.
+gpt-6-astra,terminal-bench-science-0.1,64.6,2026-09-03,C,vendor evaluation,max,,https://openai.com/index/gpt-6-astra/,Post-release vendor comparison on Terminal-Bench-Science 0.1.
+claude-fable-5.1,terminal-bench-science-0.1,52.6,2026-09-03,C,vendor evaluation,max,,https://openai.com/index/gpt-6-astra/,Post-release vendor comparison on Terminal-Bench-Science 0.1.
+claude-fable-5,healthbench-prof-independent-2026-08,66.0,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+gpt-5.6-sol,healthbench-prof-independent-2026-08,60.5,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+claude-opus-5,healthbench-prof-independent-2026-08,59.8,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+claude-sonnet-5,healthbench-prof-independent-2026-08,57.8,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+gpt-5.6-terra,healthbench-prof-independent-2026-08,57.7,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+claude-opus-4.8,healthbench-prof-independent-2026-08,55.8,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+gpt-5.6-luna,healthbench-prof-independent-2026-08,55.7,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+gpt-5.5-instant,healthbench-prof-independent-2026-08,38.4,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+mai-thinking-1,healthbench-prof-independent-2026-08,35.0,2026-08-16,A,raw API / no tools,default,,https://healthbenchprofessional.com/,Independent leaderboard; source's 0-1 rubric score converted to percent.
+claude-opus-4.8,automationbench-public-1.0.6,30.33,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+gpt-5.6-sol,automationbench-public-1.0.6,29.17,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+gpt-5.6-terra,automationbench-public-1.0.6,25.83,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+claude-fable-5,automationbench-public-1.0.6,25.83,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+claude-sonnet-5,automationbench-public-1.0.6,24.0,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+glm-5.2,automationbench-public-1.0.6,20.33,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+gemini-3.5-flash,automationbench-public-1.0.6,14.83,2026-07-31,A,official public-set runner,max,,https://github.com/zapier/AutomationBench,600-task public benchmark pass rate.
+gpt-5.5,nist-ctf-archive-diamond,71.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-ctf-archive-diamond,32.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-ctf-archive-diamond,46.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-ctf-archive-diamond,32.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation. CAISI marks this score as imputed from a subset via IRT.
+gpt-5.5,nist-swe-bench-verified,81.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-swe-bench-verified,73.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-swe-bench-verified,79.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-swe-bench-verified,74.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-portbench,78.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-portbench,41.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-portbench,60.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-portbench,44.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-frontierscience,79.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-frontierscience,74.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-frontierscience,72.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-frontierscience,74.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,gpqa-diamond,96.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,gpqa-diamond,87.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,gpqa-diamond,91.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,gpqa-diamond,90.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-arc-agi-2-semiprivate,79.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-arc-agi-2-semiprivate,63.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-arc-agi-2-semiprivate,46.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-otis-aime-2025,100.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-otis-aime-2025,90.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-otis-aime-2025,92.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-otis-aime-2025,97.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-pumac-2024,96.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-pumac-2024,93.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-pumac-2024,95.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-pumac-2024,96.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.5,nist-smt-2025,99.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-5.4-mini,nist-smt-2025,92.0,2026-04-30,A,CAISI evaluation,xhigh,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+claude-opus-4.6,nist-smt-2025,94.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+deepseek-v4-pro,nist-smt-2025,96.0,2026-04-30,A,CAISI evaluation,max,,https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro,CAISI controlled evaluation.
+gpt-6-astra,frontiercode-1.1-extended,64.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-5.6-sol,frontiercode-1.1-extended,60.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5.1,frontiercode-1.1-extended,63.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5,frontiercode-1.1-extended,64.9,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-opus-5,frontiercode-1.1-extended,63.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gemini-3.8-flash,frontiercode-1.1-extended,56.3,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-6-astra,frontiercode-1.1-main,53.3,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-5.6-sol,frontiercode-1.1-main,47.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5.1,frontiercode-1.1-main,50.9,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5,frontiercode-1.1-main,53.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-opus-5,frontiercode-1.1-main,53.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gemini-3.8-flash,frontiercode-1.1-main,43.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-6-astra,gpqa-diamond,96.0,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-5.6-sol,gpqa-diamond,94.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5.1,gpqa-diamond,93.7,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5,gpqa-diamond,92.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-opus-5,gpqa-diamond,93.7,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gemini-3.8-flash,gpqa-diamond,95.3,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-6-astra,healthbench-prof-openai-launch,63.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-5.6-sol,healthbench-prof-openai-launch,60.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5.1,healthbench-prof-openai-launch,58.1,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-fable-5,healthbench-prof-openai-launch,60.9,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+claude-opus-5,healthbench-prof-openai-launch,56.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gemini-3.8-flash,healthbench-prof-openai-launch,52.1,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; maximum reported effort where applicable.
+gpt-6-astra,arc-agi-2-openai-launch,95.0,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-5.6-sol,arc-agi-2-openai-launch,92.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5.1,arc-agi-2-openai-launch,90.0,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5,arc-agi-2-openai-launch,89.2,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-opus-5,arc-agi-2-openai-launch,90.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-6-astra,arc-agi-1-openai-launch,98.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-5.6-sol,arc-agi-1-openai-launch,97.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5.1,arc-agi-1-openai-launch,97.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5,arc-agi-1-openai-launch,98.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-opus-5,arc-agi-1-openai-launch,97.5,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-6-astra,automationbench-openai-launch,41.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-5.6-sol,automationbench-openai-launch,18.1,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5.1,automationbench-openai-launch,31.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5,automationbench-openai-launch,17.4,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-opus-5,automationbench-openai-launch,26.9,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-6-astra,frontiermath-tier4-v2-openai-launch,97.6,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+gpt-5.6-sol,frontiermath-tier4-v2-openai-launch,83.0,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5.1,frontiermath-tier4-v2-openai-launch,87.8,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-fable-5,frontiermath-tier4-v2-openai-launch,87.8,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.
+claude-opus-5,frontiermath-tier4-v2-openai-launch,73.2,2026-09-03,C,OpenAI comparison environment,max,,https://openai.com/index/gpt-6-astra/,Vendor launch comparison; score kept in a protocol-specific benchmark id.

@@ -1,0 +1,18 @@
+# V0 capability taxonomy. Weights are deliberately equal until empirical factor analysis
+# gives us evidence to do otherwise.
+capabilities:
+  fluid_reasoning: {weight: 1.0, group: reasoning}
+  quantitative_reasoning: {weight: 1.0, group: reasoning}
+  scientific_reasoning: {weight: 1.0, group: reasoning}
+  knowledge: {weight: 1.0, group: cognition}
+  language: {weight: 1.0, group: cognition}
+  software_engineering: {weight: 1.0, group: coding}
+  structured_tool_use: {weight: 1.0, group: agency}
+  terminal_agency: {weight: 1.0, group: agency}
+  web_agency: {weight: 1.0, group: agency}
+  gui_computer_use: {weight: 1.0, group: agency}
+  visual_intelligence: {weight: 1.0, group: multimodal}
+  spatial_intelligence: {weight: 1.0, group: multimodal}
+  long_context: {weight: 1.0, group: cognition}
+  planning_agency: {weight: 1.0, group: agency}
+  social_pragmatic: {weight: 1.0, group: cognition}

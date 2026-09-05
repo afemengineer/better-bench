@@ -1,0 +1,26 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+muse-spark-1.1,multinrc-2025-07,65.59,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gemini-3.1-pro,multinrc-2025-07,64.74,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gemini-3-pro,multinrc-2025-07,58.96,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gpt-5.4,multinrc-2025-07,58.29,2026-09-04,A,Scale MultiNRC,xhigh thinking,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+claude-opus-4.6,multinrc-2025-07,57.06,2026-09-04,A,Scale MultiNRC,thinking max,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gpt-5.1,multinrc-2025-07,49.00,2026-09-04,A,Scale MultiNRC,thinking,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gpt-5.2,multinrc-2025-07,42.18,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+claude-sonnet-4.5,multinrc-2025-07,35.83,2026-09-04,A,Scale MultiNRC,thinking,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+kimi-k2.5,multinrc-2025-07,35.17,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+gemini-3.1-flash-lite,multinrc-2025-07,25.02,2026-09-04,A,Scale MultiNRC,,,https://labs.scale.com/leaderboard/multinrc,Current official native multilingual reasoning score.
+claude-opus-5,swe-atlas-codebase-qna-2026-07,63.17,2026-09-04,A,Claude Code,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+claude-fable-5.1,swe-atlas-codebase-qna-2026-07,59.95,2026-09-04,A,Claude Code,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate; source notes elevated refusal failures on some benign security questions.
+claude-opus-4.8,swe-atlas-codebase-qna-2026-07,57.26,2026-09-04,A,Claude Code,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+glm-5.2,swe-atlas-codebase-qna-2026-07,48.12,2026-09-04,A,Mini-SWE-Agent,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+gpt-5.6-sol,swe-atlas-codebase-qna-2026-07,46.00,2026-09-04,A,Codex,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate; source notes elevated refusal failures on some benign security questions.
+gpt-5.5,swe-atlas-codebase-qna-2026-07,45.43,2026-09-04,A,Codex,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+muse-spark-1.1,swe-atlas-codebase-qna-2026-07,42.20,2026-09-04,A,Mini-SWE-Agent,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate with the newer 500-step mini-SWE-agent budget.
+gpt-5.4,swe-atlas-codebase-qna-2026-07,40.80,2026-09-04,A,Codex,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Native Codex task resolve rate; mini-SWE-agent result is intentionally not duplicated.
+claude-opus-4.7,swe-atlas-codebase-qna-2026-07,40.32,2026-09-04,A,Claude Code,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+claude-fable-5,swe-atlas-codebase-qna-2026-07,39.00,2026-09-04,A,Claude Code,xhigh,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate; source notes elevated refusal failures on some benign security questions.
+claude-opus-4.6,swe-atlas-codebase-qna-2026-07,33.30,2026-09-04,A,Claude Code,,,https://labs.scale.com/leaderboard/sweatlas-qna,Native Claude Code task resolve rate; mini-SWE-agent result is intentionally not duplicated.
+claude-sonnet-4.6,swe-atlas-codebase-qna-2026-07,31.20,2026-09-04,A,Claude Code,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+deepseek-v4-pro,swe-atlas-codebase-qna-2026-07,27.15,2026-09-04,A,Mini-SWE-Agent,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+gemini-3.1-pro,swe-atlas-codebase-qna-2026-07,13.50,2026-09-04,A,Mini-SWE-Agent,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.
+kimi-k2.5,swe-atlas-codebase-qna-2026-07,13.10,2026-09-04,A,Mini-SWE-Agent,,,https://labs.scale.com/leaderboard/sweatlas-qna,Task resolve rate on the current Codebase QnA leaderboard.

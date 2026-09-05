@@ -1,0 +1,24 @@
+- id: vista-private-2024-12
+  name: VISTA
+  version: private 758-task visual-language set
+  family_id: vista
+  published_at: '2024-12-18'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.94
+  reliability: 0.91
+  contamination_resistance: 0.96
+  capability_loadings:
+    visual_intelligence: 0.50
+    spatial_intelligence: 0.20
+    fluid_reasoning: 0.15
+    quantitative_reasoning: 0.10
+    knowledge: 0.05
+  notes: >-
+    Scale VISTA contains 758 prompt-image pairs over 747 unique images and tests OCR,
+    spatial understanding, object/attribute recognition, logic, calculation and common
+    sense with free-form responses and structured rubrics. Evaluations are repeated
+    three times and use three independent LLM judges. The evaluation set is retained
+    privately by Scale specifically to preserve benchmark integrity and test
+    generalization; the methodology/leaderboard has been public since December 2024.

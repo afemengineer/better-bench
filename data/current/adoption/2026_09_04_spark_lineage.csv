@@ -1,0 +1,5 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+deepswe-v1.1-meta-2026-08,2026-09-04,5,4,https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2,Counts only the directly comparable rows in Meta's launch table; broader DeepSWE adoption belongs to the canonical protocol snapshot.
+terminal-bench-2.1-meta-aa-2026,2026-09-04,8,5,https://www.tbench.ai/leaderboard/terminal-bench/2.1,Conservative count for the rows stored in this comparable Spark-era snapshot; the full official leaderboard is larger.
+gdpval-aa-v2-2026-09,2026-09-04,8,6,https://artificialanalysis.ai/evaluations/gdpval-aa,Conservative count for the stored September comparison cohort; the live independent leaderboard contains many more model configurations.
+tau3-banking-aa-2026-09,2026-09-04,7,5,https://artificialanalysis.ai/articles/muse-spark-1-3,Directly comparable current rows extracted from Artificial Analysis' September Spark 1.3 comparison.

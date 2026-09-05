@@ -1,0 +1,21 @@
+- id: deepswe-v1.1-meta-2026-08
+  name: DeepSWE
+  version: v1.1 Meta Muse Spark 1.2 launch comparison
+  family_id: deepswe-v1.1
+  published_at: '2026-07-01'
+  public_since: '2026-07-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.86
+  reliability: 0.86
+  contamination_resistance: 0.72
+  capability_loadings:
+    software_engineering: 0.70
+    planning_agency: 0.15
+    terminal_agency: 0.10
+    long_context: 0.05
+  notes: >-
+    Meta's August 2026 Muse Spark 1.2 launch comparison on DeepSWE v1.1. Muse models
+    were evaluated with Muse Code and xhigh reasoning under Meta's documented isolated
+    agent setup; comparison rows use the launch table and therefore remain distinct from
+    the continuously refreshed public DeepSWE leaderboard while sharing its family budget.

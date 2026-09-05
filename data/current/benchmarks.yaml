@@ -1,0 +1,331 @@
+- id: deepswe-v1.1
+  name: DeepSWE
+  version: v1.1
+  published_at: '2026-07-01'
+  public_since: '2026-07-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.95
+  reliability: 0.92
+  capability_loadings:
+    software_engineering: 0.7
+    planning_agency: 0.15
+    terminal_agency: 0.1
+    long_context: 0.05
+  notes: 113 original long-horizon repository engineering tasks. Publication day normalized
+    to 2026-07-01 because the source identifies the revision as July 2026. Current
+    board states tasks are written from scratch and all models use mini-swe-agent.
+- id: terminal-bench-4.0
+  name: Terminal-Bench
+  version: 4.0.0
+  published_at: '2026-08-28'
+  public_since: '2026-08-28'
+  rotating: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.95
+  reliability: 0.9
+  capability_loadings:
+    terminal_agency: 0.35
+    software_engineering: 0.2
+    planning_agency: 0.25
+    quantitative_reasoning: 0.1
+    knowledge: 0.1
+  notes: 66 containerized terminal tasks. Agent/harness is part of the measured system;
+    results are not pure base-model measurements.
+- id: terminal-bench-science-0.1
+  name: Terminal-Bench-Science
+  version: '0.1'
+  published_at: '2026-08-27'
+  public_since: '2026-08-27'
+  rotating: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.88
+  capability_loadings:
+    scientific_reasoning: 0.4
+    terminal_agency: 0.25
+    planning_agency: 0.2
+    quantitative_reasoning: 0.1
+    software_engineering: 0.05
+  notes: 70 expert-curated scientific research workflows across life, physical, Earth,
+    mathematical, and engineering sciences; three trials per task on the original
+    public leaderboard.
+- id: healthbench-prof-independent-2026-08
+  name: HealthBench Professional independent rerun
+  version: 2026-08-16 snapshot
+  family_id: healthbench-prof
+  published_at: '2026-04-30'
+  public_since: '2026-04-30'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.9
+  reliability: 0.84
+  capability_loadings:
+    scientific_reasoning: 0.45
+    knowledge: 0.25
+    language: 0.15
+    social_pragmatic: 0.15
+  notes: Independent same-protocol rerun on the released 525-task set with the default
+    grader. Stored separately from vendor launch-report scores because protocol/scaffolding
+    can move the result.
+- id: automationbench-public-1.0.6
+  name: AutomationBench public set
+  version: 1.0.6
+  family_id: automationbench
+  published_at: '2026-04-20'
+  public_since: '2026-04-20'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.86
+  reliability: 0.82
+  capability_loadings:
+    planning_agency: 0.45
+    web_agency: 0.25
+    knowledge: 0.15
+    language: 0.15
+  notes: 600 public simulated business-workflow tasks. This V0 taxonomy lacks a generic
+    structured-tool-use factor, so web_agency is an imperfect proxy and should be
+    revisited.
+- id: nist-ctf-archive-diamond
+  name: CAISI CTF-Archive-Diamond
+  version: 2026-05 evaluation
+  published_at: '2026-05-01'
+  sealed_test: false
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.9
+  reliability: 0.8
+  capability_loadings:
+    terminal_agency: 0.35
+    software_engineering: 0.25
+    fluid_reasoning: 0.25
+    planning_agency: 0.15
+  notes: CAISI-developed benchmark based on 285 difficult CTF challenges. DeepSeek
+    V4 Pro result is partly imputed by CAISI; observation note marks it.
+- id: nist-swe-bench-verified
+  name: SWE-Bench Verified (CAISI protocol)
+  version: CAISI 2026-05
+  family_id: swe-bench
+  published_at: '2023-10-10'
+  public_since: '2023-10-10'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.88
+  reliability: 0.86
+  capability_loadings:
+    software_engineering: 0.75
+    planning_agency: 0.15
+    terminal_agency: 0.1
+  notes: CAISI protocol is intentionally a separate benchmark id because its scaffolding/system
+    prompt/token budget differ from other SWE-Bench Verified leaderboards.
+- id: nist-portbench
+  name: PortBench
+  version: CAISI 2026-05
+  published_at: '2026-05-01'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.88
+  capability_loadings:
+    software_engineering: 0.65
+    fluid_reasoning: 0.15
+    planning_agency: 0.15
+    terminal_agency: 0.05
+  notes: Non-public CAISI evaluation for porting CLI tools across programming languages.
+- id: nist-frontierscience
+  name: FrontierScience (CAISI protocol)
+  version: CAISI 2026-05
+  published_at: '2026-01-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.9
+  reliability: 0.85
+  capability_loadings:
+    scientific_reasoning: 0.65
+    quantitative_reasoning: 0.2
+    knowledge: 0.15
+  notes: CAISI-run expert-level science benchmark. Publication date is month-level
+    normalized in V0 and should be replaced by canonical release metadata.
+- id: gpqa-diamond
+  name: GPQA Diamond
+  version: Diamond
+  published_at: '2023-11-20'
+  public_since: '2023-11-20'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.82
+  reliability: 0.82
+  capability_loadings:
+    scientific_reasoning: 0.6
+    knowledge: 0.25
+    quantitative_reasoning: 0.15
+  notes: Graduate-level biology, physics, and chemistry questions. Frontier saturation
+    is expected to reduce discrimination.
+- id: nist-arc-agi-2-semiprivate
+  name: ARC-AGI-2 Semi-Private (CAISI protocol)
+  version: CAISI 2026-05
+  family_id: arc-agi
+  published_at: '2025-03-24'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.95
+  reliability: 0.88
+  capability_loadings:
+    fluid_reasoning: 0.8
+    spatial_intelligence: 0.2
+  notes: CAISI reports mean score across tasks, which differs from ARC Prize official
+    aggregation; therefore isolated as its own protocol id.
+- id: nist-otis-aime-2025
+  name: OTIS-AIME-2025 (CAISI protocol)
+  version: CAISI 2026-05
+  published_at: '2026-05-01'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.88
+  reliability: 0.82
+  capability_loadings:
+    quantitative_reasoning: 0.85
+    fluid_reasoning: 0.15
+  notes: Mathematics benchmark used in CAISI's DeepSeek V4 Pro evaluation.
+- id: nist-pumac-2024
+  name: PUMaC 2024 (CAISI protocol)
+  version: CAISI 2026-05
+  published_at: '2026-05-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.84
+  reliability: 0.8
+  capability_loadings:
+    quantitative_reasoning: 0.85
+    fluid_reasoning: 0.15
+  notes: Mathematics competition benchmark in the CAISI evaluation suite.
+- id: nist-smt-2025
+  name: SMT 2025 (CAISI protocol)
+  version: CAISI 2026-05
+  published_at: '2026-05-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.84
+  reliability: 0.8
+  capability_loadings:
+    quantitative_reasoning: 0.85
+    fluid_reasoning: 0.15
+  notes: Mathematics competition benchmark in the CAISI evaluation suite.
+- id: frontiercode-1.1-main
+  name: FrontierCode
+  version: 1.1 Main
+  family_id: frontiercode-1.1
+  published_at: '2026-07-07'
+  public_since: '2026-07-07'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.92
+  reliability: 0.86
+  capability_loadings:
+    software_engineering: 0.65
+    planning_agency: 0.15
+    language: 0.1
+    web_agency: 0.1
+  notes: Maintainer-authored production-code tasks emphasizing mergeability and code
+    quality; internet access is permitted but solution-bearing access is zeroed.
+- id: frontiercode-1.1-extended
+  name: FrontierCode
+  version: 1.1 Extended
+  family_id: frontiercode-1.1
+  published_at: '2026-07-07'
+  public_since: '2026-07-07'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.92
+  reliability: 0.86
+  capability_loadings:
+    software_engineering: 0.65
+    planning_agency: 0.15
+    language: 0.1
+    web_agency: 0.1
+  notes: Extended subset of FrontierCode 1.1. Kept distinct from Main so empirical
+    redundancy can determine how much independent information it adds.
+- id: arc-agi-2-openai-launch
+  name: ARC-AGI-2 (OpenAI launch comparison protocol)
+  version: 2026-09-03 comparison
+  family_id: arc-agi
+  published_at: '2025-03-24'
+  public_since: '2025-03-24'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.82
+  reliability: 0.82
+  capability_loadings:
+    fluid_reasoning: 0.8
+    spatial_intelligence: 0.2
+  notes: Vendor comparison table. Kept separate from CAISI semi-private because aggregation
+    and harness differ.
+- id: arc-agi-1-openai-launch
+  name: ARC-AGI-1 (OpenAI launch comparison protocol)
+  version: 2026-09-03 comparison
+  family_id: arc-agi
+  published_at: '2019-12-01'
+  public_since: '2019-12-01'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.75
+  reliability: 0.8
+  capability_loadings:
+    fluid_reasoning: 0.8
+    spatial_intelligence: 0.2
+  notes: Highly saturated at the 2026 frontier; retained as a deliberate test that
+    discrimination/redundancy logic should eventually suppress.
+- id: healthbench-prof-openai-launch
+  name: HealthBench Professional (OpenAI launch protocol)
+  version: 2026-09-03 length-adjusted
+  family_id: healthbench-prof
+  published_at: '2026-04-30'
+  public_since: '2026-04-30'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.78
+  reliability: 0.8
+  capability_loadings:
+    scientific_reasoning: 0.45
+    knowledge: 0.25
+    language: 0.15
+    social_pragmatic: 0.15
+  notes: Vendor-reported length-adjusted comparison. Separate from the independent
+    raw-API rerun because scaffolding/grader conditions are not identical.
+- id: automationbench-openai-launch
+  name: AutomationBench (OpenAI launch comparison)
+  version: 2026-09-03
+  family_id: automationbench
+  published_at: '2026-04-20'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.8
+  reliability: 0.8
+  capability_loadings:
+    planning_agency: 0.45
+    web_agency: 0.25
+    knowledge: 0.15
+    language: 0.15
+  notes: Vendor comparison on held-out/private AutomationBench conditions; separate
+    from the public 600-task set.
+- id: frontiermath-tier4-v2-openai-launch
+  name: FrontierMath Tier 4
+  version: v2 OpenAI launch comparison
+  published_at: '2026-01-01'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.84
+  reliability: 0.82
+  capability_loadings:
+    quantitative_reasoning: 0.8
+    fluid_reasoning: 0.15
+    scientific_reasoning: 0.05
+  notes: Vendor comparison table. Publication date is a provisional month-level placeholder
+    pending canonical benchmark metadata.

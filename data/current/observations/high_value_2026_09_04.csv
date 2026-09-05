@@ -1,0 +1,24 @@
+model_id,benchmark_id,score,evaluated_at,source_grade,harness,reasoning_effort,token_budget,source_url,notes
+claude-opus-5,mcp-atlas-2026-04-full,85.8,2026-09-04,A,Scale MCP Atlas updated protocol,xhigh,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+gemini-3.5-flash,mcp-atlas-2026-04-full,83.6,2026-09-04,A,Scale MCP Atlas updated protocol,high,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+claude-fable-5,mcp-atlas-2026-04-full,83.3,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+kimi-k3,mcp-atlas-2026-04-full,82.3,2026-09-04,A,Scale MCP Atlas updated protocol,max,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+claude-opus-4.8,mcp-atlas-2026-04-full,82.2,2026-09-04,A,Scale MCP Atlas updated protocol,max,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+gpt-5.6-sol,mcp-atlas-2026-04-full,81.8,2026-09-04,A,Scale MCP Atlas updated protocol,,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+gpt-5.5,mcp-atlas-2026-04-full,75.3,2026-09-04,A,Scale MCP Atlas updated protocol,xhigh,,https://labs.scale.com/leaderboard/mcp_atlas,All-1000 pass rate; 500 public + 500 private tasks.
+claude-fable-5,enigmaeval-2026-07,39.28,2026-09-04,A,Scale EnigmaEval,high,,https://labs.scale.com/leaderboard/enigma_eval,Current official leaderboard snapshot.
+gpt-5.6-sol,enigmaeval-2026-07,37.12,2026-09-04,A,Scale EnigmaEval,high,,https://labs.scale.com/leaderboard/enigma_eval,Current official leaderboard snapshot.
+gemini-3.5-flash,enigmaeval-2026-07,25.41,2026-09-04,A,Scale EnigmaEval,high,,https://labs.scale.com/leaderboard/enigma_eval,Current official leaderboard snapshot.
+claude-opus-4.8,enigmaeval-2026-07,23.51,2026-09-04,A,Scale EnigmaEval,xhigh,,https://labs.scale.com/leaderboard/enigma_eval,Current official leaderboard snapshot.
+gemini-3.8-flash,hle-verified-2026,54.9,2026-09-02,C,Google launch comparison,medium,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+gpt-5.6-sol,hle-verified-2026,54.5,2026-09-02,C,Google launch comparison,,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+claude-opus-5,hle-verified-2026,54.4,2026-09-02,C,Google launch comparison,,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+gemini-3.7-flash,hle-verified-2026,53.6,2026-09-02,C,Google launch comparison,medium,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+gpt-5.6-terra,hle-verified-2026,51.1,2026-09-02,C,Google launch comparison,,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+claude-sonnet-5,hle-verified-2026,31.0,2026-09-02,C,Google launch comparison,,,https://deepmind.google/models/gemini/flash/,Vendor comparison on the 1811 certified HLE-Verified items.
+gemini-3.8-flash,osworld-2.0-google-2026-09-partial,59.0,2026-09-02,C,Google OSWorld 2.0 comparison,medium,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.
+gemini-3.7-flash,osworld-2.0-google-2026-09-partial,50.6,2026-09-02,C,Google OSWorld 2.0 comparison,medium,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.
+claude-opus-5,osworld-2.0-google-2026-09-partial,75.4,2026-09-02,C,Google OSWorld 2.0 comparison,,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.
+claude-sonnet-5,osworld-2.0-google-2026-09-partial,42.6,2026-09-02,C,Google OSWorld 2.0 comparison,,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.
+gpt-5.6-sol,osworld-2.0-google-2026-09-partial,62.6,2026-09-02,C,Google OSWorld 2.0 comparison,,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.
+gpt-5.6-terra,osworld-2.0-google-2026-09-partial,50.2,2026-09-02,C,Google OSWorld 2.0 comparison,,,https://deepmind.google/models/gemini/flash/,Vendor-reported OSWorld 2.0 partial-credit comparison; isolated from other protocols.

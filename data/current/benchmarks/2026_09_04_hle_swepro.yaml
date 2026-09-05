@@ -1,0 +1,47 @@
+- id: hle-public-2025-04-final
+  name: Humanity's Last Exam
+  version: 2025-04 final public 2500-question set
+  family_id: hle
+  published_at: '2025-04-03'
+  public_since: '2025-04-03'
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.95
+  reliability: 0.93
+  contamination_resistance: 0.55
+  capability_loadings:
+    knowledge: 0.30
+    scientific_reasoning: 0.25
+    quantitative_reasoning: 0.20
+    fluid_reasoning: 0.15
+    visual_intelligence: 0.10
+  notes: >-
+    Final 2,500-question public HLE set. Questions span mathematics, humanities and
+    natural sciences; 14% require diagram/figure understanding. The benchmark was
+    filtered for searchable questions and maintains a separate private held-out pool,
+    but the leaderboard scores stored here are on the public set, so contamination
+    resistance remains moderate rather than inheriting the held-out set's protection.
+
+- id: swe-bench-pro-private-2025-09
+  name: SWE-Bench Pro - Private Dataset
+  version: 276 proprietary commercial-repository tasks
+  family_id: swe-bench-pro
+  published_at: '2025-09-19'
+  sealed_test: true
+  score_floor: 0
+  score_ceiling: 100
+  protocol_quality: 0.96
+  reliability: 0.93
+  contamination_resistance: 0.98
+  capability_loadings:
+    software_engineering: 0.50
+    planning_agency: 0.20
+    terminal_agency: 0.15
+    long_context: 0.10
+    structured_tool_use: 0.05
+  notes: >-
+    Commercial subset of SWE-Bench Pro: 276 long-horizon tasks from 18 proprietary
+    startup codebases that are not publicly accessible. Human engineers construct
+    reproducible Docker environments and verify fail-to-pass/pass-to-pass tests. This
+    is strong generalization evidence because the underlying code is private and the
+    benchmark is explicitly designed to reduce memorization/contamination effects.

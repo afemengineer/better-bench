@@ -1,0 +1,2 @@
+benchmark_id,as_of,leaderboard_model_count,leaderboard_org_count,source_url,notes
+hil-bench-2026-04-pass3,2026-09-04,12,7,https://labs.scale.com/api/pdf/leaderboard/hil,Frozen Pass@3 leaderboard snapshot contains twelve model backbones across seven model providers.
