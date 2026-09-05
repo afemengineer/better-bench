@@ -10,6 +10,7 @@ from better_bench.estimator import (
     EstimatorConfig,
     _balanced_folds,
     _fit_state,
+    _general_scale,
     _prepare,
 )
 from better_bench.io import load_adoption, load_benchmarks, load_models, load_observations
@@ -17,6 +18,7 @@ from better_bench.io import load_adoption, load_benchmarks, load_models, load_ob
 
 AS_OF = date(2026, 9, 4)
 FOLDS = 5
+EDGE_MODES = ("empirical_std", "calibrated_loading")
 MIN_SHARED_FAMILIES = (1, 2, 3, 4)
 RIDGES = (0.03, 0.1, 0.3, 1.0, 3.0, 10.0)
 MARGINS = (0.0, 1.0, 3.0, 5.0, 10.0)
@@ -31,7 +33,7 @@ def _standardized_prior(state, model_ids):
     return (values - mean) / std
 
 
-def _benchmark_stats(rows):
+def _benchmark_std(rows):
     grouped = defaultdict(list)
     for row in rows:
         grouped[row.benchmark_id].append(row)
@@ -45,16 +47,49 @@ def _benchmark_stats(rows):
         variance = float(np.average(np.square(values - mean), weights=weights))
         std = float(np.sqrt(max(variance, 0.0)))
         if std > 1e-8:
-            stats[benchmark_id] = (mean, std)
+            stats[benchmark_id] = std
     return stats
 
 
-def _pairwise_edges(rows, model_ids, minimum_shared_families):
-    stats = _benchmark_stats(rows)
+def _edge_calibration(rows, model_ids, state, config, mode):
+    if mode == "empirical_std":
+        stds = _benchmark_std(rows)
+        return {
+            benchmark_id: (std, 1.0)
+            for benchmark_id, std in stds.items()
+        }
+    if mode != "calibrated_loading":
+        raise ValueError(f"Unknown edge mode: {mode}")
+
+    _, general_scale = _general_scale(state, model_ids)
+    result = {}
+    for benchmark_id, loading in state.loading.items():
+        loading_points_per_z = (
+            config.score_unit_points * loading * general_scale
+        )
+        if loading_points_per_z <= 1e-8:
+            continue
+        # Pairwise difference / loading is an implied difference in standardized g.
+        # Fisher-style information scales with loading squared; normalize to a 10-point
+        # loading so the graph ridge grid remains numerically interpretable.
+        information_multiplier = (loading_points_per_z / 10.0) ** 2
+        result[benchmark_id] = (loading_points_per_z, information_multiplier)
+    return result
+
+
+def _pairwise_edges(
+    rows,
+    model_ids,
+    state,
+    config,
+    mode,
+    minimum_shared_families,
+):
+    calibration = _edge_calibration(rows, model_ids, state, config, mode)
     by_model_benchmark = {
         (row.model_id, row.benchmark_id): row
         for row in rows
-        if row.benchmark_id in stats
+        if row.benchmark_id in calibration
     }
     benchmarks_by_model = defaultdict(set)
     for model_id, benchmark_id in by_model_benchmark:
@@ -68,10 +103,11 @@ def _pairwise_edges(rows, model_ids, minimum_shared_families):
             for benchmark_id in shared:
                 left_row = by_model_benchmark[(left_model, benchmark_id)]
                 right_row = by_model_benchmark[(right_model, benchmark_id)]
-                _, std = stats[benchmark_id]
-                delta_z = (left_row.score_points - right_row.score_points) / std
-                pair_weight = float(np.sqrt(left_row.weight * right_row.weight))
-                family_values[left_row.family_id].append((delta_z, pair_weight))
+                scale, information_multiplier = calibration[benchmark_id]
+                delta_z = (left_row.score_points - right_row.score_points) / scale
+                base_weight = float(np.sqrt(left_row.weight * right_row.weight))
+                pair_information = base_weight * information_multiplier
+                family_values[left_row.family_id].append((delta_z, pair_information))
             if len(family_values) < minimum_shared_families:
                 continue
 
@@ -84,8 +120,7 @@ def _pairwise_edges(rows, model_ids, minimum_shared_families):
                 if total_weight <= 1e-12:
                     continue
                 family_deltas.append(float(np.average(deltas, weights=weights)))
-                # Multiple protocol variants inside one family improve precision
-                # sublinearly rather than receiving independent full votes.
+                # Multiple protocols from one family add sublinear information.
                 family_weights.append(float(np.sqrt(total_weight)))
             if len(family_deltas) < minimum_shared_families:
                 continue
@@ -98,9 +133,25 @@ def _pairwise_edges(rows, model_ids, minimum_shared_families):
     return edges
 
 
-def _solve_graph(rows, model_ids, fixed_prior, minimum_shared_families, ridge):
+def _solve_graph(
+    rows,
+    model_ids,
+    fixed_prior,
+    state,
+    config,
+    mode,
+    minimum_shared_families,
+    ridge,
+):
     index = {model_id: idx for idx, model_id in enumerate(model_ids)}
-    edges = _pairwise_edges(rows, model_ids, minimum_shared_families)
+    edges = _pairwise_edges(
+        rows,
+        model_ids,
+        state,
+        config,
+        mode,
+        minimum_shared_families,
+    )
     size = len(model_ids)
     laplacian = np.zeros((size, size), dtype=float)
     rhs = np.zeros(size, dtype=float)
@@ -183,53 +234,59 @@ rows, model_ids, benchmark_ids, _, _, _ = _prepare(
 assignment = _balanced_folds(rows, FOLDS)
 
 results = {}
-for minimum_shared in MIN_SHARED_FAMILIES:
-    for ridge in RIDGES:
-        accumulators = {margin: [0, 0, 0.0, 0.0] for margin in MARGINS}
-        for fold in range(FOLDS):
-            training = [
-                row
-                for row in rows
-                if assignment[(row.model_id, row.family_id)] != fold
-            ]
-            validation = [
-                row
-                for row in rows
-                if assignment[(row.model_id, row.family_id)] == fold
-            ]
-            fixed_state, _, _ = _fit_state(
-                training,
-                model_ids,
-                benchmark_ids,
-                config,
-            )
-            prior = _standardized_prior(fixed_state, model_ids)
-            graph_scores, _ = _solve_graph(
-                training,
-                model_ids,
-                prior,
-                minimum_shared,
-                ridge,
-            )
-            _merge_counts(
-                accumulators,
-                _pairwise_counts(validation, graph_scores),
-            )
-        results[(minimum_shared, ridge)] = _finalize(accumulators)
+for mode in EDGE_MODES:
+    for minimum_shared in MIN_SHARED_FAMILIES:
+        for ridge in RIDGES:
+            accumulators = {margin: [0, 0, 0.0, 0.0] for margin in MARGINS}
+            for fold in range(FOLDS):
+                training = [
+                    row
+                    for row in rows
+                    if assignment[(row.model_id, row.family_id)] != fold
+                ]
+                validation = [
+                    row
+                    for row in rows
+                    if assignment[(row.model_id, row.family_id)] == fold
+                ]
+                fixed_state, _, _ = _fit_state(
+                    training,
+                    model_ids,
+                    benchmark_ids,
+                    config,
+                )
+                prior = _standardized_prior(fixed_state, model_ids)
+                graph_scores, _ = _solve_graph(
+                    training,
+                    model_ids,
+                    prior,
+                    fixed_state,
+                    config,
+                    mode,
+                    minimum_shared,
+                    ridge,
+                )
+                _merge_counts(
+                    accumulators,
+                    _pairwise_counts(validation, graph_scores),
+                )
+            results[(mode, minimum_shared, ridge)] = _finalize(accumulators)
 
 print(
-    "min_shared_families\tridge\tpair_acc\tweighted_pair_acc\t"
+    "mode\tmin_shared_families\tridge\tpair_acc\tweighted_pair_acc\t"
     "pair_acc_gt5\tweighted_pair_acc_gt5\tpairs"
 )
-for minimum_shared in MIN_SHARED_FAMILIES:
-    for ridge in RIDGES:
-        row = results[(minimum_shared, ridge)]
-        acc0, weighted0, pairs0 = row[0.0]
-        acc5, weighted5, _ = row[5.0]
-        print(
-            f"{minimum_shared}\t{ridge:.2f}\t{100*acc0:.2f}%\t{100*weighted0:.2f}%\t"
-            f"{100*acc5:.2f}%\t{100*weighted5:.2f}%\t{pairs0}"
-        )
+for mode in EDGE_MODES:
+    for minimum_shared in MIN_SHARED_FAMILIES:
+        for ridge in RIDGES:
+            row = results[(mode, minimum_shared, ridge)]
+            acc0, weighted0, pairs0 = row[0.0]
+            acc5, weighted5, _ = row[5.0]
+            print(
+                f"{mode}\t{minimum_shared}\t{ridge:.2f}\t{100*acc0:.2f}%\t"
+                f"{100*weighted0:.2f}%\t{100*acc5:.2f}%\t"
+                f"{100*weighted5:.2f}%\t{pairs0}"
+            )
 
 
 def _objective(item):
@@ -239,7 +296,7 @@ def _objective(item):
 
 best_key, best_result = max(results.items(), key=_objective)
 print(
-    f"best_exploratory=min_shared{best_key[0]}_ridge{best_key[1]:.2f} "
+    f"best_exploratory=mode_{best_key[0]}_min_shared{best_key[1]}_ridge{best_key[2]:.2f} "
     f"mean_margin_accuracy={100*_objective((best_key, best_result)):.2f}%"
 )
 
@@ -249,8 +306,11 @@ full_scores, full_edges = _solve_graph(
     rows,
     model_ids,
     full_prior,
+    full_state,
+    config,
     best_key[0],
     best_key[1],
+    best_key[2],
 )
 ranking = sorted(full_scores.items(), key=lambda item: item[1], reverse=True)
 print("rank\tmodel\tpairwise_graph_z\tfixed_prior_z")
@@ -264,7 +324,7 @@ edge_lookup = {
 }
 key = frozenset(("glm-5.3", "glm-5.3-flash"))
 if key in edge_lookup:
-    left, right, delta, weight, families = edge_lookup[key]
+    left, _, delta, weight, families = edge_lookup[key]
     oriented = delta if left == "glm-5.3" else -delta
     print(
         "glm_pair_edge\t"
@@ -273,6 +333,6 @@ if key in edge_lookup:
     )
 
 print(
-    "note=exploratory hyperparameters use the same family-CV folds; require a stability or "
-    "nested-CV check before promoting the graph score to production BBI"
+    "note=exploratory hyperparameters use the same family-CV folds; require nested or "
+    "stability validation before promoting a graph score to production BBI"
 )
