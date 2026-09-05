@@ -48,6 +48,8 @@ jobs:
         run: python scripts/matrix_completion_report.py
       - name: Held-out pairwise ranking comparison
         run: python scripts/ranking_cv_comparison.py
+      - name: Coverage-neutral pairwise graph experiment
+        run: python scripts/pairwise_graph_cv.py
       - name: Taxonomy top-five report
         run: python scripts/taxonomy_report.py
       - name: Factor smoke on current corpus
