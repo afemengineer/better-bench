@@ -58,13 +58,7 @@ def _standardized_prior(state: Any, model_ids: list[str]) -> tuple[np.ndarray, f
 def _aggregate_model_benchmark_rows(
     rows: Iterable[Any],
 ) -> dict[tuple[str, str], tuple[float, float, str]]:
-    """Collapse repeated model×benchmark observations before constructing comparisons.
-
-    Current Better Bench scoring data normally has one row per model×benchmark pair,
-    but the ranking method should remain well-defined if future source reconciliation
-    leaves multiple retained observations. Scores are evidence-weighted means and the
-    aggregate weight is the sum of row weights.
-    """
+    """Collapse repeated model×benchmark observations before constructing comparisons."""
     grouped: dict[tuple[str, str], list[Any]] = defaultdict(list)
     for row in rows:
         grouped[(row.model_id, row.benchmark_id)].append(row)
@@ -95,13 +89,25 @@ def build_pairwise_edges(
     score_unit_points: float,
     config: PairwiseRankingConfig,
 ) -> list[PairwiseEdge]:
-    """Build comparable-evidence edges using learned benchmark discrimination.
+    """Profile benchmark intercepts out of the fixed weighted least-squares model.
 
-    For a shared benchmark j, the observed score gap is converted to the fixed
-    estimator's standardized latent-g units using the learned loading. The benchmark
-    contributes information in proportion to evidence quality and squared loading.
-    Multiple protocol variants within one benchmark family are compressed to one
-    family-level vote with sublinear information growth.
+    For benchmark j with observation weights w_ij, weighted least squares obeys
+
+        sum_i w_ij (x_ij - mean_w(x_j))^2
+        = (1 / W_j) sum_{i<k} w_ij w_kj (x_ij - x_kj)^2.
+
+    Therefore the exact pair information after eliminating benchmark difficulty is
+    ``w_i * w_k / W`` rather than a heuristic such as ``sqrt(w_i*w_k)``. This is
+    important for Better Bench because the heuristic gives a benchmark O(n^2)
+    influence as more models are evaluated on it. The profiled construction preserves
+    the intended benchmark/provenance information budget while still using only shared
+    evidence. Learned benchmark discrimination supplies the conversion from score-point
+    differences to standardized latent-general-intelligence differences.
+
+    Family-adjusted benchmark weights are already embedded in each row by the fixed
+    estimator's preparation layer, so protocol variants from one family share that
+    family's budget. We still require a minimum number of distinct families before an
+    edge is admitted.
     """
     if config.minimum_shared_families < 1:
         raise ValueError("minimum_shared_families must be at least 1")
@@ -123,10 +129,13 @@ def build_pairwise_edges(
         )
 
     cells = _aggregate_model_benchmark_rows(rows)
+    benchmark_total_weight: dict[str, float] = defaultdict(float)
     benchmarks_by_model: dict[str, set[str]] = defaultdict(set)
-    for model_id, benchmark_id in cells:
-        if benchmark_id in calibration:
-            benchmarks_by_model[model_id].add(benchmark_id)
+    for (model_id, benchmark_id), (_, weight, _) in cells.items():
+        if benchmark_id not in calibration:
+            continue
+        benchmark_total_weight[benchmark_id] += weight
+        benchmarks_by_model[model_id].add(benchmark_id)
 
     edges: list[PairwiseEdge] = []
     for left_index, left_model in enumerate(model_ids):
@@ -142,12 +151,20 @@ def build_pairwise_edges(
                     raise ValueError(
                         f"Benchmark {benchmark_id} has inconsistent family metadata"
                     )
+                total_benchmark_weight = benchmark_total_weight[benchmark_id]
+                if total_benchmark_weight <= 1e-12:
+                    continue
                 scale, information_multiplier = calibration[benchmark_id]
                 delta_z = (left_score - right_score) / scale
-                source_information = (
-                    float(np.sqrt(left_weight * right_weight)) * information_multiplier
+                pair_information = (
+                    left_weight
+                    * right_weight
+                    / total_benchmark_weight
+                    * information_multiplier
                 )
-                family_values[family_id].append((delta_z, source_information))
+                if pair_information <= 1e-12:
+                    continue
+                family_values[family_id].append((delta_z, pair_information))
 
             if len(family_values) < config.minimum_shared_families:
                 continue
@@ -163,9 +180,7 @@ def build_pairwise_edges(
                 if total_information <= 1e-12:
                     continue
                 family_deltas.append(float(np.average(deltas, weights=information)))
-                # A family with several protocol variants should be more precise, but it
-                # must not receive several independent full votes.
-                family_information.append(float(np.sqrt(total_information)))
+                family_information.append(total_information)
 
             if len(family_deltas) < config.minimum_shared_families:
                 continue
@@ -241,12 +256,8 @@ def fit_pairwise_ranking(
         score_scale = 1.0
     standardized = raw_scores / score_scale
 
-    # The inverse penalized Laplacian is a local sensitivity/uncertainty diagnostic.
-    # It is not yet a calibrated frequentist CI; family jackknife is layered on top in
-    # the production estimator. Crucially, weak graph connectivity increases this term.
     covariance_proxy = np.linalg.inv(system)
     graph_se = np.sqrt(np.maximum(np.diag(covariance_proxy), 0.0)) / score_scale
-
     information = np.diag(laplacian)
     return PairwiseRankingResult(
         scores={
