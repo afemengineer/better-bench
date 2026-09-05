@@ -11,7 +11,7 @@ from better_bench.schema import (
 )
 
 
-def test_index_is_monotonic_and_reports_family_sensitivity_variance() -> None:
+def test_index_keeps_calibration_magnitude_but_uses_consensus_order() -> None:
     models = [
         ModelDefinition(id=f"m{i}", name=f"M{i}", organization=f"o{i}")
         for i in range(8)
@@ -59,8 +59,12 @@ def test_index_is_monotonic_and_reports_family_sensitivity_variance() -> None:
     )
 
     by_model = {row.model_id: row for row in index}
+    assert [row.rank for row in index] == list(range(1, len(index) + 1))
+    assert index[0].model_id == "m7"
     assert by_model["m7"].index > by_model["m4"].index > by_model["m0"].index
     assert by_model["m7"].index == round(100.0 + 10.0 * by_model["m7"].general_z, 1)
     assert by_model["m6"].family_sensitivity_se_z > 0
     assert by_model["m6"].index_variance >= 0
     assert by_model["m6"].ci_low < by_model["m6"].index < by_model["m6"].ci_high
+    assert by_model["m7"].rank_low <= by_model["m7"].rank <= by_model["m7"].rank_high
+    assert by_model["m7"].ranking_method == "broad-kemeny-v1"
