@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Any, Iterable
+from typing import Any
 
 import numpy as np
 
@@ -157,9 +158,7 @@ def build_pairwise_edges(
                 total_information = float(information.sum())
                 if total_information <= 1e-12:
                     continue
-                family_deltas.append(
-                    float(np.average(deltas, weights=information))
-                )
+                family_deltas.append(float(np.average(deltas, weights=information)))
                 # A family with several protocol variants should be more precise, but it
                 # must not receive several independent full votes.
                 family_information.append(float(np.sqrt(total_information)))
@@ -175,9 +174,7 @@ def build_pairwise_edges(
                 PairwiseEdge(
                     left_model=left_model,
                     right_model=right_model,
-                    delta_z=float(
-                        np.average(family_delta_array, weights=family_weights)
-                    ),
+                    delta_z=float(np.average(family_delta_array, weights=family_weights)),
                     weight=edge_weight,
                     shared_families=len(family_deltas),
                     shared_benchmarks=benchmark_count,
