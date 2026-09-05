@@ -13,12 +13,16 @@ class PairwiseRankingConfig:
     """Configuration for coverage-neutral model ranking.
 
     ``minimum_shared_families`` is deliberately expressed in independent benchmark
-    families, not raw rows. ``ridge`` controls shrinkage toward the calibrated
-    fixed-estimator prior for weakly connected models.
+    families, not raw rows. ``ridge`` controls shrinkage strength for weakly connected
+    models. ``prior_mix`` controls how much of that shrinkage target comes from the
+    observed-portfolio fixed estimator: 0 means population-mean shrinkage, 1 means the
+    previous fixed-BBI prior. Keeping these separate prevents missing benchmark cells
+    from silently re-entering the ranking through regularization.
     """
 
     minimum_shared_families: int = 2
     ridge: float = 1.0
+    prior_mix: float = 1.0
     information_scale_points: float = 10.0
 
 
@@ -194,12 +198,14 @@ def fit_pairwise_ranking(
     """Fit a globally coherent ranking from comparable model pairs.
 
     Missing benchmark cells never appear as positive evidence. They only reduce graph
-    connectivity, causing the affected model to shrink more strongly toward the fixed
-    calibrated prior and to receive larger graph uncertainty.
+    connectivity. Weakly connected models shrink toward a target controlled explicitly
+    by ``prior_mix``: population mean at 0, observed-portfolio fixed prior at 1.
     """
     config = config or PairwiseRankingConfig()
     if config.ridge <= 0:
         raise ValueError("ridge must be positive")
+    if not 0.0 <= config.prior_mix <= 1.0:
+        raise ValueError("prior_mix must be between 0 and 1")
     if not model_ids:
         raise ValueError("model_ids cannot be empty")
 
@@ -227,7 +233,7 @@ def fit_pairwise_ranking(
         rhs[right] -= weight * edge.delta_z
 
     system = laplacian + config.ridge * np.eye(size)
-    rhs += config.ridge * prior
+    rhs += config.ridge * config.prior_mix * prior
     raw_scores = np.linalg.solve(system, rhs)
     raw_scores -= float(raw_scores.mean())
     score_scale = float(raw_scores.std(ddof=0))
