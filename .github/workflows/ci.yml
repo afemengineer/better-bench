@@ -40,6 +40,8 @@ jobs:
         run: python scripts/index_report.py
       - name: GLM pairwise overlap diagnostic
         run: python scripts/pairwise_overlap_report.py glm-5.3 glm-5.3-flash
+      - name: Whole-leaderboard pairwise inversion audit
+        run: python scripts/pairwise_inversion_report.py
       - name: Taxonomy top-five report
         run: python scripts/taxonomy_report.py
       - name: Factor smoke on current corpus
