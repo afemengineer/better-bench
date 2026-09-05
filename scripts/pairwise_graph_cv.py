@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 from __future__ import annotations
 
 from collections import defaultdict
@@ -83,8 +84,8 @@ def _pairwise_edges(rows, model_ids, minimum_shared_families):
                 if total_weight <= 1e-12:
                     continue
                 family_deltas.append(float(np.average(deltas, weights=weights)))
-                # Family budget: multiple protocol variants improve precision sublinearly,
-                # rather than receiving independent full votes.
+                # Multiple protocol variants inside one family improve precision
+                # sublinearly rather than receiving independent full votes.
                 family_weights.append(float(np.sqrt(total_weight)))
             if len(family_deltas) < minimum_shared_families:
                 continue
@@ -92,7 +93,6 @@ def _pairwise_edges(rows, model_ids, minimum_shared_families):
             weights = np.asarray(family_weights, dtype=float)
             deltas = np.asarray(family_deltas, dtype=float)
             delta = float(np.average(deltas, weights=weights))
-            # Effective edge information grows with independent families, not raw rows.
             edge_weight = float(weights.sum())
             edges.append((left_model, right_model, delta, edge_weight, len(family_deltas)))
     return edges
@@ -116,7 +116,6 @@ def _solve_graph(rows, model_ids, fixed_prior, minimum_shared_families, ridge):
 
     system = laplacian + ridge * np.eye(size)
     rhs = rhs + ridge * fixed_prior
-    # Tiny numerical anchor only; the substantive anchor is the fixed-BBI prior above.
     system += 1e-8 * np.eye(size)
     scores = np.linalg.solve(system, rhs)
     scores -= float(scores.mean())
@@ -126,7 +125,7 @@ def _solve_graph(rows, model_ids, fixed_prior, minimum_shared_families, ridge):
     return {model_id: float(scores[index[model_id]]) for model_id in model_ids}, edges
 
 
-def _pairwise_accuracy(validation_rows, scores, margins=MARGINS):
+def _pairwise_counts(validation_rows, scores, margins=MARGINS):
     grouped = defaultdict(list)
     for row in validation_rows:
         grouped[row.benchmark_id].append(row)
@@ -147,29 +146,22 @@ def _pairwise_accuracy(validation_rows, scores, margins=MARGINS):
                     if observed_delta * predicted_delta > 0:
                         correct += 1
                         weighted_correct += pair_weight
-        result[margin] = (
-            correct / max(total, 1),
-            weighted_correct / max(weighted_total, 1e-12),
-            total,
-        )
+        result[margin] = (correct, total, weighted_correct, weighted_total)
     return result
 
 
-def _merge_accuracy(accumulators, fold_result):
-    for margin, (accuracy, weighted_accuracy, total) in fold_result.items():
-        # Reconstruct counts from the fold rates. Floating reconstruction is sufficient
-        # because this is a diagnostic script; weighted rates are aggregated by pair count.
-        accumulators[margin][0] += accuracy * total
-        accumulators[margin][1] += weighted_accuracy * total
-        accumulators[margin][2] += total
+def _merge_counts(accumulators, fold_result):
+    for margin, values in fold_result.items():
+        for index, value in enumerate(values):
+            accumulators[margin][index] += value
 
 
 def _finalize(accumulators):
     result = {}
-    for margin, (correct, weighted_correct, total) in accumulators.items():
+    for margin, (correct, total, weighted_correct, weighted_total) in accumulators.items():
         result[margin] = (
             correct / max(total, 1),
-            weighted_correct / max(total, 1),
+            weighted_correct / max(weighted_total, 1e-12),
             int(total),
         )
     return result
@@ -193,7 +185,7 @@ assignment = _balanced_folds(rows, FOLDS)
 results = {}
 for minimum_shared in MIN_SHARED_FAMILIES:
     for ridge in RIDGES:
-        accumulators = {margin: [0.0, 0.0, 0] for margin in MARGINS}
+        accumulators = {margin: [0, 0, 0.0, 0.0] for margin in MARGINS}
         for fold in range(FOLDS):
             training = [
                 row
@@ -219,8 +211,10 @@ for minimum_shared in MIN_SHARED_FAMILIES:
                 minimum_shared,
                 ridge,
             )
-            fold_result = _pairwise_accuracy(validation, graph_scores)
-            _merge_accuracy(accumulators, fold_result)
+            _merge_counts(
+                accumulators,
+                _pairwise_counts(validation, graph_scores),
+            )
         results[(minimum_shared, ridge)] = _finalize(accumulators)
 
 print(
@@ -237,11 +231,11 @@ for minimum_shared in MIN_SHARED_FAMILIES:
             f"{100*acc5:.2f}%\t{100*weighted5:.2f}%\t{pairs0}"
         )
 
-# Conservative selection objective: average unweighted accuracy at all margins,
-# so a configuration cannot win by only fitting tiny benchmark differences.
+
 def _objective(item):
     result = item[1]
     return float(np.mean([result[margin][0] for margin in MARGINS]))
+
 
 best_key, best_result = max(results.items(), key=_objective)
 print(
