@@ -1,0 +1,28 @@
+name: Ranking Research
+
+on:
+  push:
+    branches:
+      - bootstrap/v0
+    paths:
+      - "scripts/pairwise_graph_cv.py"
+      - "scripts/ranking_cv_comparison.py"
+      - "src/better_bench/estimator.py"
+      - "src/better_bench/pairwise_ranking.py"
+      - ".github/workflows/ranking-research.yml"
+
+jobs:
+  ranking-methods:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check scripts/pairwise_graph_cv.py scripts/ranking_cv_comparison.py src/better_bench
+      - name: Fixed vs hierarchical ranking baseline
+        run: python scripts/ranking_cv_comparison.py
+      - name: Coverage-neutral pairwise graph
+        run: python scripts/pairwise_graph_cv.py
