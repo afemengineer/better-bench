@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 
 from better_bench.estimator import EstimatorConfig, cross_validate_estimator, fit_estimator
+from better_bench.general_ranking import build_general_intelligence_ranking
 from better_bench.io import load_adoption, load_benchmarks, load_models, load_observations
 from better_bench.provisional import project_provisional_models
 
@@ -31,6 +32,14 @@ cv = cross_validate_estimator(
     folds=5,
     as_of=date(2026, 9, 4),
 )
+official_ranking = build_general_intelligence_ranking(
+    models,
+    benchmarks,
+    observations,
+    result,
+    adoption,
+    as_of=date(2026, 9, 4),
+)
 provisional = project_provisional_models(
     models,
     benchmarks,
@@ -52,12 +61,20 @@ print(
     f"baseline={cv.benchmark_only_rmse_points:.3f} gain={100 * cv.relative_rmse_improvement:+.2f}% "
     f"r2={cv.residual_r2:+.4f} rho={cv.residual_spearman:+.4f}"
 )
+print(
+    f"OFFICIAL_RANKING method={official_ranking.method} "
+    f"benchmarks={official_ranking.benchmark_count} families={official_ranking.family_count} "
+    f"weighted_agreement={100 * official_ranking.weighted_agreement:.2f}%"
+)
 print("\n[official]")
-print("rank\tmodel\tgeneral_z\tfamilies\teffective\tcoverage")
-for rank, row in enumerate(result.models, start=1):
+print("rank\tmodel\trank_band\tcalibration_z\tfamilies\teffective\tcoverage")
+calibration_by_id = {row.model_id: row for row in result.models}
+for ranked in official_ranking.models:
+    row = calibration_by_id[ranked.model_id]
     print(
-        f"{rank}\t{row.model_id}\t{row.general_z:+.4f}\t{row.family_count}\t"
-        f"{row.effective_evidence:.3f}\t{100 * row.coverage:.1f}%"
+        f"{ranked.rank}\t{ranked.model_id}\t[{ranked.rank_low},{ranked.rank_high}]\t"
+        f"{row.general_z:+.4f}\t{row.family_count}\t{row.effective_evidence:.3f}\t"
+        f"{100 * row.coverage:.1f}%"
     )
 
 print("\n[provisional]")
@@ -72,11 +89,14 @@ for row in provisional:
 print("\n[spark_lineage]")
 official = {row.model_id: row for row in result.models}
 provisional_by_id = {row.model_id: row for row in provisional}
+rank_by_id = official_ranking.by_model
 for model_id in ("muse-spark-1.1", "muse-spark-1.2", "muse-spark-1.3"):
     if model_id in official:
         row = official[model_id]
+        ranked = rank_by_id[model_id]
         print(
-            f"{model_id}\tofficial\t{row.general_z:+.4f}\t{row.family_count}\t"
+            f"{model_id}\tofficial\trank={ranked.rank}\t[{ranked.rank_low},{ranked.rank_high}]\t"
+            f"calibration_z={row.general_z:+.4f}\t{row.family_count}\t"
             f"{row.effective_evidence:.3f}\t{100 * row.coverage:.1f}%"
         )
     elif model_id in provisional_by_id:
@@ -95,7 +115,7 @@ for capability in capabilities:
         reverse=True,
     )
     print(f"\n[{capability}]")
-    print("rank\tmodel\ttaxonomy_z\tgeneral_z\tresidual_pt\tfamilies\tcoverage")
+    print("rank\tmodel\ttaxonomy_z\tcalibration_z\tresidual_pt\tfamilies\tcoverage")
     for rank, row in enumerate(ranked[:5], start=1):
         residual = row.domain_residual_points[capability]
         taxonomy_z = row.general_z + residual / 10.0
