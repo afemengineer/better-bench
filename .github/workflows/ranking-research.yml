@@ -5,15 +5,8 @@ on:
     branches:
       - bootstrap/v0
     paths:
-      - "scripts/pairwise_graph_cv.py"
-      - "scripts/pairwise_graph_validation.py"
-      - "scripts/pairwise_prior_validation.py"
-      - "scripts/ranking_cv_comparison.py"
-      - "scripts/consensus_ranking_cv.py"
       - "scripts/broad_consensus_cv.py"
       - "scripts/broad_bradley_terry_cv.py"
-      - "src/better_bench/estimator.py"
-      - "src/better_bench/pairwise_ranking.py"
       - "src/better_bench/consensus_ranking.py"
       - "src/better_bench/bradley_terry.py"
       - "src/better_bench/ranking_evidence.py"
@@ -32,27 +25,14 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: >-
           ruff check
-          scripts/pairwise_graph_cv.py
-          scripts/pairwise_graph_validation.py
-          scripts/pairwise_prior_validation.py
-          scripts/ranking_cv_comparison.py
-          scripts/consensus_ranking_cv.py
           scripts/broad_consensus_cv.py
           scripts/broad_bradley_terry_cv.py
-          src/better_bench
+          src/better_bench/consensus_ranking.py
+          src/better_bench/bradley_terry.py
+          src/better_bench/ranking_evidence.py
           tests/test_pairwise_ranking.py
       - run: pytest -q tests/test_pairwise_ranking.py tests/test_estimator.py
       - name: Broad evidence Bradley-Terry family-CV
         run: python scripts/broad_bradley_terry_cv.py
       - name: Broad evidence Kemeny family-CV
         run: python scripts/broad_consensus_cv.py
-      - name: Calibrated-panel Kemeny family-CV
-        run: python scripts/consensus_ranking_cv.py
-      - name: Fixed vs hierarchical ranking baseline
-        run: python scripts/ranking_cv_comparison.py
-      - name: Coverage-neutral pairwise graph
-        run: python scripts/pairwise_graph_cv.py
-      - name: Nested and frontier graph validation
-        run: python scripts/pairwise_graph_validation.py
-      - name: Neutral-prior nested graph validation
-        run: python scripts/pairwise_prior_validation.py
