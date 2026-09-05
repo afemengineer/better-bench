@@ -5,6 +5,7 @@ on:
     branches:
       - bootstrap/v0
     paths:
+      - "scripts/broad_consensus_validation.py"
       - "scripts/broad_consensus_cv.py"
       - "scripts/broad_bradley_terry_cv.py"
       - "src/better_bench/consensus_ranking.py"
@@ -25,14 +26,10 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: >-
           ruff check
-          scripts/broad_consensus_cv.py
-          scripts/broad_bradley_terry_cv.py
+          scripts/broad_consensus_validation.py
           src/better_bench/consensus_ranking.py
-          src/better_bench/bradley_terry.py
           src/better_bench/ranking_evidence.py
           tests/test_pairwise_ranking.py
       - run: pytest -q tests/test_pairwise_ranking.py tests/test_estimator.py
-      - name: Broad evidence Bradley-Terry family-CV
-        run: python scripts/broad_bradley_terry_cv.py
-      - name: Broad evidence Kemeny family-CV
-        run: python scripts/broad_consensus_cv.py
+      - name: Nested broad-consensus validation
+        run: python scripts/broad_consensus_validation.py
