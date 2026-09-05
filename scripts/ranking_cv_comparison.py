@@ -4,8 +4,6 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import date
 
-import numpy as np
-
 from better_bench.estimator import (
     EstimatorConfig,
     _balanced_folds,
