@@ -16,14 +16,8 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q
-      - name: Held-out pairwise ranking comparison
-        run: python scripts/ranking_cv_comparison.py
-      - name: Coverage-neutral pairwise graph experiment
-        run: python scripts/pairwise_graph_cv.py
-      - name: Nested and frontier graph validation
-        run: python scripts/pairwise_graph_validation.py
-      - name: Common-panel matrix-completion ranking experiment
-        run: python scripts/matrix_completion_report.py
+      - name: Official broad-consensus nested validation
+        run: python scripts/broad_consensus_validation.py
       - name: Corpus statistics
         run: python scripts/corpus_stats.py
       - name: Benchmark evidence-quality report
@@ -42,16 +36,14 @@ jobs:
         run: python scripts/hierarchical_cv_report.py
       - name: Hierarchical cross-validation ablations
         run: python scripts/hierarchical_ablation_report.py
-      - name: Validated fixed-scale estimator
+      - name: Calibration estimator report
         run: python scripts/estimator_report.py
-      - name: Better Bench Index report
+      - name: Official Better Bench classification report
         run: python scripts/index_report.py
-      - name: GLM pairwise overlap diagnostic
+      - name: GLM matched-evidence audit
         run: python scripts/pairwise_overlap_report.py glm-5.3 glm-5.3-flash
-      - name: Whole-leaderboard pairwise inversion audit
+      - name: Calibration-order inversion diagnostic
         run: python scripts/pairwise_inversion_report.py
-      - name: Rank uncertainty diagnostic
-        run: python scripts/rank_uncertainty_report.py
       - name: Taxonomy top-five report
         run: python scripts/taxonomy_report.py
       - name: Factor smoke on current corpus
