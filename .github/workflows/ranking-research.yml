@@ -11,9 +11,11 @@ on:
       - "scripts/ranking_cv_comparison.py"
       - "scripts/consensus_ranking_cv.py"
       - "scripts/broad_consensus_cv.py"
+      - "scripts/broad_bradley_terry_cv.py"
       - "src/better_bench/estimator.py"
       - "src/better_bench/pairwise_ranking.py"
       - "src/better_bench/consensus_ranking.py"
+      - "src/better_bench/bradley_terry.py"
       - "src/better_bench/ranking_evidence.py"
       - "tests/test_pairwise_ranking.py"
       - ".github/workflows/ranking-research.yml"
@@ -36,9 +38,12 @@ jobs:
           scripts/ranking_cv_comparison.py
           scripts/consensus_ranking_cv.py
           scripts/broad_consensus_cv.py
+          scripts/broad_bradley_terry_cv.py
           src/better_bench
           tests/test_pairwise_ranking.py
       - run: pytest -q tests/test_pairwise_ranking.py tests/test_estimator.py
+      - name: Broad evidence Bradley-Terry family-CV
+        run: python scripts/broad_bradley_terry_cv.py
       - name: Broad evidence Kemeny family-CV
         run: python scripts/broad_consensus_cv.py
       - name: Calibrated-panel Kemeny family-CV
