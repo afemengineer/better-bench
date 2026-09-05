@@ -8,7 +8,12 @@ from datetime import date
 
 import numpy as np
 
-from better_bench.estimator import EstimatorConfig, _balanced_folds, _prepare
+from better_bench.estimator import (
+    EstimatorConfig,
+    _balanced_folds,
+    _fit_state,
+    _prepare,
+)
 from better_bench.io import load_adoption, load_benchmarks, load_models, load_observations
 
 
@@ -136,16 +141,14 @@ def _matrix_from_rows(rows, model_ids, benchmark_ids, *, hide_fold=None, assignm
     return matrix
 
 
-def _common_panel_scores(training, prediction, panel_weights):
-    """Score every model on the same benchmark panel.
+def _completed_matrix(training, prediction):
+    return np.where(np.isfinite(training), training, prediction)
 
-    Observed cells are retained; only missing cells are imputed. Each benchmark is
-    standardized in training-only logit space before aggregation so benchmark difficulty
-    and raw score scale cannot reward a model merely because it was tested on an easier
-    portfolio.
-    """
+
+def _common_panel_scores(training, prediction, panel_weights):
+    """Score every model on the same column-standardized benchmark panel."""
     observed = np.isfinite(training)
-    completed = np.where(observed, training, prediction)
+    completed = _completed_matrix(training, prediction)
     transformed_training = np.full_like(training, np.nan, dtype=float)
     transformed_training[observed] = _logit(training[observed])
     col_mean = np.nanmean(transformed_training, axis=0)
@@ -161,6 +164,38 @@ def _common_panel_scores(training, prediction, panel_weights):
     if float(weights.sum()) <= 1e-12:
         raise ValueError("No valid benchmark weights for common-panel scoring")
     return (z * weights[None, :]).sum(axis=1) / weights.sum()
+
+
+def _calibrated_panel_scores(
+    training,
+    prediction,
+    state,
+    config,
+    benchmark_ids,
+    panel_weights,
+):
+    """Apply the fixed-scale latent calibration to an identical completed panel.
+
+    The old estimator's coverage bias comes from each model having a different set of
+    terms in its model update. Here every model receives every benchmark term. Observed
+    scores are used where available and cross-fitted completion supplies missing cells.
+    """
+    completed = _completed_matrix(training, prediction)
+    valid = np.all(np.isfinite(completed), axis=0)
+    weights = np.asarray(panel_weights, dtype=float) * valid.astype(float)
+    loadings = np.asarray(
+        [state.loading[benchmark_id] for benchmark_id in benchmark_ids], dtype=float
+    )
+    intercepts = np.asarray(
+        [state.intercept[benchmark_id] for benchmark_id in benchmark_ids], dtype=float
+    )
+    denominator = config.ridge_general + float(np.sum(weights * np.square(loadings)))
+    centered = completed / config.score_unit_points - intercepts[None, :]
+    numerator = np.sum(
+        weights[None, :] * loadings[None, :] * centered,
+        axis=1,
+    )
+    return numerator / max(denominator, 1e-12)
 
 
 def _pair_counts(heldout_by_benchmark, ranking_score, margins=MARGINS):
@@ -187,8 +222,30 @@ def _pair_counts(heldout_by_benchmark, ranking_score, margins=MARGINS):
     return result
 
 
+def _empty_counts():
+    return {margin: [0, 0, 0.0, 0.0] for margin in MARGINS}
+
+
+def _merge_counts(accumulator, fold_counts):
+    for margin, values in fold_counts.items():
+        for index, value in enumerate(values):
+            accumulator[margin][index] += value
+
+
+def _finalize_counts(accumulator):
+    result = {}
+    for margin, (correct, total, weighted_correct, weighted_total) in accumulator.items():
+        result[margin] = (
+            correct / max(total, 1),
+            weighted_correct / max(weighted_total, 1e-12),
+            int(total),
+        )
+    return result
+
+
 def _evaluate(
-    config: CompletionConfig,
+    completion_config: CompletionConfig,
+    estimator_config: EstimatorConfig,
     rows,
     model_ids,
     benchmark_ids,
@@ -202,9 +259,15 @@ def _evaluate(
     observed_values = []
     predicted_values = []
     cell_pair_correct = cell_pair_total = 0
-    panel_counts = {margin: [0, 0, 0.0, 0.0] for margin in MARGINS}
+    z_panel_counts = _empty_counts()
+    calibrated_panel_counts = _empty_counts()
 
     for fold in range(FOLDS):
+        training_rows = [
+            row
+            for row in rows
+            if assignment[(row.model_id, row.family_id)] != fold
+        ]
         training = _matrix_from_rows(
             rows,
             model_ids,
@@ -212,10 +275,32 @@ def _evaluate(
             hide_fold=fold,
             assignment=assignment,
         )
-        prediction = _fit_bias_als(training, config, base_seed=42 + fold * 100)
-        panel_score_array = _common_panel_scores(training, prediction, panel_weights)
-        panel_score = {
-            model_id: float(panel_score_array[index])
+        prediction = _fit_bias_als(
+            training,
+            completion_config,
+            base_seed=42 + fold * 100,
+        )
+        fixed_state, _, _ = _fit_state(
+            training_rows,
+            model_ids,
+            benchmark_ids,
+            estimator_config,
+        )
+        z_panel_array = _common_panel_scores(training, prediction, panel_weights)
+        calibrated_panel_array = _calibrated_panel_scores(
+            training,
+            prediction,
+            fixed_state,
+            estimator_config,
+            benchmark_ids,
+            panel_weights,
+        )
+        z_panel_score = {
+            model_id: float(z_panel_array[index])
+            for index, model_id in enumerate(model_ids)
+        }
+        calibrated_panel_score = {
+            model_id: float(calibrated_panel_array[index])
             for index, model_id in enumerate(model_ids)
         }
         col_mean = np.nanmean(training, axis=0)
@@ -251,22 +336,19 @@ def _evaluate(
                     if observed_delta * predicted_delta > 0:
                         cell_pair_correct += 1
 
-        fold_counts = _pair_counts(heldout_by_benchmark, panel_score)
-        for margin, values in fold_counts.items():
-            for index, value in enumerate(values):
-                panel_counts[margin][index] += value
+        _merge_counts(
+            z_panel_counts,
+            _pair_counts(heldout_by_benchmark, z_panel_score),
+        )
+        _merge_counts(
+            calibrated_panel_counts,
+            _pair_counts(heldout_by_benchmark, calibrated_panel_score),
+        )
 
     rmse = math.sqrt(squared / max(total_weight, 1e-12))
     baseline_rmse = math.sqrt(baseline_squared / max(total_weight, 1e-12))
     mae = absolute / max(total_weight, 1e-12)
     corr = float(np.corrcoef(observed_values, predicted_values)[0, 1])
-    panel_accuracy = {}
-    for margin, (correct, total, weighted_correct, weighted_total) in panel_counts.items():
-        panel_accuracy[margin] = (
-            correct / max(total, 1),
-            weighted_correct / max(weighted_total, 1e-12),
-            int(total),
-        )
     return (
         rmse,
         baseline_rmse,
@@ -274,7 +356,8 @@ def _evaluate(
         corr,
         cell_pair_correct / max(cell_pair_total, 1),
         cell_pair_total,
-        panel_accuracy,
+        _finalize_counts(z_panel_counts),
+        _finalize_counts(calibrated_panel_counts),
     )
 
 
@@ -317,57 +400,75 @@ print(
     "use nested CV before promoting a completion model into production scoring"
 )
 print(
-    "rank\tlambda\tweighted_RMSE\tbenchmark_mean_RMSE\tweighted_MAE\tcorrelation\t"
-    "cell_pair_acc\tpanel_pair_acc\tpanel_weighted_acc\tpanel_pair_acc_gt5\tpairs"
+    "rank\tlambda\tweighted_RMSE\tcell_pair_acc\tz_panel_acc\tz_panel_wacc\t"
+    "cal_panel_acc\tcal_panel_wacc\tcal_panel_gt5\tpairs"
 )
 results = []
 for candidate in candidates:
     metrics = _evaluate(
         candidate,
+        estimator_config,
         rows,
         model_ids,
         benchmark_ids,
         assignment,
         panel_weights,
     )
-    panel0 = metrics[6][0.0]
-    panel5 = metrics[6][5.0]
+    z_panel0 = metrics[6][0.0]
+    calibrated0 = metrics[7][0.0]
+    calibrated5 = metrics[7][5.0]
     results.append((candidate, metrics))
     print(
-        f"{candidate.rank}\t{candidate.lam:.2f}\t{metrics[0]:.3f}\t{metrics[1]:.3f}\t"
-        f"{metrics[2]:.3f}\t{metrics[3]:+.3f}\t{100 * metrics[4]:.1f}%\t"
-        f"{100 * panel0[0]:.2f}%\t{100 * panel0[1]:.2f}%\t"
-        f"{100 * panel5[0]:.2f}%\t{panel0[2]}"
+        f"{candidate.rank}\t{candidate.lam:.2f}\t{metrics[0]:.3f}\t"
+        f"{100 * metrics[4]:.1f}%\t{100 * z_panel0[0]:.2f}%\t"
+        f"{100 * z_panel0[1]:.2f}%\t{100 * calibrated0[0]:.2f}%\t"
+        f"{100 * calibrated0[1]:.2f}%\t{100 * calibrated5[0]:.2f}%\t"
+        f"{calibrated0[2]}"
     )
 
 best_rmse = min(results, key=lambda item: item[1][0])
-best_rank = max(
+best_z_panel = max(
     results,
-    key=lambda item: float(
-        np.mean([item[1][6][margin][0] for margin in MARGINS])
-    ),
+    key=lambda item: float(np.mean([item[1][6][margin][0] for margin in MARGINS])),
+)
+best_calibrated = max(
+    results,
+    key=lambda item: float(np.mean([item[1][7][margin][0] for margin in MARGINS])),
+)
+print(f"best_rmse_exploratory=rank{best_rmse[0].rank}_lambda{best_rmse[0].lam:.2f}")
+print(
+    f"best_z_panel_exploratory=rank{best_z_panel[0].rank}_lambda{best_z_panel[0].lam:.2f} "
+    f"mean_margin_accuracy={100*np.mean([best_z_panel[1][6][margin][0] for margin in MARGINS]):.2f}%"
 )
 print(
-    f"best_rmse_exploratory=rank{best_rmse[0].rank}_lambda{best_rmse[0].lam:.2f}"
-)
-print(
-    f"best_ranking_exploratory=rank{best_rank[0].rank}_lambda{best_rank[0].lam:.2f} "
-    f"mean_margin_accuracy={100*np.mean([best_rank[1][6][margin][0] for margin in MARGINS]):.2f}%"
+    f"best_calibrated_panel_exploratory=rank{best_calibrated[0].rank}_lambda{best_calibrated[0].lam:.2f} "
+    f"mean_margin_accuracy={100*np.mean([best_calibrated[1][7][margin][0] for margin in MARGINS]):.2f}%"
 )
 
-best = best_rank[0]
+best = best_calibrated[0]
 full_matrix = _matrix_from_rows(rows, model_ids, benchmark_ids)
 full_prediction = _fit_bias_als(full_matrix, best)
-full_panel = _common_panel_scores(full_matrix, full_prediction, panel_weights)
+full_state, _, _ = _fit_state(rows, model_ids, benchmark_ids, estimator_config)
+full_panel = _calibrated_panel_scores(
+    full_matrix,
+    full_prediction,
+    full_state,
+    estimator_config,
+    benchmark_ids,
+    panel_weights,
+)
 full_panel = (full_panel - full_panel.mean()) / max(float(full_panel.std(ddof=0)), 1e-12)
 model_index = {model_id: i for i, model_id in enumerate(model_ids)}
 bench_index = {benchmark_id: j for j, benchmark_id in enumerate(benchmark_ids)}
 
-print("common_panel_ranking\trank\tmodel\tpanel_z")
+print("calibrated_common_panel_ranking\trank\tmodel\tpanel_z")
 for rank, index in enumerate(np.argsort(-full_panel), start=1):
-    print(f"common_panel_ranking\t{rank}\t{model_ids[index]}\t{full_panel[index]:+.4f}")
+    print(
+        f"calibrated_common_panel_ranking\t{rank}\t{model_ids[index]}\t"
+        f"{full_panel[index]:+.4f}"
+    )
 print(
-    "glm_common_panel_delta\t"
+    "glm_calibrated_panel_delta\t"
     f"{full_panel[model_index['glm-5.3']]-full_panel[model_index['glm-5.3-flash']]:+.4f}"
 )
 
