@@ -44,6 +44,8 @@ jobs:
         run: python scripts/pairwise_inversion_report.py
       - name: Rank uncertainty diagnostic
         run: python scripts/rank_uncertainty_report.py
+      - name: Matrix-completion experiment
+        run: python scripts/matrix_completion_report.py
       - name: Taxonomy top-five report
         run: python scripts/taxonomy_report.py
       - name: Factor smoke on current corpus
